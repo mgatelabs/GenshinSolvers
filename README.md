@@ -5,7 +5,7 @@ Tools to solve Genshin Impact puzzles
 
 This is just for spinning puzzles, not the light up puzzles.
 
-Open up the file Runner.java and do the following.
+Open up the file com.mgatelabs.tools.Runner.java and do the following.
 
 Add / Remove the number of Cubes needed
 

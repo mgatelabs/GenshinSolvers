@@ -1,3 +1,7 @@
+package com.mgatelabs.tools.spinning;
+
+import com.mgatelabs.tools.utils.Direction;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,26 +12,18 @@ import java.util.List;
  */
 public class SpinningCube {
 
-    private List<SpinningCube> connected;
+    private final int myIndex;
 
-
-    public static enum Direction {
-        N, E, S, W;
-
-        public Direction next() {
-            switch (this) {
-                case N:
-                    return E;
-                case E:
-                    return S;
-                case S:
-                    return W;
-                case W:
-                    return N;
-            }
-            return N;
-        }
+    public SpinningCube(int myIndex) {
+        this.myIndex = myIndex;
+        this.connected = new ArrayList<>();
     }
+
+    public int getMyIndex() {
+        return myIndex;
+    }
+
+    private List<SpinningCube> connected;
 
     private Direction defaultDirection = Direction.N;
     private Direction direction = Direction.N;
@@ -41,16 +37,22 @@ public class SpinningCube {
         defaultDirection = direction;
     }
 
+    public void changeDirection(Direction direction) {
+        this.direction = direction;
+    }
+
     public void reset() {
         this.direction = defaultDirection;
     }
 
-    public SpinningCube() {
-        this.connected = new ArrayList<>();
+    public void connect(SpinningCube ... cubes) {
+        for (SpinningCube cube: cubes) {
+            this.connected.add(cube);
+        }
     }
 
-    public void connect(SpinningCube cube) {
-        this.connected.add(cube);
+    public List<SpinningCube> getConnected() {
+        return connected;
     }
 
     public void hit() {

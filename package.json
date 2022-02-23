@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href ./ && node utils/publish.js",
-    "watch": "ng build --npmwatch --configuration development",
+    "build": "ng build --base-href ./",
+    "deploy": "ng build --base-href ./ && node utils/publish.js",
+    "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,

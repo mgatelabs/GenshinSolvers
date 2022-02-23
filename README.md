@@ -3,16 +3,18 @@ Tools to solve Genshin Impact puzzles
 
 ### How to use
 
-This is just for spinning puzzles, not the light up puzzles.
+This is for spinning and light up puzzles.
 
-Open up the file com.mgatelabs.tools.Runner.java and do the following.
+Open up the file src/main/java/com/mgatelabs/tools/Runner.java and make changes.
 
-Add / Remove the number of Cubes needed
+There are two example paths, one for Spinning and Light up puzzles.
 
-Set the direction each cube is facing
+Just uncomment the appropriate line and make changes to the related method.
 
-Set the connections up, so it knows how one impact will trigger another
+The code has been optomized so you don't need to mess with variables, just setup the cubes, directions/lights and connections.
 
-Setup up the winning direction
+There is code to setup the winning direction, which is not needed for most puzzles, except for cases where one cube is "fixed".
 
-Run the app and wait, once it finds a solution, it will print out the order of the hits needed to solve the puzzle.
+Run the app and wait, it should find a solution, it will print out the order of the hits needed to solve the puzzle.
+
+If it results in a failure, then the max depth variable in the puzzle may need to be increased.  The default depth is 8 hits.

@@ -1,20 +1,27 @@
-# GenshinSolvers
-Tools to solve Genshin Impact puzzles
+# JenshinSolver
 
-### How to use
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
-This is for spinning and light up puzzles.
+## Development server
 
-Open up the file src/main/java/com/mgatelabs/tools/Runner.java and make changes.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-There are two example paths, one for Spinning and Light up puzzles.
+## Code scaffolding
 
-Just uncomment the appropriate line and make changes to the related method.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-The code has been optomized so you don't need to mess with variables, just setup the cubes, directions/lights and connections.
+## Build
 
-There is code to setup the winning direction, which is not needed for most puzzles, except for cases where one cube is "fixed".
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-Run the app and wait, it should find a solution, it will print out the order of the hits needed to solve the puzzle.
+## Running unit tests
 
-If it results in a failure, then the max depth variable in the puzzle may need to be increased.  The default depth is 8 hits.
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

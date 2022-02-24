@@ -71,6 +71,8 @@ export class MapComponent implements AfterViewInit {
 
       let content: string = '';
 
+      let id = info.id;
+
       switch (this.dataSource.locations[i].type) {
         case LocationType.WAYPOINT:
           {
@@ -81,15 +83,13 @@ export class MapComponent implements AfterViewInit {
         case LocationType.LIGHTUP:
           {
             ic = puzzlePointIcon;
-            content =
-              'Lightup Puzzle<br/><a href="puzzle" routerLinkActive="active">View Details</a>';
+            content = `Lightup Puzzle<br/><a href="puzzle?id=${id}" routerLinkActive="active">View Details</a>`;
           }
           break;
         case LocationType.SPINNING:
           {
             ic = puzzlePointIcon;
-            content =
-              'Spinning Puzzle<br/><a href="puzzle" routerLinkActive="active">View Details</a>';
+            content = `Spinning Puzzle<br/><a href="puzzle?id=${id}" routerLinkActive="active">View Details</a>`;
           }
           break;
         case LocationType.SEVEN:

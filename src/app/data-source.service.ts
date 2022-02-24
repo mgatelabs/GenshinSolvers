@@ -20,6 +20,7 @@ export class DataSourceService {
       for (let i = 0; i < temp.length; i++) {
         this.locations.push(
           new LocationInfo(
+            temp[i].id,
             Number(temp[i].x),
             Number(temp[i].y),
             LocationType.SEVEN
@@ -33,6 +34,7 @@ export class DataSourceService {
       for (let i = 0; i < temp.length; i++) {
         this.locations.push(
           new LocationInfo(
+            temp[i].id,
             Number(temp[i].x),
             Number(temp[i].y),
             LocationType.WAYPOINT
@@ -46,6 +48,7 @@ export class DataSourceService {
       for (let i = 0; i < temp.length; i++) {
         this.locations.push(
           new LocationInfo(
+            temp[i].id,
             Number(temp[i].x),
             Number(temp[i].y),
             LocationType.SPINNING

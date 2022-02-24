@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "make404": "@powershell copy \"./dist/index.html\" \"./dist/404.html\"",
     "start": "ng serve",
-    "build": "ng build --base-href ./",
-    "deploy": "ng build --base-href ./ && node utils/publish.js",
+    "build": "ng build --base-href ./ && @powershell copy \"./dist/index.html\" \"./dist/404.html\"",
+    "deploy": "ng build --base-href ./ && @powershell copy \"./dist/index.html\" \"./dist/404.html\" && node utils/publish.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -19,8 +20,10 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "@types/three": "^0.137.0",
     "leaflet": "^1.7.1",
     "rxjs": "~7.4.0",
+    "three": "^0.138.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

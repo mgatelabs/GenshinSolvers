@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { DataSourceService } from '../data-source.service';
 import { LocationInfo } from '../location-info';
@@ -68,25 +69,33 @@ export class MapComponent implements AfterViewInit {
 
       let ic: L.Icon;
 
+      let content: string = '';
+
       switch (this.dataSource.locations[i].type) {
         case LocationType.WAYPOINT:
           {
             ic = wayPointIcon;
+            content = 'Teleporter';
           }
           break;
         case LocationType.LIGHTUP:
           {
             ic = puzzlePointIcon;
+            content =
+              'Lightup Puzzle<br/><a href="puzzle" routerLinkActive="active">View Details</a>';
           }
           break;
         case LocationType.SPINNING:
           {
             ic = puzzlePointIcon;
+            content =
+              'Spinning Puzzle<br/><a href="puzzle" routerLinkActive="active">View Details</a>';
           }
           break;
         case LocationType.SEVEN:
           {
             ic = sevenPointIcon;
+            content = 'Statue of the Seven';
           }
           break;
         default:
@@ -94,11 +103,16 @@ export class MapComponent implements AfterViewInit {
           break;
       }
 
-      L.marker(sol, { icon: ic }).addTo(this.map);
+      let m = L.marker(sol, { icon: ic });
+
+      m.bindPopup(content);
+      //m.bindTooltip('Hello World', { interactive: true, sticky: true });
+
+      m.addTo(this.map);
     }
   }
 
-  constructor(private dataSource: DataSourceService) {}
+  constructor(private dataSource: DataSourceService, private router: Router) {}
 
   ngAfterViewInit(): void {
     this.initMap();

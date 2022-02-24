@@ -27,6 +27,20 @@ export class MapComponent implements AfterViewInit {
       shadowUrl: 'leaflet/marker-shadow.png',
     });
 
+    let puzzlePointIcon = new L.Icon({
+      iconSize: [25, 41],
+      iconAnchor: [13, 41],
+      iconUrl: 'assets/puzzle.png',
+      shadowUrl: 'leaflet/marker-shadow.png',
+    });
+
+    let sevenPointIcon = new L.Icon({
+      iconSize: [25, 41],
+      iconAnchor: [13, 41],
+      iconUrl: 'assets/seven.png',
+      shadowUrl: 'leaflet/marker-shadow.png',
+    });
+
     this.map = L.map('map', {
       crs: L.CRS.Simple,
       minZoom: -5,
@@ -58,6 +72,21 @@ export class MapComponent implements AfterViewInit {
         case LocationType.WAYPOINT:
           {
             ic = wayPointIcon;
+          }
+          break;
+        case LocationType.LIGHTUP:
+          {
+            ic = puzzlePointIcon;
+          }
+          break;
+        case LocationType.SPINNING:
+          {
+            ic = puzzlePointIcon;
+          }
+          break;
+        case LocationType.SEVEN:
+          {
+            ic = sevenPointIcon;
           }
           break;
         default:

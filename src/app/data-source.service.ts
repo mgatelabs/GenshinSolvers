@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import * as treeData from '../assets/location_trees.json';
 import { LocationInfo } from './location-info';
 import { LocationType } from './location-type';
+import * as treeData from '../assets/location_trees.json';
 import * as warpData from '../assets/location_teleports.json';
+import * as cubeData from '../assets/location_cubes.json';
+import * as sevenData from '../assets/location_seven.json';
 
 @Injectable({
   providedIn: 'root',
@@ -14,13 +16,13 @@ export class DataSourceService {
     this.locations = [];
 
     {
-      let temp: Array<any> = treeData;
+      let temp: Array<any> = sevenData;
       for (let i = 0; i < temp.length; i++) {
         this.locations.push(
           new LocationInfo(
             Number(temp[i].x),
             Number(temp[i].y),
-            LocationType.TREE
+            LocationType.SEVEN
           )
         );
       }
@@ -34,6 +36,19 @@ export class DataSourceService {
             Number(temp[i].x),
             Number(temp[i].y),
             LocationType.WAYPOINT
+          )
+        );
+      }
+    }
+
+    {
+      let temp: Array<any> = cubeData;
+      for (let i = 0; i < temp.length; i++) {
+        this.locations.push(
+          new LocationInfo(
+            Number(temp[i].x),
+            Number(temp[i].y),
+            LocationType.SPINNING
           )
         );
       }

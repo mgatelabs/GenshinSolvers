@@ -3,4 +3,5 @@ export enum LocationType {
   TREE,
   SPINNING,
   LIGHTUP,
+  SEVEN,
 }

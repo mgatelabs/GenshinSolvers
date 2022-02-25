@@ -69,6 +69,13 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
   }
 
   private loadTextures() {
+    this.canvasHolderRef.nativeElement.setAttribute(
+      'style',
+      'background-size: cover;background-image:url(./assets/backgrounds/' +
+        this.puzzleInfo.id +
+        '.jpg)'
+    );
+
     let self = this;
     Promise.all([
       this.getTexturePromise('assets/cube-bee.png'),
@@ -151,7 +158,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
         break;
     }
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < this.puzzleInfo.count; i++) {
       let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
       this.cubeList.push(cube);
       cube.position.set(i * 1.1, 0, i);
@@ -186,13 +193,15 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: WindowEventMap) {
-    var sizes = this.getCanvasSize();
-    this.renderer.setSize(sizes[0], sizes[1]);
-    this.renderer.render(this.scene, this.camera);
+    if (this.puzzleInfo != null) {
+      var sizes = this.getCanvasSize();
+      this.renderer.setSize(sizes[0], sizes[1]);
+      this.renderer.render(this.scene, this.camera);
+    }
   }
 
   private getCanvasSize(): Array<number> {
-    let width = this.canvasHolderRef.nativeElement.clientWidth - 20;
+    let width = this.canvasHolderRef.nativeElement.clientWidth;
     let height = Math.floor(width * 0.75);
     return [width, height];
   }

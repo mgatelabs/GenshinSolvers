@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as THREE from 'three';
 
 @Component({
@@ -14,6 +15,8 @@ import * as THREE from 'three';
   styleUrls: ['./puzzle-view.component.scss'],
 })
 export class PuzzleViewComponent implements OnInit, AfterViewInit {
+  private puzzleId: string;
+
   @ViewChild('canvas')
   private canvasRef: ElementRef;
 
@@ -40,9 +43,15 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
 
   private scene!: THREE.Scene;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    var self = this;
+    this.route.queryParams.subscribe((params) => {
+      self.puzzleId = params['id'];
+      console.log('Puzzle ID: ' + self.puzzleId);
+    });
+  }
 
   ngAfterViewInit(): void {
     this.loadTextures();
@@ -100,34 +109,50 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     });
   }
 
+  private cubeList: Array<THREE.Mesh> = new Array();
+
   private createScene() {
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x000000);
+    //this.scene.background = new THREE.Color(0x000000);
 
     console.log(this.textureMap);
 
     const cubeMaterials = [
       this.getTexture('assets/cube-blank.png'), //right side
-      this.getTexture('assets/cube-blank.png'), //left side
+      this.getTexture('assets/cube-bee.png'), //left side
       this.getTexture('assets/cube-blank.png'), //top side
       this.getTexture('assets/cube-blank.png'), //bottom side
-      this.getTexture('assets/cube-blank.png'), //front side
+      this.getTexture('assets/cube-three.png'), //front side
       this.getTexture('assets/cube-blank.png'), //back side
     ];
 
-    let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
+    for (let i = 0; i < 3; i++) {
+      let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
+      this.cubeList.push(cube);
 
-    this.scene.add(cube);
+      cube.position.set(i * 1.1, 0, i);
 
-    let aspectRatio = this.getAspectRatio();
+      this.scene.add(cube);
+    }
+
+    let aspectRatio = 640.0 / 480.0;
     this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
-    this.camera.position.z = 3;
+    this.camera.position.z = 5;
+    this.camera.position.y = 3;
+    this.camera.lookAt(0, 0, 0);
   }
 
   private createRenderer() {
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: false,
+      alpha: true,
+    });
     this.renderer.setPixelRatio(1);
-    this.renderer.setSize(this.getCanvasWidth(), 500);
+    this.renderer.setClearColor(0x000000, 0);
+
+    var sizes = this.getCanvasSize();
+    this.renderer.setSize(sizes[0], sizes[1]);
 
     this.renderer.render(this.scene, this.camera);
   }
@@ -138,11 +163,14 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: WindowEventMap) {
-    this.renderer.setSize(this.getCanvasWidth(), 500);
+    var sizes = this.getCanvasSize();
+    this.renderer.setSize(sizes[0], sizes[1]);
     this.renderer.render(this.scene, this.camera);
   }
 
-  private getCanvasWidth(): number {
-    return this.canvasHolderRef.nativeElement.clientWidth - 20;
+  private getCanvasSize(): Array<number> {
+    let width = this.canvasHolderRef.nativeElement.clientWidth - 20;
+    let height = Math.floor(width * 0.75);
+    return [width, height];
   }
 }

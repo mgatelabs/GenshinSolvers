@@ -2,9 +2,11 @@
   <h2>Puzzle View</h2>
 
   <div class="row">
-    <div #canvasHolder class="col-md-8">
-      <canvas #canvas id="canvas" style="height: 500px; width: 100%"></canvas>
-    </div>
+    <app-three-dview
+      #threedview
+      puzzleId="{{ puzzleId }}"
+      class="col-md-8"
+    ></app-three-dview>
     <div class="col-6 col-md-4">Move List Here</div>
   </div>
 </div>

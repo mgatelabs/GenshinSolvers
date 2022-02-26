@@ -7,6 +7,7 @@ import * as cubeData from '../assets/location_cubes.json';
 import * as sevenData from '../assets/location_seven.json';
 import { PuzzleInfo } from './shared/puzzle-info';
 import { PuzzleType } from './shared/puzzle-type';
+import { PuzzleDirection } from './shared/puzzle-direction';
 
 @Injectable({
   providedIn: 'root',
@@ -76,6 +77,75 @@ export class DataSourceService {
             [],
             []
           );
+
+          if (item.camera) {
+            info.camera = item.camera;
+          }
+
+          if (item.facing) {
+            switch (item.facing) {
+              case 'N':
+                info.facing = PuzzleDirection.NORTH;
+                break;
+              case 'E':
+                info.facing = PuzzleDirection.EAST;
+                break;
+              case 'S':
+                info.facing = PuzzleDirection.SOUTH;
+                break;
+              case 'W':
+                info.facing = PuzzleDirection.WEST;
+                break;
+            }
+          }
+
+          info.directions = [];
+          if (item.direction) {
+            for (let j = 0; j < item.direction.length; j++) {
+              switch (item.direction[j]) {
+                case 'N':
+                  info.directions.push(PuzzleDirection.NORTH);
+                  break;
+                case 'E':
+                  info.directions.push(PuzzleDirection.EAST);
+                  break;
+                case 'S':
+                  info.directions.push(PuzzleDirection.SOUTH);
+                  break;
+                case 'W':
+                  info.directions.push(PuzzleDirection.WEST);
+                  break;
+                case '0':
+                  info.directions.push(PuzzleDirection.ZERO);
+                  break;
+                case '1':
+                  info.directions.push(PuzzleDirection.ONE);
+                  break;
+                case '2':
+                  info.directions.push(PuzzleDirection.TWO);
+                  break;
+                case '3':
+                  info.directions.push(PuzzleDirection.THREE);
+                  break;
+              }
+            }
+          } else {
+            for (let j = 0; j < item.count; j++) {
+              if (item.type === 'LIGHT') {
+                info.directions.push(PuzzleDirection.ZERO);
+              } else {
+                info.directions.push(PuzzleDirection.NORTH);
+              }
+            }
+          }
+          if (item.position) {
+            info.position = item.position;
+          } else {
+            for (let j = 0; j < item.count; j++) {
+              info.position.push([j, 0, -j]);
+            }
+          }
+
           this.puzzles.set(info.id, info);
         }
       }

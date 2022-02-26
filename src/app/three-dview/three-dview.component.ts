@@ -8,6 +8,7 @@ import {
   Input,
 } from '@angular/core';
 import * as THREE from 'three';
+import { PuzzleDirection } from '../shared/puzzle-direction';
 import { PuzzleInfo } from '../shared/puzzle-info';
 import { PuzzleType } from '../shared/puzzle-type';
 
@@ -26,6 +27,8 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
   public startView() {
     this.loadTextures();
   }
+
+  private cubeDirections: Array<PuzzleDirection> = [];
 
   @Input('puzzleId')
   public puzzleId: string;
@@ -56,6 +59,8 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
 
   private scene!: THREE.Scene;
 
+  private _90 = 1.5707963268;
+
   /**
    * All textures are saved here, in this one spot
    */
@@ -76,6 +81,11 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
         '.jpg)'
     );
 
+    this.cubeDirections = [];
+    for (let i = 0; i < this.puzzleInfo.count; i++) {
+      this.cubeDirections[i] = this.puzzleInfo.directions[i];
+    }
+
     let self = this;
     Promise.all([
       this.getTexturePromise('assets/cube-bee.png'),
@@ -85,6 +95,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
       self.getTexturePromise('assets/cube-one.png'),
       self.getTexturePromise('assets/cube-two.png'),
       self.getTexturePromise('assets/cube-three.png'),
+      self.getTexturePromise('assets/cube-down_arrow.png'),
     ]).then(function () {
       self.createScene();
       self.createRenderer();
@@ -130,7 +141,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
         {
           cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //right side
           cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //left side
-          cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //top side
+          cubeMaterials.push(this.getTexture('assets/cube-down_arrow.png')); //top side
           cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //bottom side
           cubeMaterials.push(this.getTexture('assets/cube-three.png')); //front side
           cubeMaterials.push(this.getTexture('assets/cube-face.png')); //back side
@@ -161,15 +172,57 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this.puzzleInfo.count; i++) {
       let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
       this.cubeList.push(cube);
-      cube.position.set(i * 1.1, 0, i);
+
+      cube.position.set(
+        this.puzzleInfo.position[i][0],
+        this.puzzleInfo.position[i][1],
+        this.puzzleInfo.position[i][2]
+      );
+
       this.scene.add(cube);
+
+      this.updateCubeDirection(i);
     }
 
     let aspectRatio = 640.0 / 480.0;
     this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
-    this.camera.position.z = 5;
-    this.camera.position.y = 3;
+
+    this.camera.position.x = this.puzzleInfo.camera[0];
+    this.camera.position.y = this.puzzleInfo.camera[1];
+    this.camera.position.z = this.puzzleInfo.camera[2];
+
     this.camera.lookAt(0, 0, 0);
+  }
+
+  private updateCubeDirection(index: number) {
+    let rot: number = 0;
+    switch (this.cubeDirections[index]) {
+      case PuzzleDirection.NORTH:
+        rot = this._90 * 2;
+        break;
+      case PuzzleDirection.EAST:
+        rot = this._90;
+        break;
+      case PuzzleDirection.SOUTH:
+        rot = 0;
+        break;
+      case PuzzleDirection.WEST:
+        rot = -this._90;
+        break;
+      case PuzzleDirection.TWO:
+        rot = this._90 * 2;
+        break;
+      case PuzzleDirection.ONE:
+        rot = this._90;
+        break;
+      case PuzzleDirection.ZERO:
+        rot = 0;
+        break;
+      case PuzzleDirection.THREE:
+        rot = -this._90;
+        break;
+    }
+    this.cubeList[index].rotation.y = rot;
   }
 
   private createRenderer() {

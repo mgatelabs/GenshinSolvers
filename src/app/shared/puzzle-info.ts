@@ -10,6 +10,9 @@ export class PuzzleInfo {
     public directions: Array<PuzzleDirection>,
     public connections: Array<Array<Number>>
   ) {}
+  public camera = [0, 3, 5];
+  public position: Array<Array<number>> = [];
+  public facing: PuzzleDirection = PuzzleDirection.NORTH;
 
   getCubes(): Array<PuzzleCube> {
     let result = new Array<PuzzleCube>();
@@ -20,6 +23,7 @@ export class PuzzleInfo {
         this.directions[i],
         this.connections[i]
       );
+
       result.push(cube);
     }
 

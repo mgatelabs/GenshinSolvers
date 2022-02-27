@@ -3,15 +3,37 @@
     class="configRow"
     *ngFor="let dir of puzzleConfiguration.directions; let i = index"
   >
-    #{{ i + 1 }} -
-    <button class="icon-click-left" (click)="arrowClicked(i, true)">
+    <button
+      (click)="cubeClicked(i)"
+      class="icon-click-left btn btn-info"
+      title="Highlight Cube"
+    >
+      #{{ i + 1 }}
+    </button>
+
+    &nbsp;
+
+    <button
+      class="icon-click-left btn btn-secondary"
+      title="Previous Cube Value"
+      (click)="arrowClicked(i, true)"
+    >
       <fa-icon [icon]="['fas', 'angle-left']"></fa-icon>
     </button>
 
-    <span class="icon-value" (click)="arrowClicked(i, false)">
+    <button
+      (click)="arrowClicked(i, false)"
+      class="icon-value btn btn-light"
+      title="Next Cube Value"
+    >
       {{ getDirectionValue(dir) }}
-    </span>
-    <button class="icon-click-right" (click)="arrowClicked(i, false)">
+    </button>
+
+    <button
+      class="icon-click-right btn btn-secondary"
+      title="Next Cube Value"
+      (click)="arrowClicked(i, false)"
+    >
       <fa-icon [icon]="['fas', 'angle-right']"></fa-icon>
     </button>
   </div>

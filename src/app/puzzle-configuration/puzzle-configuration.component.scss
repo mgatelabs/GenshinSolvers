@@ -13,16 +13,15 @@
 .icon-value {
   cursor: pointer;
   border: 0px;
-  background: transparent;
 }
 
 .icon-click-left:hover,
 .icon-click-right:hover {
-  outline: 1px solid black;
+  //outline: 1px solid black;
 }
 
 .icon-value {
   display: inline-block;
   text-align: center;
-  width: 24px;
+  width: 48px;
 }

@@ -51,6 +51,8 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
 
   private geometry = new THREE.BoxGeometry(1, 1, 1);
 
+  private selectionGeometry = new THREE.ConeGeometry(0.25, -0.5, 8);
+
   private material = new THREE.MeshBasicMaterial({
     color: new THREE.Color(0xffffff),
   });
@@ -88,6 +90,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
 
     let self = this;
     Promise.all([
+      this.getTexturePromise('assets/cube-at.png'),
       this.getTexturePromise('assets/cube-bee.png'),
       self.getTexturePromise('assets/cube-blank.png'),
       self.getTexturePromise('assets/cube-face.png'),
@@ -128,6 +131,8 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
 
   private cubeList: Array<THREE.Mesh> = new Array();
 
+  private selectionNode: THREE.Mesh | undefined;
+
   private createScene() {
     this.scene = new THREE.Scene();
     //this.scene.background = new THREE.Color(0x000000);
@@ -140,7 +145,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
       case PuzzleType.SPIN:
         {
           cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //right side
-          cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //left side
+          cubeMaterials.push(this.getTexture('assets/cube-at.png')); //left side
           cubeMaterials.push(this.getTexture('assets/cube-down_arrow.png')); //top side
           cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //bottom side
           cubeMaterials.push(this.getTexture('assets/cube-three.png')); //front side
@@ -160,7 +165,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
       default:
         {
           cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //right side
-          cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //left side
+          cubeMaterials.push(this.getTexture('assets/cube-at.png')); //left side
           cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //top side
           cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //bottom side
           cubeMaterials.push(this.getTexture('assets/cube-three.png')); //front side
@@ -184,6 +189,13 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
       this.updateCubeDirection(i);
     }
 
+    this.selectionNode = new THREE.Mesh(
+      this.selectionGeometry,
+      new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    );
+    this.selectionNode.visible = false;
+    this.scene.add(this.selectionNode);
+
     let aspectRatio = 640.0 / 480.0;
     this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
 
@@ -194,11 +206,20 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     this.camera.lookAt(0, 0, 0);
   }
 
-  public updateDirections(directions: Array<PuzzleDirection>) {
+  public updateDirections(
+    directions: Array<PuzzleDirection>,
+    highlightIndex: number = -1
+  ) {
     for (let i = 0; i < this.puzzleInfo.count; i++) {
       this.cubeDirections[i] = directions[i];
+      if (i == highlightIndex) {
+        this.selectionNode!.position.x = this.cubeList[i].position.x;
+        this.selectionNode!.position.y = this.cubeList[i].position.y + 1;
+        this.selectionNode!.position.z = this.cubeList[i].position.z;
+      }
       this.updateCubeDirection(i);
     }
+    this.selectionNode!.visible = highlightIndex >= 0;
     this.renderer.render(this.scene, this.camera);
   }
 

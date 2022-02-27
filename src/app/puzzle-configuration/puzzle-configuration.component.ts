@@ -16,7 +16,7 @@ export class PuzzleConfigurationComponent implements OnInit {
   ngOnInit(): void {}
 
   @Output()
-  configurationChanged: EventEmitter<string> = new EventEmitter<string>();
+  configurationChanged: EventEmitter<number> = new EventEmitter<number>();
 
   public getDirectionValue(dir: PuzzleDirection) {
     switch (dir) {
@@ -44,7 +44,11 @@ export class PuzzleConfigurationComponent implements OnInit {
 
   arrowClicked(i: number, isLeft: boolean) {
     if (this.puzzleConfiguration?.rotateIndex(i, isLeft)) {
-      this.configurationChanged.emit('go');
+      this.configurationChanged.emit(i);
     }
+  }
+
+  cubeClicked(i: number) {
+    this.configurationChanged.emit(i);
   }
 }

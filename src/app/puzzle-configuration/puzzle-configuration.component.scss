@@ -12,6 +12,13 @@
 .icon-click-right,
 .icon-value {
   cursor: pointer;
+  border: 0px;
+  background: transparent;
+}
+
+.icon-click-left:hover,
+.icon-click-right:hover {
+  outline: 1px solid black;
 }
 
 .icon-value {

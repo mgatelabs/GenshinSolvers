@@ -4,18 +4,15 @@
     *ngFor="let dir of puzzleConfiguration.directions; let i = index"
   >
     #{{ i + 1 }} -
-    <fa-icon
-      class="icon-click-left"
-      (click)="arrowClicked(i, true)"
-      [icon]="['fas', 'angle-left']"
-    ></fa-icon>
+    <button class="icon-click-left" (click)="arrowClicked(i, true)">
+      <fa-icon [icon]="['fas', 'angle-left']"></fa-icon>
+    </button>
+
     <span class="icon-value" (click)="arrowClicked(i, false)">
       {{ getDirectionValue(dir) }}
     </span>
-    <fa-icon
-      class="icon-click-right"
-      (click)="arrowClicked(i, false)"
-      [icon]="['fas', 'angle-right']"
-    ></fa-icon>
+    <button class="icon-click-right" (click)="arrowClicked(i, false)">
+      <fa-icon [icon]="['fas', 'angle-right']"></fa-icon>
+    </button>
   </div>
 </div>

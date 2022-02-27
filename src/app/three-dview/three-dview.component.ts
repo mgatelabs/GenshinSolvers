@@ -194,6 +194,14 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     this.camera.lookAt(0, 0, 0);
   }
 
+  public updateDirections(directions: Array<PuzzleDirection>) {
+    for (let i = 0; i < this.puzzleInfo.count; i++) {
+      this.cubeDirections[i] = directions[i];
+      this.updateCubeDirection(i);
+    }
+    this.renderer.render(this.scene, this.camera);
+  }
+
   private updateCubeDirection(index: number) {
     let rot: number = 0;
     switch (this.cubeDirections[index]) {

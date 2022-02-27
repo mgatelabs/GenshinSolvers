@@ -1,0 +1,21 @@
+<div *ngIf="puzzleConfiguration" class="configuration-component">
+  <div
+    class="configRow"
+    *ngFor="let dir of puzzleConfiguration.directions; let i = index"
+  >
+    #{{ i + 1 }} -
+    <fa-icon
+      class="icon-click-left"
+      (click)="arrowClicked(i, true)"
+      [icon]="['fas', 'angle-left']"
+    ></fa-icon>
+    <span class="icon-value" (click)="arrowClicked(i, false)">
+      {{ getDirectionValue(dir) }}
+    </span>
+    <fa-icon
+      class="icon-click-right"
+      (click)="arrowClicked(i, false)"
+      [icon]="['fas', 'angle-right']"
+    ></fa-icon>
+  </div>
+</div>

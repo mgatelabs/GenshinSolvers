@@ -1,0 +1,21 @@
+.configuration-component {
+  border: 1px solid black;
+  border-top: none;
+}
+
+.configRow {
+  border-top: 1px solid black;
+  padding: 4px;
+}
+
+.icon-click-left,
+.icon-click-right,
+.icon-value {
+  cursor: pointer;
+}
+
+.icon-value {
+  display: inline-block;
+  text-align: center;
+  width: 24px;
+}

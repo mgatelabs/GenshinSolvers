@@ -5,8 +5,21 @@
     <app-three-dview
       #threedview
       puzzleId="{{ puzzleId }}"
-      class="col-md-8"
+      class="col-md-6"
     ></app-three-dview>
-    <div class="col-6 col-md-4">Move List Here</div>
+    <div class="col-6 col-md-6">
+      <div class="description-box">
+        <fa-icon [icon]="['fas', 'info-circle']"></fa-icon> This is a sample
+      </div>
+
+      <h4>Initial Configuration</h4>
+
+      <app-puzzle-configuration
+        (configurationChanged)="configurationChange($event)"
+        [puzzleConfiguration]="puzzleConfiguration"
+      ></app-puzzle-configuration>
+
+      <h4>Solution</h4>
+    </div>
   </div>
 </div>

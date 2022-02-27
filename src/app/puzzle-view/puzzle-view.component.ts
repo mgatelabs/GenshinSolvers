@@ -13,6 +13,14 @@ import { PuzzleDirection } from '../shared/puzzle-direction';
 import { PuzzleInfo } from '../shared/puzzle-info';
 import { PuzzleType } from '../shared/puzzle-type';
 import { ThreeDViewComponent } from '../three-dview/three-dview.component';
+/*
+import {
+  PuzzleDefinition,
+  PuzzleState,
+  unifiedSolution,
+} from '../solver/puzzle';
+*/
+import * as SOLVER from '../solver/puzzle';
 
 @Component({
   selector: 'app-puzzle-view',
@@ -27,6 +35,8 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     PuzzleType.LIGHT,
     []
   );
+
+  public puzzleSolution: Array<SOLVER.PuzzleSolveStep> | undefined;
 
   @ViewChild('threedview') someElement: ThreeDViewComponent;
 
@@ -70,6 +80,7 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     if (this.puzzleInfo != null) {
       this.someElement.puzzleInfo = this.puzzleInfo!;
       this.someElement.startView();
+      this.solvePuzzle();
     }
   }
 
@@ -80,5 +91,69 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
       this.puzzleConfiguration.directions,
       misc
     );
+
+    this.solvePuzzle();
+  }
+
+  solvePuzzle() {
+    let faces = [];
+    for (let i = 0; i < this.puzzleConfiguration.directions.length; i++) {
+      let val = 0;
+      switch (this.puzzleConfiguration.directions[i]) {
+        case PuzzleDirection.NORTH:
+        case PuzzleDirection.ZERO:
+          val = 0;
+          break;
+        case PuzzleDirection.EAST:
+        case PuzzleDirection.ONE:
+          val = 1;
+          break;
+        case PuzzleDirection.SOUTH:
+        case PuzzleDirection.TWO:
+          val = 2;
+          break;
+        case PuzzleDirection.WEST:
+        case PuzzleDirection.THREE:
+          val = 3;
+          break;
+      }
+      faces.push(val);
+    }
+
+    let conns: Array<Array<number>> = [];
+
+    for (let i = 0; i < this.puzzleInfo!.connections.length; i++) {
+      let sample: Array<number> = [];
+      // The main click
+      sample.push(i);
+      // The effected
+      for (let j = 0; j < this.puzzleInfo!.connections[i].length; j++) {
+        sample.push(this.puzzleInfo!.connections[i][j]);
+      }
+      conns.push(sample);
+    }
+
+    let puzzleDef: SOLVER.PuzzleDefinition = {
+      initialState: faces,
+      isFinalState: SOLVER.unifiedSolution,
+      maximumNumber: 4,
+      stateTransitions: conns,
+    };
+
+    //console.log(this.puzzleInfo);
+
+    console.log(puzzleDef);
+
+    let result = SOLVER.solvePuzzle(puzzleDef);
+
+    let modified: Array<SOLVER.PuzzleSolveStep> = [];
+
+    while (result) {
+      let current = result;
+      modified.splice(0, 0, current);
+      result = result.previousStep;
+    }
+
+    this.puzzleSolution = modified;
   }
 }

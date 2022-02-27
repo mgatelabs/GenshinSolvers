@@ -138,6 +138,11 @@ export class DataSourceService {
               }
             }
           }
+
+          if (item.connection) {
+            info.connections = item.connection;
+          }
+
           if (item.position) {
             info.position = item.position;
           } else {

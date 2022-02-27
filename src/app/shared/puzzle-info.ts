@@ -8,7 +8,7 @@ export class PuzzleInfo {
     public type: PuzzleType,
     public count: Number,
     public directions: Array<PuzzleDirection>,
-    public connections: Array<Array<Number>>
+    public connections: Array<Array<number>>
   ) {}
   public camera = [0, 3, 5];
   public position: Array<Array<number>> = [];

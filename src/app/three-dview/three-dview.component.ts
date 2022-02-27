@@ -221,13 +221,13 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
         rot = this._90 * 2;
         break;
       case PuzzleDirection.ONE:
-        rot = this._90;
+        rot = -this._90;
         break;
       case PuzzleDirection.ZERO:
         rot = 0;
         break;
       case PuzzleDirection.THREE:
-        rot = -this._90;
+        rot = this._90;
         break;
     }
     this.cubeList[index].rotation.y = rot;

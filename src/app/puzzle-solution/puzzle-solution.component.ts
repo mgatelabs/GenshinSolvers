@@ -21,5 +21,7 @@ export class PuzzleSolutionComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showStep(index: number) {}
+  showStep(index: number) {
+    this.showSolution.emit(this.puzzleSolution![index]);
+  }
 }

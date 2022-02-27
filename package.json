@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "make404": "@powershell copy \"./dist/index.html\" \"./dist/404.html\"",
+    "make404": "node utils/fix404.js",
     "start": "ng serve",
-    "build": "ng build --base-href ./ && @powershell copy \"./dist/index.html\" \"./dist/404.html\"",
-    "deploy": "ng build --base-href ./ && @powershell copy \"./dist/index.html\" \"./dist/404.html\" && node utils/publish.js",
+    "build": "ng build --base-href ./ && node utils/fix404.js",
+    "deploy": "ng build --base-href ./ && node utils/fix404.js && node utils/publish.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

@@ -72,7 +72,7 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
         );
       }
 
-      console.log('Found Puzzle ID: ' + self.puzzleId);
+      //console.log('Found Puzzle ID: ' + self.puzzleId);
     });
   }
 
@@ -145,7 +145,7 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
 
     //console.log(this.puzzleInfo);
 
-    console.log(puzzleDef);
+    //console.log(puzzleDef);
 
     let result = SOLVER.solvePuzzle(puzzleDef);
 
@@ -159,6 +159,8 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
       }
       modified.splice(0, 0, current);
     }
+
+    //console.log(modified);
 
     this.puzzleSolution = modified;
   }

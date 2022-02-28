@@ -13,8 +13,7 @@
 
     Step {{ i + 1 }} -
 
-    <span *ngIf="sol.touchedCube"> Touch {{ sol.touchedCube }} </span>
-    <span *ngIf="sol.touchedCube == undefined"> Initial Configuration </span>
+    <span> Touch {{ sol.touchedCube! + 1 }} </span>
   </div>
   <div class="solutionRow">
     <button

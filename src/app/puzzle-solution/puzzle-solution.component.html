@@ -1,30 +1,32 @@
-<div
-  *ngIf="puzzleInfo && puzzleSolution && puzzleSolution.length > 0"
-  class="solution-component"
->
-  <div class="solutionRow" *ngFor="let sol of puzzleSolution; let i = index">
-    <button
-      class="icon-click-left btn btn-info"
-      title="Show Move"
-      (click)="showStep(i)"
-    >
-      <fa-icon [icon]="['fas', 'play-circle']"></fa-icon>
-    </button>
+<div *ngIf="puzzleInfo" class="solution-component">
+  <ng-container
+    *ngIf="puzzleSolution && puzzleSolution.length > 0; else noSolutionBlock"
+  >
+    <div class="solutionRow" *ngFor="let sol of puzzleSolution; let i = index">
+      <button
+        class="icon-click-left btn btn-info"
+        title="Show Move"
+        (click)="showStep(i)"
+      >
+        <fa-icon [icon]="['fas', 'play-circle']"></fa-icon>
+      </button>
 
-    Step {{ i + 1 }} -
+      <span *ngIf="sol.touchedCube"> Touch {{ sol.touchedCube }} </span>
+      <span *ngIf="sol.touchedCube == undefined"> Initial Configuration </span>
+    </div>
+    <div class="solutionRow">
+      <button
+        class="icon-click-left btn btn-info"
+        title="Show Final"
+        (click)="showFinalAction()"
+      >
+        <fa-icon [icon]="['fas', 'play-circle']"></fa-icon>
+      </button>
 
-    <span *ngIf="sol.touchedCube"> Touch {{ sol.touchedCube }} </span>
-    <span *ngIf="sol.touchedCube == undefined"> Initial Configuration </span>
-  </div>
-  <div class="solutionRow">
-    <button
-      class="icon-click-left btn btn-info"
-      title="Show Final"
-      (click)="showFinalAction()"
-    >
-      <fa-icon [icon]="['fas', 'play-circle']"></fa-icon>
-    </button>
-
-    Finish
-  </div>
+      Finish
+    </div>
+  </ng-container>
+  <ng-template #noSolutionBlock>
+    <div class="solutionRow">No solution</div></ng-template
+  >
 </div>

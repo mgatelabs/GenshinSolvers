@@ -11,7 +11,7 @@ import * as THREE from 'three';
 import { PuzzleDirection } from '../shared/puzzle-direction';
 import { PuzzleInfo } from '../shared/puzzle-info';
 import { PuzzleType } from '../shared/puzzle-type';
-import { InteractionManager } from '../three-interactive';
+import { InteractionManager } from 'three.interactive';
 
 @Component({
   selector: 'app-three-dview',
@@ -277,7 +277,8 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     this.interactionManager = new InteractionManager(
       this.renderer,
       this.camera,
-      this.canvas
+      this.canvas,
+      undefined
     );
 
     for (let i = 0; i < this.cubeList.length; i++) {

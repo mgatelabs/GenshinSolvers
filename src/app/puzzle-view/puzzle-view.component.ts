@@ -219,4 +219,21 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     let toSend = this.convertStepToDirections(toConvert);
     this.someElement.updateDirections(toSend, index);
   }
+
+  resetPuzzle() {
+    let dirs = new Array<PuzzleDirection>();
+
+    for (let i = 0; i < this.puzzleInfo!.directions.length; i++) {
+      dirs.push(this.puzzleInfo!.directions[i]);
+    }
+
+    this.puzzleConfiguration = new PuzzleConfiguration(
+      this.puzzleInfo!.type,
+      dirs
+    );
+
+    this.someElement.updateDirections(this.puzzleConfiguration.directions, -1);
+
+    this.solvePuzzle();
+  }
 }

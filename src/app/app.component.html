@@ -1,6 +1,5 @@
-<div>
-  <a routerLink="/">Genshin Puzzle Solver</a> |
-
+<div class="header-block"><a routerLink="/">Genshin Puzzle Solver</a></div>
+<div class="header-sub">
   <a
     href="https://github.com/mgatelabs/GenshinSolvers"
     target="_blank"
@@ -8,9 +7,6 @@
     ><fa-icon [icon]="['fab', 'github']"></fa-icon
   ></a>
 </div>
-<div
-  class="routeHolder"
-  style="position: absolute; top: 30px; left: 0; right: 0; bottom: 0"
->
+<div class="routeHolder">
   <router-outlet></router-outlet>
 </div>

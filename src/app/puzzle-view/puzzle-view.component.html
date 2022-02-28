@@ -5,27 +5,44 @@
     <app-three-dview
       #threedview
       puzzleId="{{ puzzleId }}"
-      class="col-md-6"
+      class="col-xs-12 col-lg-8"
     ></app-three-dview>
-    <div class="col-6 col-md-6">
-      <div class="description-box">
-        <fa-icon [icon]="['fas', 'info-circle']"></fa-icon> This is a sample
+
+    <div class="col-md-12 col-lg-4">
+      <div class="row">
+        <div class="col-md-6 col-lg-12">
+          <div class="description-box">
+            <fa-icon [icon]="['fas', 'info-circle']"></fa-icon> This is a sample
+          </div>
+
+          <div class="title-wrapper">
+            <fa-icon title="Configuration" [icon]="['fas', 'cog']"></fa-icon>
+            &nbsp;
+            <fa-icon
+              (click)="resetPuzzle()"
+              style="color: blue; cursor: pointer"
+              title="Reset Configuration"
+              [icon]="['fas', 'sync']"
+            ></fa-icon>
+          </div>
+          <app-puzzle-configuration
+            (configurationChanged)="configurationChange($event)"
+            [puzzleConfiguration]="puzzleConfiguration"
+          ></app-puzzle-configuration>
+        </div>
+
+        <div class="col-md-6 col-lg-12">
+          <div class="title-wrapper">
+            <fa-icon title="Solution" [icon]="['fas', 'directions']"></fa-icon>
+          </div>
+          <app-puzzle-solution
+            (showSolution)="showSolutionStep($event)"
+            (showFinal)="showFinalStep($event)"
+            [puzzleInfo]="puzzleInfo"
+            [puzzleSolution]="puzzleSolution"
+          ></app-puzzle-solution>
+        </div>
       </div>
-
-      <h4>Initial Configuration</h4>
-
-      <app-puzzle-configuration
-        (configurationChanged)="configurationChange($event)"
-        [puzzleConfiguration]="puzzleConfiguration"
-      ></app-puzzle-configuration>
-
-      <h4>Solution</h4>
-      <app-puzzle-solution
-        (showSolution)="showSolutionStep($event)"
-        (showFinal)="showFinalStep($event)"
-        [puzzleInfo]="puzzleInfo"
-        [puzzleSolution]="puzzleSolution"
-      ></app-puzzle-solution>
     </div>
   </div>
 </div>

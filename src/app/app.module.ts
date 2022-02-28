@@ -22,6 +22,9 @@ import {
   faAngleLeft,
   faAngleRight,
   faInfoCircle,
+  faPlayCircle,
+  faSync,
+  faCog,
 } from '@fortawesome/free-solid-svg-icons';
 //import { faSquare as farSquare, faCheckSquare as farCheckSquare } from '@fortawesome/free-regular-svg-icons';
 
@@ -59,7 +62,10 @@ export class AppModule {
       faArrowAltCircleLeft,
       faAngleLeft,
       faAngleRight,
-      faInfoCircle
+      faInfoCircle,
+      faPlayCircle,
+      faSync,
+      faCog
     );
   }
 }

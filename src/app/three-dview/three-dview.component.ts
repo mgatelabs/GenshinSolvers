@@ -41,7 +41,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
   @ViewChild('canvasHolder')
   private canvasHolderRef: ElementRef;
 
-  private camera!: THREE.PerspectiveCamera;
+  private camera!: THREE.Camera;
 
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
@@ -197,13 +197,20 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     this.scene.add(this.selectionNode);
 
     let aspectRatio = 640.0 / 480.0;
-    this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
 
-    this.camera.position.x = this.puzzleInfo.camera[0];
-    this.camera.position.y = this.puzzleInfo.camera[1];
-    this.camera.position.z = this.puzzleInfo.camera[2];
+    if (this.puzzleInfo.type == PuzzleType.LIGHT) {
+      let h = (12 * 0.75) / 2;
 
-    this.camera.lookAt(0, 0, 0);
+      this.camera = new THREE.OrthographicCamera(-6, 6, h, -h, 0.1, 50);
+    } else {
+      this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
+
+      this.camera.position.x = this.puzzleInfo.camera[0];
+      this.camera.position.y = this.puzzleInfo.camera[1];
+      this.camera.position.z = this.puzzleInfo.camera[2];
+
+      this.camera.lookAt(0, 0, 0);
+    }
   }
 
   public updateDirections(

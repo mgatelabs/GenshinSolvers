@@ -124,11 +124,14 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
 
     for (let i = 0; i < this.puzzleInfo!.connections.length; i++) {
       let sample: Array<number> = [];
-      // The main click
-      sample.push(i);
+
       // The effected
       for (let j = 0; j < this.puzzleInfo!.connections[i].length; j++) {
         sample.push(this.puzzleInfo!.connections[i][j]);
+      }
+      if (sample.length > 0) {
+        // The main click
+        sample.push(i);
       }
       conns.push(sample);
     }

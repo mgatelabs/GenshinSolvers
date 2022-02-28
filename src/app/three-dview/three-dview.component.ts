@@ -11,6 +11,7 @@ import * as THREE from 'three';
 import { PuzzleDirection } from '../shared/puzzle-direction';
 import { PuzzleInfo } from '../shared/puzzle-info';
 import { PuzzleType } from '../shared/puzzle-type';
+import { InteractionManager } from '../three-interactive';
 
 @Component({
   selector: 'app-three-dview',
@@ -61,6 +62,8 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
 
   private scene!: THREE.Scene;
 
+  private interactionManager!: InteractionManager;
+
   private _90 = 1.5707963268;
 
   /**
@@ -88,20 +91,21 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
       this.cubeDirections[i] = this.puzzleInfo.directions[i];
     }
 
-    let self = this;
     Promise.all([
       this.getTexturePromise('assets/cube-at.png'),
       this.getTexturePromise('assets/cube-bee.png'),
-      self.getTexturePromise('assets/cube-blank.png'),
-      self.getTexturePromise('assets/cube-face.png'),
-      self.getTexturePromise('assets/cube-zero.png'),
-      self.getTexturePromise('assets/cube-one.png'),
-      self.getTexturePromise('assets/cube-two.png'),
-      self.getTexturePromise('assets/cube-three.png'),
-      self.getTexturePromise('assets/cube-down_arrow.png'),
-    ]).then(function () {
-      self.createScene();
-      self.createRenderer();
+      this.getTexturePromise('assets/cube-blank.png'),
+      this.getTexturePromise('assets/cube-face.png'),
+      this.getTexturePromise('assets/cube-zero.png'),
+      this.getTexturePromise('assets/cube-one.png'),
+      this.getTexturePromise('assets/cube-two.png'),
+      this.getTexturePromise('assets/cube-three.png'),
+      this.getTexturePromise('assets/cube-down_arrow.png'),
+    ]).then(() => {
+      this.createScene();
+      this.createRenderer();
+      this.createInteractionManager();
+      this.update(0);
     });
   }
 
@@ -274,6 +278,39 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     this.renderer.setSize(sizes[0], sizes[1]);
 
     this.renderer.render(this.scene, this.camera);
+  }
+
+  private createInteractionManager() {
+    this.interactionManager = new InteractionManager(
+      this.renderer,
+      this.camera,
+      this.canvas
+    );
+
+    for (let i = 0; i < this.cubeList.length; i++) {
+      const cube = this.cubeList[i];
+      this.interactionManager.add(cube);
+
+      cube.addEventListener('click', () => {
+        // TODO: Should this work like the in-game puzzles, and rotate multiple cubes?
+        console.log('Clicked on cube', i);
+      });
+
+      cube.addEventListener('mouseover', (ev) => {
+        cube.scale.set(1.1, 1.1, 1.1);
+        this.renderer.render(this.scene, this.camera);
+      });
+      cube.addEventListener('mouseout', (ev) => {
+        cube.scale.set(1, 1, 1);
+        this.renderer.render(this.scene, this.camera);
+      });
+    }
+  }
+
+  private update(time: DOMHighResTimeStamp) {
+    this.interactionManager.update();
+
+    requestAnimationFrame(this.update.bind(this));
   }
 
   private getAspectRatio(): number {

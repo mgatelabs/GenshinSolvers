@@ -150,10 +150,73 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
 
     while (result) {
       let current = result;
-      modified.splice(0, 0, current);
       result = result.previousStep;
+      if (result == undefined) {
+        break;
+      }
+      modified.splice(0, 0, current);
     }
 
     this.puzzleSolution = modified;
+  }
+
+  showFinalStep(step: SOLVER.PuzzleSolveStep) {
+    let toConvert: SOLVER.PuzzleState;
+    let index = -1;
+    toConvert = step.state!;
+    let toSend = this.convertStepToDirections(toConvert);
+    this.someElement.updateDirections(toSend, index);
+  }
+
+  private convertStepToDirections(
+    toConvert: SOLVER.PuzzleState
+  ): Array<number> {
+    let toSend: Array<number> = [];
+    for (let i = 0; i < toConvert.length; i++) {
+      switch (toConvert[i]) {
+        case 0:
+          toSend.push(
+            this.puzzleInfo!.type == PuzzleType.LIGHT
+              ? PuzzleDirection.ZERO
+              : PuzzleDirection.NORTH
+          );
+          break;
+        case 1:
+          toSend.push(
+            this.puzzleInfo!.type == PuzzleType.LIGHT
+              ? PuzzleDirection.ONE
+              : PuzzleDirection.EAST
+          );
+          break;
+        case 2:
+          toSend.push(
+            this.puzzleInfo!.type == PuzzleType.LIGHT
+              ? PuzzleDirection.TWO
+              : PuzzleDirection.SOUTH
+          );
+          break;
+        case 3:
+          toSend.push(
+            this.puzzleInfo!.type == PuzzleType.LIGHT
+              ? PuzzleDirection.THREE
+              : PuzzleDirection.WEST
+          );
+          break;
+      }
+    }
+    return toSend;
+  }
+
+  showSolutionStep(step: SOLVER.PuzzleSolveStep) {
+    let toConvert: SOLVER.PuzzleState;
+    let index = -1;
+    if (step.previousStep) {
+      toConvert = step.previousStep.state!;
+      index = step.touchedCube!;
+    } else {
+      toConvert = step.state!;
+    }
+    let toSend = this.convertStepToDirections(toConvert);
+    this.someElement.updateDirections(toSend, index);
   }
 }

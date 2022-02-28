@@ -116,7 +116,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
 
     return new Promise(function (resolve, reject) {
       function loadDone(texture: THREE.Texture) {
-        console.log('loader successfully completed loading task: ' + assetPath);
+        //console.log('loader successfully completed loading task: ' + assetPath);
         map.set(
           assetPath,
           new THREE.MeshBasicMaterial({
@@ -137,7 +137,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     this.scene = new THREE.Scene();
     //this.scene.background = new THREE.Color(0x000000);
 
-    console.log(this.textureMap);
+    //console.log(this.textureMap);
 
     let cubeMaterials: Array<THREE.MeshBasicMaterial> = [];
 

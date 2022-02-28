@@ -17,11 +17,18 @@ export class PuzzleSolutionComponent implements OnInit {
   @Output()
   showSolution: EventEmitter<PuzzleSolveStep> = new EventEmitter<PuzzleSolveStep>();
 
+  @Output()
+  showFinal: EventEmitter<PuzzleSolveStep> = new EventEmitter<PuzzleSolveStep>();
+
   constructor() {}
 
   ngOnInit(): void {}
 
   showStep(index: number) {
     this.showSolution.emit(this.puzzleSolution![index]);
+  }
+
+  showFinalAction() {
+    this.showFinal.emit(this.puzzleSolution![this.puzzleSolution!.length - 1]);
   }
 }

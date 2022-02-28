@@ -5,7 +5,7 @@
   <div class="solutionRow" *ngFor="let sol of puzzleSolution; let i = index">
     <button
       class="icon-click-left btn btn-info"
-      title="Highlight Cube"
+      title="Show Move"
       (click)="showStep(i)"
     >
       Show
@@ -15,5 +15,16 @@
 
     <span *ngIf="sol.touchedCube"> Touch {{ sol.touchedCube }} </span>
     <span *ngIf="sol.touchedCube == undefined"> Initial Configuration </span>
+  </div>
+  <div class="solutionRow">
+    <button
+      class="icon-click-left btn btn-info"
+      title="Show Final"
+      (click)="showFinalAction()"
+    >
+      Show
+    </button>
+
+    Finish
   </div>
 </div>

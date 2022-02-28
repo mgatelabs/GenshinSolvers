@@ -21,6 +21,8 @@
 
       <h4>Solution</h4>
       <app-puzzle-solution
+        (showSolution)="showSolutionStep($event)"
+        (showFinal)="showFinalStep($event)"
         [puzzleInfo]="puzzleInfo"
         [puzzleSolution]="puzzleSolution"
       ></app-puzzle-solution>

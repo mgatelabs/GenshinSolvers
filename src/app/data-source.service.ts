@@ -82,8 +82,8 @@ export class DataSourceService {
             info.camera = item.camera;
           }
 
-          if (item.facing) {
-            switch (item.facing) {
+          if (item.face) {
+            switch (item.face) {
               case 'N':
                 info.facing = PuzzleDirection.NORTH;
                 break;

@@ -6,7 +6,7 @@
     "count": "4",
     "type": "LIGHT",
     "camera": [0, 1.0, 4],
-    "face": "N",
+    "face": "S",
     "ortho": 9,
     "description": "This puzzle is hidden, you need the Peculiar Pinion Feather Gadget to reveal it.",
     "connection": [[1, 3], [0, 2], [1], [0]],

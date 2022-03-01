@@ -139,8 +139,16 @@ export class DataSourceService {
             }
           }
 
+          if (item.ortho) {
+            info.orthoWidth = item.ortho;
+          }
+
           if (item.connection) {
             info.connections = item.connection;
+          }
+
+          if (item.description) {
+            info.description = item.description;
           }
 
           if (item.position) {

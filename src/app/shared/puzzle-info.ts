@@ -13,6 +13,8 @@ export class PuzzleInfo {
   public camera = [0, 3, 5];
   public position: Array<Array<number>> = [];
   public facing: PuzzleDirection = PuzzleDirection.NORTH;
+  public description: string = 'No description';
+  public orthoWidth: number = 12;
 
   getCubes(): Array<PuzzleCube> {
     let result = new Array<PuzzleCube>();

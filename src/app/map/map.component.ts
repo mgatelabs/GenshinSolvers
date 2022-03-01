@@ -83,13 +83,13 @@ export class MapComponent implements AfterViewInit {
         case LocationType.LIGHTUP:
           {
             ic = puzzlePointIcon;
-            content = `Lightup Puzzle<br/><a href="puzzle?id=${id}" routerLinkActive="active">View Details</a>`;
+            //content = `Lightup Puzzle<br/><a href="puzzle?id=${id}" routerLinkActive="active">View Details</a>`;
           }
           break;
         case LocationType.SPINNING:
           {
             ic = puzzlePointIcon;
-            content = `Spinning Puzzle<br/><a href="puzzle?id=${id}" routerLinkActive="active">View Details</a>`;
+            //content = `Spinning Puzzle<br/><a href="puzzle?id=${id}" routerLinkActive="active">View Details</a>`;
           }
           break;
         case LocationType.SEVEN:
@@ -105,8 +105,21 @@ export class MapComponent implements AfterViewInit {
 
       let m = L.marker(sol, { icon: ic });
 
-      m.bindPopup(content);
-      //m.bindTooltip('Hello World', { interactive: true, sticky: true });
+      switch (this.dataSource.locations[i].type) {
+        case LocationType.LIGHTUP:
+        case LocationType.SPINNING:
+          {
+            m.addEventListener('click', () => {
+              this.router.navigateByUrl(`/puzzle?id=${id}`);
+            });
+          }
+          break;
+        default:
+          {
+            m.bindPopup(content);
+          }
+          break;
+      }
 
       m.addTo(this.map);
     }

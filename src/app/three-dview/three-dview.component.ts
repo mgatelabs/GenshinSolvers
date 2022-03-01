@@ -199,9 +199,9 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     let aspectRatio = 640.0 / 480.0;
 
     if (this.puzzleInfo.type == PuzzleType.LIGHT) {
-      let h = (12 * 0.75) / 2;
-
-      this.camera = new THREE.OrthographicCamera(-6, 6, h, -h, 0.1, 50);
+      let w = this.puzzleInfo.orthoWidth / 2;
+      let h = (this.puzzleInfo.orthoWidth * 0.75) / 2;
+      this.camera = new THREE.OrthographicCamera(-w, w, h, -h, 0.1, 50);
     } else {
       this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
 
@@ -293,5 +293,37 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     let width = this.canvasHolderRef.nativeElement.clientWidth;
     let height = Math.floor(width * 0.75);
     return [width, height];
+  }
+
+  public getFacingDirectionText() {
+    if (this.puzzleInfo) {
+      switch (this.puzzleInfo.facing) {
+        case PuzzleDirection.NORTH:
+          return 'North';
+        case PuzzleDirection.EAST:
+          return 'East';
+        case PuzzleDirection.SOUTH:
+          return 'South';
+        case PuzzleDirection.WEST:
+          return 'West';
+      }
+    }
+    return '';
+  }
+
+  public getFacingDirectionClass() {
+    if (this.puzzleInfo) {
+      switch (this.puzzleInfo.facing) {
+        case PuzzleDirection.NORTH:
+          return 'arrow-alt-circle-up';
+        case PuzzleDirection.EAST:
+          return 'arrow-alt-circle-right';
+        case PuzzleDirection.SOUTH:
+          return 'arrow-alt-circle-down';
+        case PuzzleDirection.WEST:
+          return 'arrow-alt-circle-left';
+      }
+    }
+    return 'arrow-alt-circle-up';
   }
 }

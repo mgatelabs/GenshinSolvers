@@ -1,29 +1,29 @@
-<div
-  *ngIf="puzzleInfo && puzzleSolution && puzzleSolution.length > 0"
-  class="solution-component"
->
-  <div class="solutionRow" *ngFor="let sol of puzzleSolution; let i = index">
-    <button
-      class="icon-click-left btn btn-info"
-      title="Show Move"
-      (click)="showStep(i)"
-    >
-      <fa-icon [icon]="['fas', 'play-circle']"></fa-icon>
-    </button>
-
-    Step {{ i + 1 }} -
-
-    <span> Touch {{ sol.touchedCube! + 1 }} </span>
-  </div>
-  <div class="solutionRow">
-    <button
-      class="icon-click-left btn btn-info"
-      title="Show Final"
-      (click)="showFinalAction()"
-    >
-      <fa-icon [icon]="['fas', 'play-circle']"></fa-icon>
-    </button>
-
-    Finish
-  </div>
+<div *ngIf="puzzleInfo" class="solution-component">
+  <ng-container
+    *ngIf="puzzleSolution && puzzleSolution.length > 0; else noSolutionBlock"
+  >
+    <div class="solutionRow" *ngFor="let sol of puzzleSolution; let i = index">
+      <button
+        class="icon-click-left btn btn-info"
+        title="Show Move"
+        (click)="showStep(i)"
+      >
+        <fa-icon [icon]="['fas', 'play-circle']"></fa-icon>
+      </button>
+      <span *ngIf="sol.touchedCube"> Touch {{ sol.touchedCube }} </span>
+    </div>
+    <div class="solutionRow">
+      <button
+        class="icon-click-left btn btn-info"
+        title="Show Final"
+        (click)="showFinalAction()"
+      >
+        <fa-icon [icon]="['fas', 'flag-checkered']"></fa-icon>
+      </button>
+      Finish
+    </div>
+  </ng-container>
+  <ng-template #noSolutionBlock>
+    <div class="solutionRow alert alert-warning">No solution</div></ng-template
+  >
 </div>

@@ -5,7 +5,7 @@
   <span class="direction-icon" title="Look in the following direction"
     ><fa-icon [icon]="['fas', 'eye']"></fa-icon
   ></span>
-  <span class="direction-value" title="North"
-    ><fa-icon [icon]="['fas', 'arrow-alt-circle-up']"></fa-icon
+  <span class="direction-value" [title]="getFacingDirectionText()"
+    ><fa-icon [icon]="['fas', getFacingDirectionClass()]"></fa-icon
   ></span>
 </div>

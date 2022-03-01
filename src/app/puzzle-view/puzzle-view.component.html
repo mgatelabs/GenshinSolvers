@@ -1,5 +1,7 @@
 <div class="container">
-  <h2>Puzzle View</h2>
+  <h2>
+    Puzzle Details <span *ngIf="puzzleInfo">({{ puzzleInfo.id }})</span>
+  </h2>
 
   <div class="row">
     <app-three-dview
@@ -11,8 +13,12 @@
     <div class="col-md-12 col-lg-4">
       <div class="row">
         <div class="col-md-6 col-lg-12">
-          <div class="description-box">
-            <fa-icon [icon]="['fas', 'info-circle']"></fa-icon> This is a sample
+          <div
+            *ngIf="puzzleInfo && puzzleInfo.description"
+            class="description-box"
+          >
+            <fa-icon [icon]="['fas', 'info-circle']"></fa-icon>
+            {{ puzzleInfo.description }}
           </div>
 
           <div class="title-wrapper">

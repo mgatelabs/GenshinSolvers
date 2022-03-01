@@ -84,15 +84,24 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     }
   }
 
-  configurationChange(misc: number) {
+  configurationChange(index: number) {
     this.puzzleConfiguration = this.puzzleConfiguration;
 
     this.someElement.updateDirections(
       this.puzzleConfiguration.directions,
-      misc
+      index
     );
-
     this.solvePuzzle();
+  }
+
+  updateConfigurationChange(index: number) {
+    if (this.puzzleConfiguration?.rotateIndex(index, false)) {
+      this.someElement.updateDirections(
+        this.puzzleConfiguration.directions,
+        index
+      );
+      this.solvePuzzle();
+    }
   }
 
   solvePuzzle() {

@@ -12,6 +12,8 @@ import {
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
 import {
   faDirections,
   faEye,
@@ -47,6 +49,7 @@ import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.compo
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    CollapseModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

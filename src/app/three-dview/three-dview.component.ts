@@ -6,6 +6,8 @@ import {
   HostListener,
   ViewChild,
   Input,
+  EventEmitter,
+  Output,
 } from '@angular/core';
 import * as THREE from 'three';
 import { PuzzleDirection } from '../shared/puzzle-direction';
@@ -20,6 +22,13 @@ import { InteractionManager } from 'three.interactive';
 })
 export class ThreeDViewComponent implements OnInit, AfterViewInit {
   constructor() {}
+
+  @Output()
+  configurationChanged: EventEmitter<number> = new EventEmitter<number>();
+
+  cubeClicked(i: number) {
+    this.configurationChanged.emit(i);
+  }
 
   ngOnInit(): void {}
 
@@ -295,6 +304,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
       cube.addEventListener('click', () => {
         // TODO: Should this work like the in-game puzzles, and rotate multiple cubes?
         console.log('Clicked on cube', i);
+        this.cubeClicked(i);
       });
 
       cube.addEventListener('mouseover', (ev) => {

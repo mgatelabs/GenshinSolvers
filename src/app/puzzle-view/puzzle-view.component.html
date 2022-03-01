@@ -5,6 +5,7 @@
 
   <div class="row">
     <app-three-dview
+      (configurationChanged)="updateConfigurationChange($event)"
       #threedview
       puzzleId="{{ puzzleId }}"
       class="col-xs-12 col-lg-8"

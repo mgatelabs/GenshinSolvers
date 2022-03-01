@@ -78,6 +78,11 @@ function solvePuzzle(puzzle: PuzzleDefinition) {
 
     // Now apply every possible state transition
     for (let i = 0; i < puzzle.stateTransitions.length; i++) {
+      // If it's no-op skip it
+      if (puzzle.stateTransitions[i].length == 0) {
+        continue;
+      }
+
       const newState = unsolved.state.slice();
 
       // Apply the state transition

@@ -60,7 +60,7 @@
     "ortho": 9,
     "description": "This puzzle is located east of Konda Village, in the river.  Watch out for the nearby enemies.",
     "connection": [[1], [0, 2], [1]],
-    "direction": ["1", "1", "3"],
+    "direction": ["2", "2", "3"],
     "position": [
       [-2.8, 0.55, -2],
       [0.3, -0.1, -1],

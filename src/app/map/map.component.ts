@@ -86,6 +86,9 @@ export class MapComponent implements AfterViewInit, OnChanges {
       }
     );
 
+    this.map.setMinZoom(-5);
+    this.map.setMaxZoom(1);
+
     let map_width = 5350;
     let map_x = -545;
     let map_y = -4025;
@@ -94,6 +97,13 @@ export class MapComponent implements AfterViewInit, OnChanges {
       L.latLng([map_y, map_x]),
       L.latLng([map_y - map_width, map_x + map_width])
     );
+
+    var maxBounds: L.LatLngBounds = new L.LatLngBounds(
+      L.latLng([map_y + 300, map_x - 300]),
+      L.latLng([map_y - map_width - 300, map_x + map_width + 300])
+    );
+
+    this.map.setMaxBounds(maxBounds);
 
     var backgrondImage = L.imageOverlay(
       './assets/inazuma-map.png',

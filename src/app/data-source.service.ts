@@ -163,6 +163,19 @@ export class DataSourceService {
           }
 
           this.puzzles.set(info.id, info);
+        } else {
+          let info = new PuzzleInfo(
+            item.id,
+            PuzzleType.LIGHT,
+            3,
+            [PuzzleDirection.ZERO, PuzzleDirection.ZERO, PuzzleDirection.ZERO],
+            [[], [], []]
+          );
+
+          info.locationX = Number(item.x);
+          info.locationY = Number(item.y);
+
+          this.puzzles.set(info.id, info);
         }
       }
     }

@@ -1,6 +1,10 @@
 # GenshinSolvers
 Tools to solve Genshin Impact puzzles
 
+### The Website
+
+Switch to the Pages-Dev branch
+
 ### How to use
 
 This is for spinning and light up puzzles.

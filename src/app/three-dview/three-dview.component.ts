@@ -45,6 +45,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
       console.log('Changes');
       if (this.puzzleInfo && this.camera && this.scene) {
         this.loadBackground();
+        this.buildDirectionArray();
         this.reCreateScene();
         this.createCamera();
         this.renderer.render(this.scene, this.camera);
@@ -111,13 +112,17 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
     );
   }
 
-  private loadTextures() {
-    this.loadBackground();
-
+  private buildDirectionArray() {
     this.cubeDirections = [];
     for (let i = 0; i < this.puzzleInfo!.count; i++) {
       this.cubeDirections[i] = this.puzzleInfo!.directions[i];
     }
+  }
+
+  private loadTextures() {
+    this.loadBackground();
+
+    this.buildDirectionArray();
 
     Promise.all([
       this.getTexturePromise('assets/cube-at.png'),

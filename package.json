@@ -6,7 +6,7 @@
     "make404": "node utils/fix404.js",
     "start": "ng serve",
     "build": "ng build --base-href ./ && node utils/fix404.js",
-    "deploy": "ng build --base-href ./ && node utils/fix404.js && node utils/publish.js",
+    "deploy": "ng build --base-href /GenshinSolvers/ && node utils/fix404.js && node utils/publish.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

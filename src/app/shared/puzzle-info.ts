@@ -10,6 +10,8 @@ export class PuzzleInfo {
     public directions: Array<PuzzleDirection>,
     public connections: Array<Array<number>>
   ) {}
+  public locationX = 0;
+  public locationY = 0;
   public camera = [0, 3, 5];
   public position: Array<Array<number>> = [];
   public facing: PuzzleDirection = PuzzleDirection.NORTH;

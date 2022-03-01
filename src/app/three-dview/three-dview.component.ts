@@ -8,6 +8,8 @@ import {
   Input,
   EventEmitter,
   Output,
+  SimpleChanges,
+  OnChanges,
 } from '@angular/core';
 import * as THREE from 'three';
 import { PuzzleDirection } from '../shared/puzzle-direction';
@@ -20,7 +22,7 @@ import { InteractionManager } from 'three.interactive';
   templateUrl: './three-dview.component.html',
   styleUrls: ['./three-dview.component.scss'],
 })
-export class ThreeDViewComponent implements OnInit, AfterViewInit {
+export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
   constructor() {}
 
   @Output()
@@ -38,12 +40,25 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     this.loadTextures();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes && changes['puzzleInfo']) {
+      console.log('Changes');
+      if (this.puzzleInfo && this.camera && this.scene) {
+        this.loadBackground();
+        this.reCreateScene();
+        this.createCamera();
+        this.renderer.render(this.scene, this.camera);
+      }
+    }
+  }
+
   private cubeDirections: Array<PuzzleDirection> = [];
 
   @Input('puzzleId')
   public puzzleId: string;
 
-  public puzzleInfo: PuzzleInfo;
+  @Input()
+  public puzzleInfo: PuzzleInfo | undefined;
 
   @ViewChild('canvas')
   private canvasRef: ElementRef;
@@ -87,17 +102,21 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     return this.textureMap.get(assetName)!;
   }
 
-  private loadTextures() {
+  private loadBackground() {
     this.canvasHolderRef.nativeElement.setAttribute(
       'style',
       'background-size: cover;background-image:url(./assets/backgrounds/' +
-        this.puzzleInfo.id +
+        this.puzzleInfo!.id +
         '.jpg)'
     );
+  }
+
+  private loadTextures() {
+    this.loadBackground();
 
     this.cubeDirections = [];
-    for (let i = 0; i < this.puzzleInfo.count; i++) {
-      this.cubeDirections[i] = this.puzzleInfo.directions[i];
+    for (let i = 0; i < this.puzzleInfo!.count; i++) {
+      this.cubeDirections[i] = this.puzzleInfo!.directions[i];
     }
 
     Promise.all([
@@ -146,15 +165,15 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
 
   private selectionNode: THREE.Mesh | undefined;
 
-  private createScene() {
-    this.scene = new THREE.Scene();
-    //this.scene.background = new THREE.Color(0x000000);
-
-    //console.log(this.textureMap);
-
+  private reCreateScene() {
     let cubeMaterials: Array<THREE.MeshBasicMaterial> = [];
 
-    switch (this.puzzleInfo.type) {
+    for (let i = 0; i < this.cubeList.length; i++) {
+      this.scene.remove(this.cubeList[i]);
+    }
+    this.cubeList = [];
+
+    switch (this.puzzleInfo!.type) {
       case PuzzleType.SPIN:
         {
           cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //right side
@@ -187,20 +206,47 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
         break;
     }
 
-    for (let i = 0; i < this.puzzleInfo.count; i++) {
+    for (let i = 0; i < this.puzzleInfo!.count; i++) {
       let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
       this.cubeList.push(cube);
 
       cube.position.set(
-        this.puzzleInfo.position[i][0],
-        this.puzzleInfo.position[i][1],
-        this.puzzleInfo.position[i][2]
+        this.puzzleInfo!.position[i][0],
+        this.puzzleInfo!.position[i][1],
+        this.puzzleInfo!.position[i][2]
       );
 
       this.scene.add(cube);
 
       this.updateCubeDirection(i);
     }
+  }
+
+  private createCamera() {
+    let aspectRatio = 640.0 / 480.0;
+
+    if (this.puzzleInfo!.type == PuzzleType.LIGHT) {
+      let w = this.puzzleInfo!.orthoWidth / 2;
+      let h = (this.puzzleInfo!.orthoWidth * 0.75) / 2;
+      this.camera = new THREE.OrthographicCamera(-w, w, h, -h, 0.1, 50);
+    } else {
+      this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
+
+      this.camera.position.x = this.puzzleInfo!.camera[0];
+      this.camera.position.y = this.puzzleInfo!.camera[1];
+      this.camera.position.z = this.puzzleInfo!.camera[2];
+
+      this.camera.lookAt(0, 0, 0);
+    }
+  }
+
+  private createScene() {
+    this.scene = new THREE.Scene();
+    //this.scene.background = new THREE.Color(0x000000);
+
+    //console.log(this.textureMap);
+
+    this.reCreateScene();
 
     this.selectionNode = new THREE.Mesh(
       this.selectionGeometry,
@@ -209,28 +255,14 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit {
     this.selectionNode.visible = false;
     this.scene.add(this.selectionNode);
 
-    let aspectRatio = 640.0 / 480.0;
-
-    if (this.puzzleInfo.type == PuzzleType.LIGHT) {
-      let w = this.puzzleInfo.orthoWidth / 2;
-      let h = (this.puzzleInfo.orthoWidth * 0.75) / 2;
-      this.camera = new THREE.OrthographicCamera(-w, w, h, -h, 0.1, 50);
-    } else {
-      this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
-
-      this.camera.position.x = this.puzzleInfo.camera[0];
-      this.camera.position.y = this.puzzleInfo.camera[1];
-      this.camera.position.z = this.puzzleInfo.camera[2];
-
-      this.camera.lookAt(0, 0, 0);
-    }
+    this.createCamera();
   }
 
   public updateDirections(
     directions: Array<PuzzleDirection>,
     highlightIndex: number = -1
   ) {
-    for (let i = 0; i < this.puzzleInfo.count; i++) {
+    for (let i = 0; i < this.puzzleInfo!.count; i++) {
       this.cubeDirections[i] = directions[i];
       if (i == highlightIndex) {
         this.selectionNode!.position.x = this.cubeList[i].position.x;

@@ -7,6 +7,11 @@
   margin: 6px;
 }
 
+.map-component {
+  height: 300px;
+  margin: 4px 0;
+}
+
 .leaflet-container {
   background-color: darkblue;
 }
@@ -17,5 +22,9 @@
 }
 
 #map {
+  height: 100%;
+}
+
+#map2 {
   height: 100%;
 }

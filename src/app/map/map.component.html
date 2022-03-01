@@ -1,5 +1,6 @@
-<div class="map-container">
+<div [className]="fixedHeight ? 'map-component' : 'map-container'" #mapElement>
   <div class="map-frame">
-    <div id="map"></div>
+    <div id="map" #m1 [hidden]="fixedHeight"></div>
+    <div id="map2" #m2 [hidden]="!fixedHeight"></div>
   </div>
 </div>

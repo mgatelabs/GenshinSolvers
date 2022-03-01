@@ -78,6 +78,9 @@ export class DataSourceService {
             []
           );
 
+          info.locationX = Number(item.x);
+          info.locationY = Number(item.y);
+
           if (item.camera) {
             info.camera = item.camera;
           }

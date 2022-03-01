@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { DataSourceService } from '../data-source.service';
 import { PuzzleConfiguration } from '../shared/puzzle-configuration';
 import { PuzzleDirection } from '../shared/puzzle-direction';
@@ -40,16 +40,15 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
 
   @ViewChild('threedview') someElement: ThreeDViewComponent;
 
+  private afterInit: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
-    private dataSource: DataSourceService
-  ) {}
-
-  ngOnInit(): void {
-    var self = this;
-    this.route.queryParams.subscribe((params) => {
-      // Need to get the ID of the puzzle
-      self.puzzleId = params['id'];
+    private dataSource: DataSourceService,
+    private router: Router
+  ) {
+    this.route.params.subscribe((params) => {
+      this.puzzleId = params['puzzleId'];
 
       if (this.dataSource.puzzles.has(this.puzzleId)) {
         this.puzzleInfo = this.dataSource.puzzles.get(this.puzzleId)!;
@@ -64,6 +63,11 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
           this.puzzleInfo.type,
           dirs
         );
+
+        if (this.afterInit) {
+          //this.someElement.puzzleInfo = this.puzzleInfo!;
+          this.solvePuzzle();
+        }
       } else {
         this.puzzleInfo = undefined;
         this.puzzleConfiguration = new PuzzleConfiguration(
@@ -71,12 +75,17 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
           []
         );
       }
-
-      //console.log('Found Puzzle ID: ' + self.puzzleId);
     });
   }
 
+  ngOnInit(): void {
+    var self = this;
+
+    console.log('Init');
+  }
+
   ngAfterViewInit(): void {
+    this.afterInit = true;
     if (this.puzzleInfo != null) {
       this.someElement.puzzleInfo = this.puzzleInfo!;
       this.someElement.startView();

@@ -4,7 +4,7 @@ import { MapComponent } from './map/map.component';
 import { PuzzleViewComponent } from './puzzle-view/puzzle-view.component';
 
 const routes: Routes = [
-  { path: 'puzzle', component: PuzzleViewComponent },
+  { path: 'puzzle/:puzzleId', component: PuzzleViewComponent },
   { path: '', component: MapComponent },
 ];
 

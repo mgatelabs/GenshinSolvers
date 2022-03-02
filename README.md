@@ -1,6 +1,6 @@
 # [JenshinSolver](https://mgatelabs.github.io/GenshinSolvers/)
 
-@@ -4,15 +4,16 @@ Ever stood in front of a cube puzzle in Inazuma and thought to yourself: _I don' want to waste a [burst](https://www.reddit.com/r/Genshin_Impact/comments/op2p64/the_biggest_brain_in_inazuma/) [on this](https://www.youtube.com/watch?v=Qh8xvINAdqs)_
+Ever stood in front of a cube puzzle in Inazuma and thought to yourself: _I don' want to waste a [burst](https://www.reddit.com/r/Genshin_Impact/comments/op2p64/the_biggest_brain_in_inazuma/) [on this](https://www.youtube.com/watch?v=Qh8xvINAdqs)_
 
 Then you've come to the right place! [Head over to the website and hunt down your puzzle](https://mgatelabs.github.io/GenshinSolvers/). Enter the initial configuration and follow the solution steps.
 
@@ -18,7 +18,7 @@ And finally, run `ng serve` for a dev server. Navigate to `http://localhost:4200
 
 ### Code scaffolding
 
-@@ -34,3 +35,44 @@ Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ### Build
 

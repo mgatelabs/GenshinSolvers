@@ -308,6 +308,23 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
         rot = this._90;
         break;
     }
+
+    if (this.puzzleInfo!.type == PuzzleType.SPIN) {
+      switch (this.puzzleInfo!.facing) {
+        case PuzzleDirection.NORTH:
+          break;
+        case PuzzleDirection.EAST:
+          rot += this._90;
+          break;
+        case PuzzleDirection.SOUTH:
+          rot -= this._90 * 2;
+          break;
+        case PuzzleDirection.WEST:
+          rot -= this._90;
+          break;
+      }
+    }
+
     this.cubeList[index].rotation.y = rot;
   }
 

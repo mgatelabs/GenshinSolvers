@@ -35,14 +35,12 @@ export class PuzzleConfiguration {
       case PuzzleDirection.WEST:
         return PuzzleDirection.NORTH;
 
-      case PuzzleDirection.ZERO:
-        return PuzzleDirection.ONE;
       case PuzzleDirection.ONE:
         return PuzzleDirection.TWO;
       case PuzzleDirection.TWO:
         return PuzzleDirection.THREE;
       case PuzzleDirection.THREE:
-        return PuzzleDirection.ZERO;
+        return PuzzleDirection.ONE;
     }
     return PuzzleDirection.NORTH;
   }
@@ -58,10 +56,8 @@ export class PuzzleConfiguration {
       case PuzzleDirection.WEST:
         return PuzzleDirection.SOUTH;
 
-      case PuzzleDirection.ZERO:
-        return PuzzleDirection.THREE;
       case PuzzleDirection.ONE:
-        return PuzzleDirection.ZERO;
+        return PuzzleDirection.THREE;
       case PuzzleDirection.TWO:
         return PuzzleDirection.ONE;
       case PuzzleDirection.THREE:

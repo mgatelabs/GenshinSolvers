@@ -103,16 +103,52 @@
     "ortho": 8,
     "description": "This puzzle is located just right of the Mt. Yougou text.",
     "connection": [[1], [0, 2], [1]],
-    "direction": ["1", "1", "3"],
+    "direction": ["1", "2", "3"],
     "position": [
       [-2.85, 0.2, -1],
       [0.1, 0.5, -1],
       [3.2, 0.65, -1]
     ]
   },
-  { "id": "x14195", "x": 3646, "y": 5048 },
+  {
+    "id": "x14195",
+    "x": 3646,
+    "y": 5048,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 0.25, 3],
+    "face": "E",
+    "description": "This puzzle is located north of the Chinju Forest.  Watch out for the mage ontop of the hill.",
+    "connection": [[1, 2], [], [], [], [2, 3]],
+    "direction": ["E", "E", "W", "E", "E"],
+    "position": [
+      [-5.5, 0, -2],
+      [-2.6, 0.2, -2],
+      [0, 0.75, -2],
+      [2.6, 1, -2],
+      [5.5, 1.5, -2]
+    ]
+  },
   { "id": "x14194", "x": 3753.5, "y": 4692 },
-  { "id": "x14193", "x": 3751, "y": 5339 },
+  {
+    "id": "x14193",
+    "x": 3751,
+    "y": 5339,
+    "count": "4",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 8,
+    "description": "This puzzle is located just north of Inazuma City, jump off the cliff and it is near the ocean.",
+    "connection": [[1], [0, 2], [1, 3], [2]],
+    "direction": ["1", "2", "3", "1"],
+    "position": [
+      [-3.15, 0.35, -1],
+      [-1.1, 0.5, -1],
+      [0.85, 0.55, -1],
+      [3.2, 0.35, -1]
+    ]
+  },
   { "id": "x14192", "x": 2691.5, "y": 5539 },
   { "id": "x14191", "x": 2838.5, "y": 5522.5 },
   { "id": "x14190", "x": 2959.5, "y": 5695.5 },

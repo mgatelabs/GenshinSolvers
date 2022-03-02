@@ -119,19 +119,18 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
       let val = 0;
       switch (this.puzzleConfiguration.directions[i]) {
         case PuzzleDirection.NORTH:
-        case PuzzleDirection.ZERO:
+        case PuzzleDirection.ONE:
           val = 0;
           break;
         case PuzzleDirection.EAST:
-        case PuzzleDirection.ONE:
+        case PuzzleDirection.TWO:
           val = 1;
           break;
         case PuzzleDirection.SOUTH:
-        case PuzzleDirection.TWO:
+        case PuzzleDirection.THREE:
           val = 2;
           break;
         case PuzzleDirection.WEST:
-        case PuzzleDirection.THREE:
           val = 3;
           break;
       }
@@ -157,13 +156,9 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     let puzzleDef: SOLVER.PuzzleDefinition = {
       initialState: faces,
       isFinalState: SOLVER.unifiedSolution,
-      maximumNumber: 4,
+      maximumNumber: this.puzzleInfo!.type == PuzzleType.SPIN ? 4 : 3,
       stateTransitions: conns,
     };
-
-    //console.log(this.puzzleInfo);
-
-    //console.log(puzzleDef);
 
     let result = SOLVER.solvePuzzle(puzzleDef);
 
@@ -177,8 +172,6 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
       }
       modified.splice(0, 0, current);
     }
-
-    //console.log(modified);
 
     this.puzzleSolution = modified;
   }
@@ -200,28 +193,28 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
         case 0:
           toSend.push(
             this.puzzleInfo!.type == PuzzleType.LIGHT
-              ? PuzzleDirection.ZERO
+              ? PuzzleDirection.ONE
               : PuzzleDirection.NORTH
           );
           break;
         case 1:
           toSend.push(
             this.puzzleInfo!.type == PuzzleType.LIGHT
-              ? PuzzleDirection.ONE
+              ? PuzzleDirection.TWO
               : PuzzleDirection.EAST
           );
           break;
         case 2:
           toSend.push(
             this.puzzleInfo!.type == PuzzleType.LIGHT
-              ? PuzzleDirection.TWO
+              ? PuzzleDirection.THREE
               : PuzzleDirection.SOUTH
           );
           break;
         case 3:
           toSend.push(
             this.puzzleInfo!.type == PuzzleType.LIGHT
-              ? PuzzleDirection.THREE
+              ? PuzzleDirection.ZERO
               : PuzzleDirection.WEST
           );
           break;

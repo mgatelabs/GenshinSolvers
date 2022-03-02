@@ -1,4 +1,7 @@
-<div *ngIf="puzzleConfiguration" class="configuration-component">
+<div
+  *ngIf="puzzleConfiguration && puzzleConfiguration.puzzleType !== brokenType"
+  class="configuration-component"
+>
   <div
     class="configRow"
     *ngFor="let dir of puzzleConfiguration.directions; let i = index"

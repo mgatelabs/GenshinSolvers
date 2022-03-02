@@ -49,6 +49,8 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
         this.reCreateScene();
         this.createCamera();
         this.renderer.render(this.scene, this.camera);
+      } else {
+        this.loadBackground();
       }
     }
   }
@@ -104,12 +106,21 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   private loadBackground() {
-    this.canvasHolderRef.nativeElement.setAttribute(
-      'style',
-      'background-size: cover;background-image:url(./assets/backgrounds/' +
-        this.puzzleInfo!.id +
-        '.jpg)'
-    );
+    if (this.canvasHolderRef) {
+      if (this.puzzleInfo && this.puzzleInfo.type != PuzzleType.BROKEN) {
+        this.canvasHolderRef.nativeElement.setAttribute(
+          'style',
+          'background-size: cover;background-image:url(./assets/backgrounds/' +
+            this.puzzleInfo!.id +
+            '.jpg)'
+        );
+      } else {
+        this.canvasHolderRef.nativeElement.setAttribute(
+          'style',
+          'background-size: cover;background-image:url(./assets/backgrounds/static.gif)'
+        );
+      }
+    }
   }
 
   private buildDirectionArray() {
@@ -211,19 +222,21 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
         break;
     }
 
-    for (let i = 0; i < this.puzzleInfo!.count; i++) {
-      let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
-      this.cubeList.push(cube);
+    if (this.puzzleInfo?.type !== PuzzleType.BROKEN) {
+      for (let i = 0; i < this.puzzleInfo!.count; i++) {
+        let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
+        this.cubeList.push(cube);
 
-      cube.position.set(
-        this.puzzleInfo!.position[i][0],
-        this.puzzleInfo!.position[i][1],
-        this.puzzleInfo!.position[i][2]
-      );
+        cube.position.set(
+          this.puzzleInfo!.position[i][0],
+          this.puzzleInfo!.position[i][1],
+          this.puzzleInfo!.position[i][2]
+        );
 
-      this.scene.add(cube);
+        this.scene.add(cube);
 
-      this.updateCubeDirection(i);
+        this.updateCubeDirection(i);
+      }
     }
   }
 

@@ -89,8 +89,10 @@ export class DataSourceService {
           let puzzleType: PuzzleType;
           if (item.type === 'LIGHT') {
             puzzleType = PuzzleType.LIGHT;
-          } else {
+          } else if (item.type === 'SPIN') {
             puzzleType = PuzzleType.SPIN;
+          } else {
+            puzzleType = PuzzleType.BROKEN;
           }
 
           let info = new PuzzleInfo(
@@ -189,7 +191,7 @@ export class DataSourceService {
         } else {
           let info = new PuzzleInfo(
             item.id,
-            PuzzleType.LIGHT,
+            PuzzleType.BROKEN,
             3,
             [PuzzleDirection.ZERO, PuzzleDirection.ZERO, PuzzleDirection.ZERO],
             [[], [], []]

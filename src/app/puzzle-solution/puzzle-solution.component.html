@@ -1,4 +1,7 @@
-<div *ngIf="puzzleInfo" class="solution-component">
+<div
+  *ngIf="puzzleInfo && puzzleInfo.type !== badType"
+  class="solution-component"
+>
   <ng-container
     *ngIf="puzzleSolution && puzzleSolution.length > 0; else noSolutionBlock"
   >

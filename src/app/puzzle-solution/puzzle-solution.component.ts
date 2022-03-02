@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PuzzleInfo } from '../shared/puzzle-info';
+import { PuzzleType } from '../shared/puzzle-type';
 import { PuzzleSolveStep } from '../solver/puzzle';
 
 @Component({
@@ -13,6 +14,8 @@ export class PuzzleSolutionComponent implements OnInit {
 
   @Input()
   public puzzleInfo: PuzzleInfo | undefined;
+
+  public readonly badType: PuzzleType = PuzzleType.BROKEN;
 
   @Output()
   showSolution: EventEmitter<PuzzleSolveStep> = new EventEmitter<PuzzleSolveStep>();

@@ -53,20 +53,27 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
       if (this.dataSource.puzzles.has(this.puzzleId)) {
         this.puzzleInfo = this.dataSource.puzzles.get(this.puzzleId)!;
 
-        let dirs = new Array<PuzzleDirection>();
+        if (this.puzzleInfo!.type == PuzzleType.BROKEN) {
+          this.puzzleConfiguration = new PuzzleConfiguration(
+            this.puzzleInfo.type,
+            []
+          );
+        } else {
+          let dirs = new Array<PuzzleDirection>();
 
-        for (let i = 0; i < this.puzzleInfo.directions.length; i++) {
-          dirs.push(this.puzzleInfo.directions[i]);
-        }
+          for (let i = 0; i < this.puzzleInfo.directions.length; i++) {
+            dirs.push(this.puzzleInfo.directions[i]);
+          }
 
-        this.puzzleConfiguration = new PuzzleConfiguration(
-          this.puzzleInfo.type,
-          dirs
-        );
+          this.puzzleConfiguration = new PuzzleConfiguration(
+            this.puzzleInfo.type,
+            dirs
+          );
 
-        if (this.afterInit) {
-          //this.someElement.puzzleInfo = this.puzzleInfo!;
-          this.solvePuzzle();
+          if (this.afterInit) {
+            //this.someElement.puzzleInfo = this.puzzleInfo!;
+            this.solvePuzzle();
+          }
         }
       } else {
         this.puzzleInfo = undefined;
@@ -88,9 +95,9 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     this.afterInit = true;
     if (this.puzzleInfo != null) {
       this.someElement.puzzleInfo = this.puzzleInfo!;
-      this.someElement.startView();
       this.solvePuzzle();
     }
+    this.someElement.startView();
   }
 
   configurationChange(index: number) {

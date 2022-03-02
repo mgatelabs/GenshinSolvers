@@ -79,6 +79,13 @@ export class MapComponent implements AfterViewInit, OnChanges {
       shadowUrl: 'leaflet/marker-shadow.png',
     });
 
+    let badPuzzlePointIcon = new L.Icon({
+      iconSize: [25, 41],
+      iconAnchor: [13, 41],
+      iconUrl: 'assets/bad-puzzle.png',
+      shadowUrl: 'leaflet/marker-shadow.png',
+    });
+
     let sevenPointIcon = new L.Icon({
       iconSize: [25, 41],
       iconAnchor: [13, 41],
@@ -166,6 +173,11 @@ export class MapComponent implements AfterViewInit, OnChanges {
             //content = `Spinning Puzzle<br/><a href="puzzle?id=${id}" routerLinkActive="active">View Details</a>`;
           }
           break;
+        case LocationType.BROKEN:
+          {
+            ic = badPuzzlePointIcon;
+          }
+          break;
         case LocationType.SEVEN:
           {
             ic = sevenPointIcon;
@@ -182,6 +194,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
       switch (this.dataSource.locations[i].type) {
         case LocationType.LIGHTUP:
         case LocationType.SPINNING:
+        case LocationType.BROKEN:
           {
             m.addEventListener('click', () => {
               this.router.navigateByUrl(`/puzzle/${id}`);

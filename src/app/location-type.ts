@@ -4,4 +4,5 @@ export enum LocationType {
   SPINNING,
   LIGHTUP,
   SEVEN,
+  BROKEN,
 }

@@ -77,7 +77,12 @@ export class DataSourceService {
         let y = Number(item.y);
 
         this.locations.push(
-          new LocationInfo(item.id, Number(item.x), y, LocationType.SPINNING)
+          new LocationInfo(
+            item.id,
+            Number(item.x),
+            y,
+            item.type ? LocationType.SPINNING : LocationType.BROKEN
+          )
         );
 
         if (item.type) {

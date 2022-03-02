@@ -1,17 +1,37 @@
 .map-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 30px;
-  }
-  
-  .map-frame {
-    border: 2px solid black;
-    height: 100%;
-  }
-  
-  #map {
-    height: 100%;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 40px 10px 10px 10px;
+}
+
+.map-component {
+  height: 300px;
+  margin: 4px 0;
+}
+
+.leaflet-container {
+  background-color: darkblue;
+}
+
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
+
+#map2 {
+  height: 100%;
+}
+
+.button-holder {
+  margin: 4px 0;
+  height: 32px;
+  text-align: right;
+  margin-right: 10px;
+}

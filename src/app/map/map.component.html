@@ -1,5 +1,38 @@
-<div class="map-container">
-    <div class="map-frame">
-        <div id="map"></div>
-    </div>
+<div class="button-holder">
+  <div class="btn-group" dropdown>
+    <button
+      id="button-basic"
+      dropdownToggle
+      type="button"
+      class="btn btn-sm btn-primary dropdown-toggle"
+      aria-controls="dropdown-basic"
+    >
+      <fa-icon [icon]="['fas', 'map-signs']"></fa-icon>
+      <span class="caret"></span>
+    </button>
+    <ul
+      id="dropdown-basic"
+      *dropdownMenu
+      class="dropdown-menu dropdown-menu-right"
+      role="menu"
+      aria-labelledby="button-basic"
+    >
+      <li role="menuitem">
+        <span class="dropdown-item" (click)="centerMap()">Center</span>
+      </li>
+      <li class="divider dropdown-divider"></li>
+      <li
+        role="menuitem"
+        *ngFor="let name of dataSource.islands; let i = index"
+      >
+        <span class="dropdown-item" (click)="showLocation(i)">{{ name }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<div [className]="fixedHeight ? 'map-component' : 'map-container'" #mapElement>
+  <div class="map-frame">
+    <div id="map" #m1 [hidden]="fixedHeight"></div>
+    <div id="map2" #m2 [hidden]="!fixedHeight"></div>
+  </div>
 </div>

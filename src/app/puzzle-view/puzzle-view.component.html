@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>
+    Puzzle Details <span *ngIf="puzzleInfo">({{ puzzleInfo.id }})</span>
+  </h2>
+
+  <div class="row">
+    <app-three-dview
+      (configurationChanged)="updateConfigurationChange($event)"
+      #threedview
+      puzzleId="{{ puzzleId }}"
+      [puzzleInfo]="puzzleInfo"
+      class="col-xs-12 col-lg-8"
+    ></app-three-dview>
+
+    <div class="col-md-12 col-lg-4">
+      <div class="row">
+        <div class="col-md-6 col-lg-12">
+          <div
+            *ngIf="puzzleInfo && puzzleInfo.description"
+            class="description-box"
+          >
+            <fa-icon [icon]="['fas', 'info-circle']"></fa-icon>
+            {{ puzzleInfo.description }}
+          </div>
+
+          <div class="title-wrapper">
+            <fa-icon title="Configuration" [icon]="['fas', 'cog']"></fa-icon>
+            &nbsp;
+            <fa-icon
+              (click)="resetPuzzle()"
+              style="color: blue; cursor: pointer"
+              title="Reset Configuration"
+              [icon]="['fas', 'sync']"
+            ></fa-icon>
+          </div>
+          <app-puzzle-configuration
+            (configurationChanged)="configurationChange($event)"
+            [puzzleConfiguration]="puzzleConfiguration"
+          ></app-puzzle-configuration>
+        </div>
+
+        <div class="col-md-6 col-lg-12">
+          <div class="title-wrapper">
+            <fa-icon title="Solution" [icon]="['fas', 'directions']"></fa-icon>
+          </div>
+          <app-puzzle-solution
+            (showSolution)="showSolutionStep($event)"
+            (showFinal)="showFinalStep($event)"
+            [puzzleInfo]="puzzleInfo"
+            [puzzleSolution]="puzzleSolution"
+          ></app-puzzle-solution>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <app-map
+      id="mapArea"
+      [puzzleInfo]="puzzleInfo"
+      [fixedHeight]="true"
+    ></app-map>
+  </div>
+</div>

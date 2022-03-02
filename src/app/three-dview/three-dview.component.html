@@ -1,0 +1,11 @@
+<div id="canvasWrap" #canvasHolder>
+  <canvas #canvas id="canvas" style="height: 500px; width: 100%"></canvas>
+</div>
+<div class="under-bar">
+  <span class="direction-icon" title="Look in the following direction"
+    ><fa-icon [icon]="['fas', 'eye']"></fa-icon
+  ></span>
+  <span class="direction-value" [title]="getFacingDirectionText()"
+    ><fa-icon [icon]="['fas', getFacingDirectionClass()]"></fa-icon
+  ></span>
+</div>

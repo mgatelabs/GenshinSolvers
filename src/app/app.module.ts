@@ -4,17 +4,77 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
+import { PuzzleViewComponent } from './puzzle-view/puzzle-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ThreeDViewComponent } from './three-dview/three-dview.component';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+import {
+  faDirections,
+  faEye,
+  faArrowAltCircleUp,
+  faArrowAltCircleRight,
+  faArrowAltCircleDown,
+  faArrowAltCircleLeft,
+  faAngleLeft,
+  faAngleRight,
+  faInfoCircle,
+  faPlayCircle,
+  faSync,
+  faCog,
+  faFlagCheckered,
+  faMapSigns,
+} from '@fortawesome/free-solid-svg-icons';
+//import { faSquare as farSquare, faCheckSquare as farCheckSquare } from '@fortawesome/free-regular-svg-icons';
+
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { PuzzleConfigurationComponent } from './puzzle-configuration/puzzle-configuration.component';
+import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    PuzzleViewComponent,
+    ThreeDViewComponent,
+    PuzzleConfigurationComponent,
+    PuzzleSolutionComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private library: FaIconLibrary) {
+    library.addIcons(
+      faGithub,
+      faDirections,
+      faEye,
+      faArrowAltCircleUp,
+      faArrowAltCircleRight,
+      faArrowAltCircleDown,
+      faArrowAltCircleLeft,
+      faAngleLeft,
+      faAngleRight,
+      faInfoCircle,
+      faPlayCircle,
+      faSync,
+      faCog,
+      faFlagCheckered,
+      faMapSigns
+    );
+  }
+}

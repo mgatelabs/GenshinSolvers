@@ -1,0 +1,48 @@
+<div *ngIf="puzzleConfiguration" class="configuration-component">
+  <div
+    class="configRow"
+    *ngFor="let dir of puzzleConfiguration.directions; let i = index"
+  >
+    <div
+      class="btn-toolbar"
+      role="toolbar"
+      aria-label="Toolbar with button groups"
+    >
+      <div class="btn-group me-2" role="group" aria-label="Highlight Group">
+        <button
+          (click)="cubeClicked(i)"
+          class="icon-click-left btn btn-info"
+          title="Highlight Cube"
+        >
+          #{{ i + 1 }}
+        </button>
+      </div>
+
+      <div class="btn-group me-2" role="group" aria-label="Modification Group">
+        <button
+          class="icon-click-left btn btn-secondary"
+          title="Previous Cube Value"
+          (click)="arrowClicked(i, true)"
+        >
+          <fa-icon [icon]="['fas', 'angle-left']"></fa-icon>
+        </button>
+
+        <button
+          (click)="arrowClicked(i, false)"
+          class="icon-value btn btn-light"
+          title="Next Cube Value"
+        >
+          {{ getDirectionValue(dir) }}
+        </button>
+
+        <button
+          class="icon-click-right btn btn-secondary"
+          title="Next Cube Value"
+          (click)="arrowClicked(i, false)"
+        >
+          <fa-icon [icon]="['fas', 'angle-right']"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

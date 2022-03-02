@@ -1,0 +1,14 @@
+.solution-component {
+  border: 1px solid black;
+  border-top: none;
+}
+
+.solutionRow {
+  border-top: 1px solid black;
+  padding: 4px;
+}
+
+.solutionRow.alert.alert-warning {
+  margin-bottom: 0;
+  border-radius: 0;
+}

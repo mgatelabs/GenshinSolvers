@@ -34,9 +34,17 @@ export class MapComponent implements AfterViewInit, OnChanges {
   @ViewChild('m2')
   private m2Ref: ElementRef;
 
+  private origX: number = 0;
+  private origY: number = 0;
+  private origZoom: number = 3;
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes['puzzleInfo']) {
       if (this.puzzleInfo && this.map) {
+        this.origX = this.puzzleInfo.locationX;
+        this.origY = -this.puzzleInfo.locationY;
+        this.origZoom = 1;
+
         this.map.setView(
           [-this.puzzleInfo.locationY, this.puzzleInfo.locationX],
           1
@@ -98,9 +106,11 @@ export class MapComponent implements AfterViewInit, OnChanges {
       L.latLng([map_y - map_width, map_x + map_width])
     );
 
+    let offset = 900;
+
     var maxBounds: L.LatLngBounds = new L.LatLngBounds(
-      L.latLng([map_y + 300, map_x - 300]),
-      L.latLng([map_y - map_width - 300, map_x + map_width + 300])
+      L.latLng([map_y + offset, map_x - offset]),
+      L.latLng([map_y - map_width - offset, map_x + map_width + offset])
     );
 
     this.map.setMaxBounds(maxBounds);
@@ -111,13 +121,21 @@ export class MapComponent implements AfterViewInit, OnChanges {
     ).addTo(this.map);
 
     if (this.puzzleInfo) {
+      this.origX = this.puzzleInfo.locationX;
+      this.origY = -this.puzzleInfo.locationY;
+      this.origZoom = 1;
+
       this.map.setView(
         [-this.puzzleInfo.locationY, this.puzzleInfo.locationX],
         1
       );
     } else {
-      this.map.setView([-6570, 1520], -3);
+      this.origX = 1520;
+      this.origY = -6570;
+      this.origZoom = -3;
     }
+
+    this.map.setView([this.origY, this.origX], this.origZoom);
 
     for (let i = 0; i < this.dataSource.locations.length; i++) {
       let info: LocationInfo = this.dataSource.locations[i];
@@ -133,7 +151,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
         case LocationType.WAYPOINT:
           {
             ic = wayPointIcon;
-            content = 'Teleporter';
+            content = `Teleporter`;
           }
           break;
         case LocationType.LIGHTUP:
@@ -181,11 +199,63 @@ export class MapComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  constructor(private dataSource: DataSourceService, private router: Router) {}
+  constructor(public dataSource: DataSourceService, private router: Router) {}
 
   ngAfterViewInit(): void {
     if (this.isInit === false) {
       this.initMap();
     }
+  }
+
+  public centerMap() {
+    this.map!.setView([this.origY, this.origX], this.origZoom);
+  }
+
+  public showLocation(index: number) {
+    let y = 0;
+    let x = 0;
+
+    switch (index) {
+      case 5:
+        {
+          x = 2092;
+          y = -8610;
+        }
+        break;
+      case 4:
+        {
+          x = 3422;
+          y = -6896;
+        }
+        break;
+      case 3:
+        {
+          x = 17;
+          y = -6118;
+        }
+        break;
+      case 2:
+        {
+          x = 1658;
+          y = -6252;
+        }
+        break;
+      case 1:
+        {
+          x = 2411;
+          y = -6011;
+        }
+        break;
+
+      case 0:
+      default:
+        {
+          x = 3473;
+          y = -5126;
+        }
+        break;
+    }
+
+    this.map!.setView([y, x], -1);
   }
 }

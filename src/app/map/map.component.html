@@ -7,7 +7,8 @@
       class="btn btn-sm btn-primary dropdown-toggle"
       aria-controls="dropdown-basic"
     >
-      Links <span class="caret"></span>
+      <fa-icon [icon]="['fas', 'map-signs']"></fa-icon>
+      <span class="caret"></span>
     </button>
     <ul
       id="dropdown-basic"
@@ -16,16 +17,15 @@
       role="menu"
       aria-labelledby="button-basic"
     >
-      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
       <li role="menuitem">
-        <a class="dropdown-item" href="#">Another action</a>
-      </li>
-      <li role="menuitem">
-        <a class="dropdown-item" href="#">Something else here</a>
+        <span class="dropdown-item" (click)="centerMap()">Center</span>
       </li>
       <li class="divider dropdown-divider"></li>
-      <li role="menuitem">
-        <a class="dropdown-item" href="#">Separated link</a>
+      <li
+        role="menuitem"
+        *ngFor="let name of dataSource.islands; let i = index"
+      >
+        <span class="dropdown-item" (click)="showLocation(i)">{{ name }}</span>
       </li>
     </ul>
   </div>

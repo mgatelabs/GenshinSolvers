@@ -29,6 +29,7 @@ import {
   faSync,
   faCog,
   faFlagCheckered,
+  faMapSigns,
 } from '@fortawesome/free-solid-svg-icons';
 //import { faSquare as farSquare, faCheckSquare as farCheckSquare } from '@fortawesome/free-regular-svg-icons';
 
@@ -72,7 +73,8 @@ export class AppModule {
       faPlayCircle,
       faSync,
       faCog,
-      faFlagCheckered
+      faFlagCheckered,
+      faMapSigns
     );
   }
 }

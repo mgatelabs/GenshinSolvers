@@ -17,17 +17,32 @@ export class DataSourceService {
 
   public puzzles: Map<String, PuzzleInfo> = new Map();
 
+  public readonly islands: Array<string> = [
+    'Narukami Island',
+    'Kannazuka Island',
+    'Yashiori Island',
+    'Watatsumi Island',
+    'Seirai Island',
+    'Tsurumi Island',
+  ];
+
   constructor() {
     this.locations = [];
 
     {
       let temp: Array<any> = sevenData;
       for (let i = 0; i < temp.length; i++) {
+        let item = temp[i];
+        let y = Number(item.y);
+        if (y < 3500) {
+          continue;
+        }
+
         this.locations.push(
           new LocationInfo(
             temp[i].id,
             Number(temp[i].x),
-            Number(temp[i].y),
+            Number(y),
             LocationType.SEVEN
           )
         );
@@ -37,11 +52,17 @@ export class DataSourceService {
     {
       let temp: Array<any> = warpData;
       for (let i = 0; i < temp.length; i++) {
+        let item = temp[i];
+        let y = Number(item.y);
+        if (y < 3500) {
+          continue;
+        }
+
         this.locations.push(
           new LocationInfo(
             temp[i].id,
             Number(temp[i].x),
-            Number(temp[i].y),
+            Number(y),
             LocationType.WAYPOINT
           )
         );
@@ -53,13 +74,10 @@ export class DataSourceService {
       for (let i = 0; i < temp.length; i++) {
         let item = temp[i];
 
+        let y = Number(item.y);
+
         this.locations.push(
-          new LocationInfo(
-            item.id,
-            Number(item.x),
-            Number(item.y),
-            LocationType.SPINNING
-          )
+          new LocationInfo(item.id, Number(item.x), y, LocationType.SPINNING)
         );
 
         if (item.type) {
@@ -79,7 +97,7 @@ export class DataSourceService {
           );
 
           info.locationX = Number(item.x);
-          info.locationY = Number(item.y);
+          info.locationY = y;
 
           if (item.camera) {
             info.camera = item.camera;

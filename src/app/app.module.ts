@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/angular-fontawesome';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import {
   faDirections,
@@ -50,6 +51,7 @@ import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.compo
     BrowserAnimationsModule,
     FontAwesomeModule,
     CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 6px;
+  margin: 40px 10px 10px 10px;
 }
 
 .map-component {
@@ -27,4 +27,10 @@
 
 #map2 {
   height: 100%;
+}
+
+.button-holder {
+  height: 48px;
+  text-align: right;
+  margin-right: 10px;
 }

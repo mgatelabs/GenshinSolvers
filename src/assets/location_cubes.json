@@ -102,7 +102,24 @@
       [2.4, 0.45, -2]
     ]
   },
-  { "id": "x14203", "x": 3475, "y": 4902 },
+  {
+    "id": "x14203",
+    "x": 3475,
+    "y": 4902,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 7,
+    "description": "This puzzle is up on a mountain side south-west of Grand Narukami Shrine.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["1", "2", "3"],
+    "position": [
+      [-1.63, -0.68, -2],
+      [0.0, -0.1, -1],
+      [1.53, 0.35, -2]
+    ]
+  },
   { "id": "x14202", "x": 3449, "y": 4863 },
   { "id": "x14201", "x": 3414, "y": 4623 },
   { "id": "x14200", "x": 3489, "y": 4650 },

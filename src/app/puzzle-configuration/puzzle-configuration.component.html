@@ -21,7 +21,12 @@
         </button>
       </div>
 
-      <div class="btn-group me-2" role="group" aria-label="Modification Group">
+      <div
+        *ngIf="puzzleInfo!.edit[i] === true"
+        class="btn-group me-2"
+        role="group"
+        aria-label="Modification Group"
+      >
         <button
           class="icon-click-left btn btn-secondary"
           title="Previous Cube Value"

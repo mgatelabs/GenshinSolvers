@@ -110,6 +110,14 @@ export class DataSourceService {
             info.camera = item.camera;
           }
 
+          if (item.edit) {
+            info.edit = item.edit;
+          } else {
+            for (let j = 0; j < info.count; j++) {
+              info.edit.push(true);
+            }
+          }
+
           if (item.face) {
             switch (item.face) {
               case 'N':

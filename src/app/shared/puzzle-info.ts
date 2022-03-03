@@ -17,6 +17,7 @@ export class PuzzleInfo {
   public facing: PuzzleDirection = PuzzleDirection.NORTH;
   public description: string = 'No description';
   public orthoWidth: number = 12;
+  public edit: Array<boolean> = [];
 
   getCubes(): Array<PuzzleCube> {
     let result = new Array<PuzzleCube>();

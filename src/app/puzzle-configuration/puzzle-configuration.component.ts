@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PuzzleConfiguration } from '../shared/puzzle-configuration';
 import { PuzzleDirection } from '../shared/puzzle-direction';
+import { PuzzleInfo } from '../shared/puzzle-info';
 import { PuzzleType } from '../shared/puzzle-type';
 
 @Component({
@@ -11,6 +12,9 @@ import { PuzzleType } from '../shared/puzzle-type';
 export class PuzzleConfigurationComponent implements OnInit {
   @Input()
   public puzzleConfiguration: PuzzleConfiguration | undefined;
+
+  @Input()
+  public puzzleInfo: PuzzleInfo | undefined;
 
   public readonly brokenType: PuzzleType = PuzzleType.BROKEN;
 

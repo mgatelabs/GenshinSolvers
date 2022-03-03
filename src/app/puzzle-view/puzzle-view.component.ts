@@ -111,11 +111,16 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
   }
 
   updateConfigurationChange(index: number) {
-    if (this.puzzleConfiguration?.rotateIndex(index, false)) {
-      this.someElement.updateDirections(
-        this.puzzleConfiguration.directions,
-        index
-      );
+    let shouldUpdate = this.puzzleInfo!.edit[index] === true;
+
+    if (shouldUpdate) {
+      this.puzzleConfiguration?.rotateIndex(index, false);
+    }
+    this.someElement.updateDirections(
+      this.puzzleConfiguration.directions,
+      index
+    );
+    if (shouldUpdate) {
       this.solvePuzzle();
     }
   }
@@ -149,11 +154,17 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this.puzzleInfo!.connections.length; i++) {
       let sample: Array<number> = [];
 
+      let selfDetected = false;
+
       // The effected
       for (let j = 0; j < this.puzzleInfo!.connections[i].length; j++) {
+        let cur = this.puzzleInfo!.connections[i][j];
+        if (cur === i) {
+          selfDetected = true;
+        }
         sample.push(this.puzzleInfo!.connections[i][j]);
       }
-      if (sample.length > 0) {
+      if (!selfDetected && sample.length > 0) {
         // The main click
         sample.push(i);
       }

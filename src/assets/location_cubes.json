@@ -64,7 +64,25 @@
   { "id": "x16370", "x": 491, "y": 6092 },
   { "id": "x16346", "x": 115, "y": 5908 },
   { "id": "x14467", "x": 1626, "y": 6133.5 },
-  { "id": "x14206", "x": 3346.5, "y": 4988 },
+  {
+    "id": "x14206",
+    "x": 3346.5,
+    "y": 4988,
+    "count": "3",
+    "type": "SPIN",
+    "camera": [0, 0.95, 2],
+    "face": "E",
+    "ortho": 9,
+    "description": "This puzzle is located north-east of Konda Village.  The left cube is fixed.",
+    "connection": [[], [1], [2]],
+    "direction": ["W", "E", "S"],
+    "position": [
+      [-2.5, -0.1, -1],
+      [0.0, -0.2, -1],
+      [2.5, -0.7, -1]
+    ],
+    "edit": [false, true, true]
+  },
   { "id": "x14205", "x": 3471, "y": 5144 },
   {
     "id": "x14204",

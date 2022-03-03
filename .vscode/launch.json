@@ -10,6 +10,20 @@
       "url": "http://localhost:4200/"
     },
     {
+      "name": "ng build",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: build",
+      "url": "http://localhost:4200/"
+    },
+    {
+      "name": "ng deploy",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: deploy",
+      "url": "http://localhost:4200/"
+    },
+    {
       "name": "ng test",
       "type": "chrome",
       "request": "launch",

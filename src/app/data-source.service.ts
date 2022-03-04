@@ -17,6 +17,9 @@ export class DataSourceService {
 
   public puzzles: Map<String, PuzzleInfo> = new Map();
 
+  public totalPuzzles: number = 0;
+  public workingPuzzles: number = 0;
+
   public readonly islands: Array<string> = [
     'Narukami Island',
     'Kannazuka Island',
@@ -74,6 +77,8 @@ export class DataSourceService {
       for (let i = 0; i < temp.length; i++) {
         let item = temp[i];
 
+        this.totalPuzzles++;
+
         let y = Number(item.y);
 
         this.locations.push(
@@ -86,6 +91,8 @@ export class DataSourceService {
         );
 
         if (item.type) {
+          this.workingPuzzles++;
+
           let puzzleType: PuzzleType;
           if (item.type === 'LIGHT') {
             puzzleType = PuzzleType.LIGHT;

@@ -14,6 +14,7 @@ import {
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 import {
   faDirections,
@@ -36,6 +37,7 @@ import {
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { PuzzleConfigurationComponent } from './puzzle-configuration/puzzle-configuration.component';
 import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.compo
     ThreeDViewComponent,
     PuzzleConfigurationComponent,
     PuzzleSolutionComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.compo
     FontAwesomeModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
+    ProgressbarModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

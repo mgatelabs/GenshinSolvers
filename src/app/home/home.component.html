@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <h1 class="display-4">Genshin Impact Puzzle Solver</h1>
+      <p class="lead">
+        Welcome to the Genshin Impact Cube Puzzle Solver. This is here to help
+        you solve spinning / light puzzles without going crazy and wasting every
+        burst trying to luck your way through. This project is in-complete and
+        still needs more work. If you want to help, please see our
+        <a href="https://github.com/mgatelabs/GenshinSolvers" target="_blank"
+          >GitHub</a
+        >
+        page.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ready to Start?</h5>
+          <p class="card-text">
+            Access the <a href="#" routerLink="/map">MAP</a> to see what is
+            available.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Puzzle Completion</h5>
+          <div class="card-text">
+            <progressbar
+              [value]="getPercentComplete()"
+              type="info"
+              [striped]="true"
+              >{{ getPercentComplete() }}%</progressbar
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    <div class="col col-md-4">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+</div>

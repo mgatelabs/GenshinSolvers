@@ -29,6 +29,24 @@ export class DataSourceService {
     'Tsurumi Island',
   ];
 
+  public readonly islandLoopup: Map<string, number> = new Map([
+    ['naru', 0],
+    ['kann', 1],
+    ['yash', 2],
+    ['wata', 3],
+    ['seir', 4],
+    ['tsur', 5],
+  ]);
+
+  public readonly islandCounts: Array<[number, number]> = [
+    [0, 0],
+    [0, 0],
+    [0, 0],
+    [0, 0],
+    [0, 0],
+    [0, 0],
+  ];
+
   constructor() {
     this.locations = [];
 
@@ -90,14 +108,20 @@ export class DataSourceService {
           )
         );
 
+        let islandRef = this.islandCounts[this.islandLoopup.get(item.island)!];
+
+        islandRef[0] += 1;
+
         if (item.type) {
           this.workingPuzzles++;
 
           let puzzleType: PuzzleType;
           if (item.type === 'LIGHT') {
             puzzleType = PuzzleType.LIGHT;
+            islandRef[1] += 1;
           } else if (item.type === 'SPIN') {
             puzzleType = PuzzleType.SPIN;
+            islandRef[1] += 1;
           } else {
             puzzleType = PuzzleType.BROKEN;
           }

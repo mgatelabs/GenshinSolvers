@@ -31,9 +31,6 @@ export class MapComponent implements AfterViewInit, OnChanges {
   @ViewChild('m1')
   private m1Ref: ElementRef;
 
-  @ViewChild('m2')
-  private m2Ref: ElementRef;
-
   private origX: number = 0;
   private origY: number = 0;
   private origZoom: number = 3;
@@ -93,13 +90,10 @@ export class MapComponent implements AfterViewInit, OnChanges {
       shadowUrl: 'leaflet/marker-shadow.png',
     });
 
-    this.map = L.map(
-      this.fixedHeight ? this.m2Ref.nativeElement : this.m1Ref.nativeElement,
-      {
-        crs: L.CRS.Simple,
-        minZoom: -5,
-      }
-    );
+    this.map = L.map(this.m1Ref.nativeElement, {
+      crs: L.CRS.Simple,
+      minZoom: -5,
+    });
 
     this.map.setMinZoom(-5);
     this.map.setMaxZoom(1);

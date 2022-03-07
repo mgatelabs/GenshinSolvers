@@ -3,41 +3,56 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
       <h1 class="display-4">Genshin Impact Puzzle Solver</h1>
       <p class="lead">
-        Welcome to the Genshin Impact Cube Puzzle Solver. This is here to help
-        you solve spinning / light puzzles without going crazy and wasting every
-        burst trying to luck your way through. This project is in-complete and
+        Welcome to the Genshin Impact Cube Puzzle Solver. We're here to help you
+        solve those complex spinning / light puzzles without losing your mind or
+        burts trying to luck your way through. This project is in-complete and
         still needs more work. If you want to help, please see our
         <a href="https://github.com/mgatelabs/GenshinSolvers" target="_blank"
           >GitHub</a
         >
         page.
       </p>
+
+      <app-map id="mapArea" class="card-text" [fixedHeight]="true"></app-map>
     </div>
   </div>
   <div class="row">
+    <!--
     <div class="col-xs-12 col-sm-12 col-md-8">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Ready to Start?</h5>
-          <p class="card-text">
-            Access the <a href="#" routerLink="/map">MAP</a> to see what is
-            available.
-          </p>
+          <h5 class="card-title">Quick Access</h5>
+          <div class="card-text map-component" #mapElement>
+            <div class="map-frame">
+              <div id="map" #m1></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
+-->
     <div class="col-xs-12 col-sm-12 col-md-4">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Puzzle Completion</h5>
           <div class="card-text">
+            <h5>Total</h5>
             <progressbar
               [value]="getPercentComplete()"
               type="info"
               [striped]="true"
               >{{ getPercentComplete() }}%</progressbar
             >
+
+            <div *ngFor="let island of dataSource.islands; let i = index">
+              <h5>{{ island }}</h5>
+              <progressbar
+                [value]="getIslandPercentComplete(i)"
+                type="info"
+                [striped]="true"
+                >{{ getIslandPercentComplete(i) }}%</progressbar
+              >
+            </div>
           </div>
         </div>
       </div>

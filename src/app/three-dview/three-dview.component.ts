@@ -371,7 +371,6 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
       cube.addEventListener('click', (ev) => {
         ev['stopPropagation']();
         // TODO: Should this work like the in-game puzzles, and rotate multiple cubes?
-        console.log('Clicked on cube', i);
         this.cubeClicked(i);
       });
 

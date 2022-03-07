@@ -13,6 +13,14 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  public getIslandPercentComplete(index: number): number {
+    return Math.round(
+      (this.dataSource.islandCounts[index][1] /
+        this.dataSource.islandCounts[index][0]) *
+        100
+    );
+  }
+
   constructor(public dataSource: DataSourceService) {}
 
   ngOnInit(): void {}

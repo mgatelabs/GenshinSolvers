@@ -38,6 +38,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { PuzzleConfigurationComponent } from './puzzle-configuration/puzzle-configuration.component';
 import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.component';
 import { HomeComponent } from './home/home.component';
+import { PuzzleListingComponent } from './puzzle-listing/puzzle-listing.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { HomeComponent } from './home/home.component';
     PuzzleConfigurationComponent,
     PuzzleSolutionComponent,
     HomeComponent,
+    PuzzleListingComponent,
   ],
   imports: [
     BrowserModule,

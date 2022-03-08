@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataSourceService } from './data-source.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'JenshinSolver';
   isCollapsed = true;
+
+  constructor(public dataSource: DataSourceService) {}
 }

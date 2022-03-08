@@ -277,7 +277,7 @@
     "type": "SPIN",
     "camera": [0, 4, 3.5],
     "face": "N",
-    "description": "TODO",
+    "description": "This puzzle is located under the giant tree.  After you get inside, it is on the left side.",
     "connection": [[1, 3], [0, 2], [1, 3], [2, 0], []],
     "direction": ["S", "E", "W", "N", "S"],
     "position": [

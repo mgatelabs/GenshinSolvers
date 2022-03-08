@@ -108,7 +108,9 @@ export class DataSourceService {
           )
         );
 
-        let islandRef = this.islandCounts[this.islandLoopup.get(item.island)!];
+        let islandIndex = this.islandLoopup.get(item.island)!;
+
+        let islandRef = this.islandCounts[islandIndex];
 
         islandRef[0] += 1;
 
@@ -134,6 +136,7 @@ export class DataSourceService {
             []
           );
 
+          info.islandIndex = islandIndex;
           info.locationX = Number(item.x);
           info.locationY = y;
 

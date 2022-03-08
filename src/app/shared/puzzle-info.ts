@@ -18,6 +18,7 @@ export class PuzzleInfo {
   public description: string = 'No description';
   public orthoWidth: number = 12;
   public edit: Array<boolean> = [];
+  public islandIndex: number = 0;
 
   getCubes(): Array<PuzzleCube> {
     let result = new Array<PuzzleCube>();

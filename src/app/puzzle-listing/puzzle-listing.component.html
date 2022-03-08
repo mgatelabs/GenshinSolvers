@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>{{ pageName }}</h2>
+
+  <div class="row">
+    <ng-container *ngIf="items && items.length > 0; else noSolutionBlock">
+      <div
+        class="col col-md-4"
+        *ngFor="let puzzleInfo of items; else: noSolutionBlock"
+      >
+        <div class="card" style="width: 18rem">
+          <img
+            src="assets/backgrounds/{{ puzzleInfo.id }}.jpg"
+            class="card-img-top"
+            alt="Preview Image {{ puzzleInfo.id }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ puzzleInfo.id }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ puzzleInfo.type }}</h6>
+            <p class="card-text">
+              {{ puzzleInfo.description }}
+            </p>
+            <a
+              href="#"
+              class="card-link"
+              routerLink="/puzzle/{{ puzzleInfo.id }}"
+              >View</a
+            >
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noSolutionBlock>
+      <div class="solutionRow alert alert-warning">
+        No puzzles are available
+      </div></ng-template
+    >
+  </div>
+</div>

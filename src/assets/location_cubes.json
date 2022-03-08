@@ -62,7 +62,7 @@
     "type": "SPIN",
     "camera": [0, 2.25, 4],
     "face": "E",
-    "description": "This puzzle is located east of the teleport point, up on the hill.",
+    "description": "This puzzle is located west of the teleport point, up on the hill.",
     "connection": [[0], [1], [1], []],
     "direction": ["E", "W", "W", "N"],
     "edit": [true, true, true, false],

@@ -54,7 +54,26 @@
   { "id": "x16790", "x": 3254, "y": 6950, "island": "seir" },
   { "id": "x16793", "x": 3128.5, "y": 6874, "island": "seir" },
   { "id": "x16803", "x": 3560.5, "y": 6606.5, "island": "seir" },
-  { "id": "x16804", "x": 3398.5, "y": 6594, "island": "seir" },
+  {
+    "id": "x16804",
+    "x": 3398.5,
+    "y": 6594,
+    "count": "4",
+    "type": "SPIN",
+    "camera": [0, 2.25, 4],
+    "face": "E",
+    "description": "This puzzle is located east of the teleport point, up on the hill.",
+    "connection": [[0], [1], [1], []],
+    "direction": ["E", "W", "W", "N"],
+    "edit": [true, true, true, false],
+    "position": [
+      [-7, 0, -2],
+      [5.5, 3, -5],
+      [2, 0, -0.25],
+      [4.5, 2, -1]
+    ],
+    "island": "seir"
+  },
   { "id": "x17287", "x": 3217.55, "y": 6684.07, "island": "seir" },
 
   { "id": "x17364", "x": 201, "y": 5992, "island": "wata" },

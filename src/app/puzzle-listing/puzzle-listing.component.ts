@@ -42,4 +42,13 @@ export class PuzzleListingComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  public getPuzzleType(info: PuzzleInfo) {
+    switch (info.type) {
+      case PuzzleType.LIGHT:
+        return 'Light Up';
+      default:
+        return 'Spinning';
+    }
+  }
 }

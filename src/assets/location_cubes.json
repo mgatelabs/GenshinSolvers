@@ -53,7 +53,25 @@
   { "id": "x16787", "x": 3374, "y": 7174, "island": "seir" },
   { "id": "x16790", "x": 3254, "y": 6950, "island": "seir" },
   { "id": "x16793", "x": 3128.5, "y": 6874, "island": "seir" },
-  { "id": "x16803", "x": 3560.5, "y": 6606.5, "island": "seir" },
+  {
+    "id": "x16803",
+    "x": 3560.5,
+    "y": 6606.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "ortho": 9,
+    "face": "N",
+    "description": "This puzzle is on the ground outside of Amakumo Peak. There are 4 specters nearby.",
+    "connection": [[2], [2], [0, 1]],
+    "direction": ["3", "1", "2"],
+    "position": [
+      [-2, 1.65, -1],
+      [0.05, -0.35, -1],
+      [2.5, 0.85, -1]
+    ],
+    "island": "seir"
+  },
   {
     "id": "x16804",
     "x": 3398.5,

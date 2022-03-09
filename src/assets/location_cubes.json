@@ -62,7 +62,7 @@
     "camera": [0, 1.0, 4],
     "ortho": 9,
     "face": "N",
-    "description": "This puzzle is on the ground outside of Amakumo Peak. There are 4 specters nearby.",
+    "description": "This puzzle is east of the teleporter up on a hill.",
     "connection": [[2], [2], [0, 1]],
     "direction": ["3", "1", "2"],
     "position": [

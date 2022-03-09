@@ -61,7 +61,7 @@
     "type": "LIGHT",
     "camera": [0, 1.0, 4],
     "ortho": 9,
-    "face": "N",
+    "face": "W",
     "description": "This puzzle is east of the teleporter up on a hill.",
     "connection": [[2], [2], [0, 1]],
     "direction": ["3", "1", "2"],

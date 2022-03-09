@@ -25,9 +25,10 @@
 
           <div class="title-wrapper">
             <fa-icon title="Configuration" [icon]="['fas', 'cog']"></fa-icon>
-            &nbsp;
+            &nbsp; Configuration
             <fa-icon
               (click)="resetPuzzle()"
+              class="action-link"
               style="color: blue; cursor: pointer"
               title="Reset Configuration"
               [icon]="['fas', 'sync']"
@@ -43,6 +44,7 @@
         <div class="col-md-6 col-lg-12">
           <div class="title-wrapper">
             <fa-icon title="Solution" [icon]="['fas', 'directions']"></fa-icon>
+            Solution
           </div>
           <app-puzzle-solution
             (showSolution)="showSolutionStep($event)"

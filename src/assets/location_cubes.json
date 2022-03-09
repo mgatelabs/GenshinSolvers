@@ -263,7 +263,26 @@
     ],
     "island": "naru"
   },
-  { "id": "x14030", "x": 3478, "y": 4656, "island": "naru" },
+  {
+    "id": "x14030",
+    "x": 3478,
+    "y": 4656,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 1.5, 3],
+    "face": "S",
+    "description": "This puzzle is located underground.  After you swim and go up a ramp, turn around.",
+    "connection": [[2], [0, 2], [0, 4], [2, 4], [2]],
+    "direction": ["N", "S", "N", "S", "N"],
+    "position": [
+      [-4.5, -1, -2],
+      [-2.25, -1, -2],
+      [0, -1, -2],
+      [2.25, -1, -2],
+      [4.5, -1, -2]
+    ],
+    "island": "naru"
+  },
   { "id": "x14200", "x": 3489, "y": 4650, "island": "naru" },
   { "id": "x14198", "x": 3620, "y": 4752, "island": "naru" },
   { "id": "x14194", "x": 3753.5, "y": 4692, "island": "naru" },

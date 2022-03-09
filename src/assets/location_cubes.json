@@ -204,7 +204,27 @@
     ],
     "island": "naru"
   },
-  { "id": "x14205", "x": 3471, "y": 5144, "island": "naru" },
+  {
+    "id": "x14205",
+    "x": 3471,
+    "y": 5144,
+    "count": "3",
+    "type": "SPIN",
+    "camera": [0, 0.95, 2],
+    "face": "E",
+    "ortho": 9,
+    "description": "This puzzle is located north-east of Byakko Plain.  The left cube is fixed.",
+    "connection": [[], [1], [2]],
+    "direction": ["W", "E", "E"],
+    "position": [
+      [-2.5, -0.1, -1],
+      [0.0, -0.2, -1],
+      [2.5, -0.7, -1]
+    ],
+    "edit": [false, true, true],
+
+    "island": "naru"
+  },
   {
     "id": "x14203",
     "x": 3475,

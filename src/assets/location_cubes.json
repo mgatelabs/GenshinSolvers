@@ -204,27 +204,7 @@
     ],
     "island": "naru"
   },
-  {
-    "id": "x14205",
-    "x": 3471,
-    "y": 5144,
-    "count": "3",
-    "type": "SPIN",
-    "camera": [0, 0.95, 2],
-    "face": "E",
-    "ortho": 9,
-    "description": "This puzzle is located north-east of Byakko Plain.  The left cube is fixed.",
-    "connection": [[], [1], [2]],
-    "direction": ["W", "E", "E"],
-    "position": [
-      [-2.5, -0.1, -1],
-      [0.0, -0.2, -1],
-      [2.5, -0.7, -1]
-    ],
-    "edit": [false, true, true],
-
-    "island": "naru"
-  },
+  { "id": "x14205", "x": 3471, "y": 5144, "island": "naru" },
   {
     "id": "x14203",
     "x": 3475,
@@ -303,27 +283,27 @@
     ],
     "island": "naru"
   },
-  { "id": "x14200", "x": 3489, "y": 4650, "island": "naru" },
   {
-    "id": "x14198",
-    "x": 3620,
-    "y": 4752,
-    "count": "3",
-    "type": "LIGHT",
-    "camera": [0, 1.0, 4],
-    "face": "N",
-    "ortho": 9,
-    "description": "On the mountain side, the cube on the right is hidden inside a boulder.  Unsure what the middle cube does.",
-    "connection": [[1], [0, 2], [1]],
-    "direction": ["2", "3", "1"],
+    "id": "x14200",
+    "x": 3489,
+    "y": 4650,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 0.25, 2],
+    "face": "W",
+    "description": "This puzzle need to be activated first.  Unsure what the bottom cubes do.",
+    "direction": ["E", "W", "E", "W", "E"],
     "position": [
-      [-3.1, 0, -2],
-      [0.9, 0.5, -1],
-      [3.2, 0.5, -2]
+      [-2.5, -1, -1],
+      [-2.5, 1, -1],
+      [0, 1, -1],
+      [2.5, 1, -1],
+      [2.5, -1, -1]
     ],
 
     "island": "naru"
   },
+  { "id": "x14198", "x": 3620, "y": 4752, "island": "naru" },
   { "id": "x14194", "x": 3753.5, "y": 4692, "island": "naru" },
   {
     "id": "x14195",

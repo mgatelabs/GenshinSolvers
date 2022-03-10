@@ -426,7 +426,7 @@
     "camera": [0, 1.0, 4],
     "face": "W",
     "ortho": 9,
-    "description": "On the north side of the island.",
+    "description": "Underground, watch out for the ruin dudes.",
     "connection": [[1], [0, 2], [1]],
     "direction": ["2", "2", "3"],
     "position": [

@@ -436,5 +436,23 @@
     ],
     "island": "yash"
   },
-  { "id": "x14029", "x": 1224, "y": 5796, "island": "yash" }
+  {
+    "id": "x14029",
+    "x": 1224,
+    "y": 5796,
+    "count": "4",
+    "type": "SPIN",
+    "camera": [-4, 3, 3.5],
+    "face": "S",
+    "description": "This puzzle is located on a tiny island to the north.  Each puzzle piece is independent.",
+    "connection": [[0], [1], [2], [3]],
+    "direction": ["E", "S", "N", "W"],
+    "position": [
+      [-2.7, 1.4, -3],
+      [1.0, 2, -6],
+      [3.5, 1.15, 1],
+      [1.5, 0.5, 3.5]
+    ],
+    "island": "yash"
+  }
 ]

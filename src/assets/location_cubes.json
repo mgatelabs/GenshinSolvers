@@ -323,7 +323,26 @@
 
     "island": "naru"
   },
-  { "id": "x14198", "x": 3620, "y": 4752, "island": "naru" },
+  {
+    "id": "x14198",
+    "x": 3620,
+    "y": 4752,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 9,
+    "description": "On the mountain side, the cube on the right is hidden inside a boulder.  Unsure what the middle cube does.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["2", "3", "1"],
+    "position": [
+      [-3.1, 0, -2],
+      [0.9, 0.5, -1],
+      [3.2, 0.5, -2]
+    ],
+
+    "island": "naru"
+  },
   { "id": "x14194", "x": 3753.5, "y": 4692, "island": "naru" },
   {
     "id": "x14195",

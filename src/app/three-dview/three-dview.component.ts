@@ -42,12 +42,14 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes['puzzleInfo']) {
-      console.log('Changes');
       if (this.puzzleInfo && this.camera && this.scene) {
         this.loadBackground();
         this.buildDirectionArray();
+        this.removeInteraction();
         this.reCreateScene();
         this.createCamera();
+        this.createInteractionManager();
+        this.addInteraction();
         this.renderer.render(this.scene, this.camera);
       } else {
         this.loadBackground();
@@ -149,6 +151,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
       this.createScene();
       this.createRenderer();
       this.createInteractionManager();
+      this.addInteraction();
       this.update(0);
     });
   }
@@ -183,6 +186,10 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
 
   private reCreateScene() {
     let cubeMaterials: Array<THREE.MeshBasicMaterial> = [];
+
+    if (this.selectionNode) {
+      this.selectionNode!.visible = false;
+    }
 
     for (let i = 0; i < this.cubeList.length; i++) {
       this.scene.remove(this.cubeList[i]);
@@ -225,6 +232,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
     if (this.puzzleInfo?.type !== PuzzleType.BROKEN) {
       for (let i = 0; i < this.puzzleInfo!.count; i++) {
         let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
+        cube.name = 'cube_' + (i + 1);
         this.cubeList.push(cube);
 
         cube.position.set(
@@ -247,6 +255,9 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
       let w = this.puzzleInfo!.orthoWidth / 2;
       let h = (this.puzzleInfo!.orthoWidth * 0.75) / 2;
       this.camera = new THREE.OrthographicCamera(-w, w, h, -h, 0.1, 50);
+      this.camera.position.x = 0;
+      this.camera.position.y = 0;
+      this.camera.position.z = 0;
     } else {
       this.camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 50);
 
@@ -260,12 +271,7 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
 
   private createScene() {
     this.scene = new THREE.Scene();
-    //this.scene.background = new THREE.Color(0x000000);
-
-    //console.log(this.textureMap);
-
     this.reCreateScene();
-
     this.selectionNode = new THREE.Mesh(
       this.selectionGeometry,
       new THREE.MeshBasicMaterial({ color: 0xff0000 })
@@ -356,43 +362,10 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
     this.renderer.render(this.scene, this.camera);
   }
 
-  private createInteractionManager() {
-    this.interactionManager = new InteractionManager(
-      this.renderer,
-      this.camera,
-      this.canvas,
-      undefined
-    );
-
-    for (let i = 0; i < this.cubeList.length; i++) {
-      const cube = this.cubeList[i];
-      this.interactionManager.add(cube);
-
-      cube.addEventListener('click', (ev) => {
-        ev['stopPropagation']();
-        // TODO: Should this work like the in-game puzzles, and rotate multiple cubes?
-        this.cubeClicked(i);
-      });
-
-      cube.addEventListener('mouseover', (ev) => {
-        cube.scale.set(1.1, 1.1, 1.1);
-        this.renderer.render(this.scene, this.camera);
-      });
-      cube.addEventListener('mouseout', (ev) => {
-        cube.scale.set(1, 1, 1);
-        this.renderer.render(this.scene, this.camera);
-      });
-    }
-  }
-
   private update(time: DOMHighResTimeStamp) {
     this.interactionManager.update();
 
     requestAnimationFrame(this.update.bind(this));
-  }
-
-  private getAspectRatio(): number {
-    return this.canvas.clientWidth / this.canvas.clientHeight;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -402,12 +375,6 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
       this.renderer.setSize(sizes[0], sizes[1]);
       this.renderer.render(this.scene, this.camera);
     }
-  }
-
-  private getCanvasSize(): Array<number> {
-    let width = this.canvasHolderRef.nativeElement.clientWidth;
-    let height = Math.floor(width * 0.75);
-    return [width, height];
   }
 
   public getFacingDirectionText() {
@@ -440,5 +407,63 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
       }
     }
     return 'arrow-alt-circle-up';
+  }
+
+  /**
+   * Utility
+   */
+
+  private getCanvasSize(): Array<number> {
+    let width = this.canvasHolderRef.nativeElement.clientWidth;
+    let height = Math.floor(width * 0.75);
+    return [width, height];
+  }
+
+  private getAspectRatio(): number {
+    return this.canvas.clientWidth / this.canvas.clientHeight;
+  }
+
+  /**
+   * Three Interaction Pieces
+   */
+
+  private createInteractionManager() {
+    this.interactionManager = new InteractionManager(
+      this.renderer,
+      this.camera,
+      this.canvas,
+      false
+    );
+  }
+
+  private removeInteraction() {
+    for (let i = 0; i < this.cubeList.length; i++) {
+      const cube = this.cubeList[i];
+      this.interactionManager.remove(cube);
+    }
+
+    this.interactionManager.dispose();
+  }
+
+  private addInteraction() {
+    for (let i = 0; i < this.cubeList.length; i++) {
+      const cube = this.cubeList[i];
+      this.interactionManager.add(cube);
+
+      cube.addEventListener('click', (ev) => {
+        ev['stopPropagation']();
+        // TODO: Should this work like the in-game puzzles, and rotate multiple cubes?
+        this.cubeClicked(i);
+      });
+
+      cube.addEventListener('mouseover', (ev) => {
+        cube.scale.set(1.1, 1.1, 1.1);
+        this.renderer.render(this.scene, this.camera);
+      });
+      cube.addEventListener('mouseout', (ev) => {
+        cube.scale.set(1, 1, 1);
+        this.renderer.render(this.scene, this.camera);
+      });
+    }
   }
 }

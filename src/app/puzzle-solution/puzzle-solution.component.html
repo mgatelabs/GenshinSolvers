@@ -5,7 +5,11 @@
   <ng-container
     *ngIf="puzzleSolution && puzzleSolution.length > 0; else noSolutionBlock"
   >
-    <div class="solutionRow" *ngFor="let sol of puzzleSolution; let i = index">
+    <div
+      class="solutionRow"
+      [ngClass]="{ selected: selectedIndex == i }"
+      *ngFor="let sol of puzzleSolution; let i = index"
+    >
       <button
         class="icon-click-left btn btn-info"
         title="Show Move"
@@ -13,9 +17,9 @@
       >
         <fa-icon [icon]="['fas', 'play-circle']"></fa-icon>
       </button>
-      <span> Touch {{ sol.touchedCube }} </span>
+      <span> Touch {{ sol.touchedCube! + 1 }} </span>
     </div>
-    <div class="solutionRow">
+    <div class="solutionRow" [ngClass]="{ selected: selectedIndex == -2 }">
       <button
         class="icon-click-left btn btn-info"
         title="Show Final"

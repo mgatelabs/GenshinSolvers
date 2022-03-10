@@ -417,6 +417,24 @@
   { "id": "x14187", "x": 2532, "y": 6073.5, "island": "kann" },
   { "id": "x14186", "x": 2565.5, "y": 6271, "island": "kann" },
 
-  { "id": "x14467", "x": 1626, "y": 6133.5, "island": "yash" },
+  {
+    "id": "x14467",
+    "x": 1626,
+    "y": 6133.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 9,
+    "description": "On the north side of the island.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["2", "2", "3"],
+    "position": [
+      [-2.3, 0.35, -2],
+      [0.2, 0.35, -1],
+      [2.7, 0.35, -2]
+    ],
+    "island": "yash"
+  },
   { "id": "x14029", "x": 1224, "y": 5796, "island": "yash" }
 ]

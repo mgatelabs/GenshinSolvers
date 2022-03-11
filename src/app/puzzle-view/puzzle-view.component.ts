@@ -28,7 +28,6 @@ import * as SOLVER from '../solver/puzzle';
   styleUrls: ['./puzzle-view.component.scss'],
 })
 export class PuzzleViewComponent implements OnInit, AfterViewInit {
-  public puzzleId: string;
   public puzzleInfo?: PuzzleInfo;
 
   public puzzleConfiguration: PuzzleConfiguration = new PuzzleConfiguration(
@@ -48,14 +47,14 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     private router: Router
   ) {
     this.route.params.subscribe((params) => {
-      this.puzzleId = params['puzzleId'];
+      let puzzleId: string = params['puzzleId'];
 
-      if (this.dataSource.puzzles.has(this.puzzleId)) {
-        this.puzzleInfo = this.dataSource.puzzles.get(this.puzzleId)!;
+      if (this.dataSource.puzzles.has(puzzleId)) {
+        this.puzzleInfo = this.dataSource.puzzles.get(puzzleId)!;
 
         if (this.puzzleInfo!.type == PuzzleType.BROKEN) {
           this.puzzleConfiguration = new PuzzleConfiguration(
-            this.puzzleInfo.type,
+            PuzzleType.BROKEN,
             []
           );
         } else {
@@ -71,7 +70,6 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
           );
 
           if (this.afterInit) {
-            //this.someElement.puzzleInfo = this.puzzleInfo!;
             this.solvePuzzle();
           }
         }
@@ -85,19 +83,13 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit(): void {
-    var self = this;
-
-    console.log('Init');
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.afterInit = true;
-    if (this.puzzleInfo != null) {
-      this.someElement.puzzleInfo = this.puzzleInfo!;
+    if (this.puzzleInfo) {
       this.solvePuzzle();
     }
-    this.someElement.startView();
   }
 
   configurationChange(index: number) {

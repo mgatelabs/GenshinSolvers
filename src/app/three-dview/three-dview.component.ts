@@ -34,7 +34,9 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.loadTextures();
+  }
 
   public startView() {
     this.loadTextures();
@@ -42,25 +44,22 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes['puzzleInfo']) {
-      if (this.puzzleInfo && this.camera && this.scene) {
+      if (this.puzzleInfo) {
         this.loadBackground();
-        this.buildDirectionArray();
-        this.removeInteraction();
-        this.reCreateScene();
-        this.createCamera();
-        this.createInteractionManager();
-        this.addInteraction();
-        this.renderer.render(this.scene, this.camera);
-      } else {
-        this.loadBackground();
+        if (this.camera && this.scene) {
+          this.buildDirectionArray();
+          this.removeInteraction();
+          this.reCreateScene();
+          this.createCamera();
+          this.createInteractionManager();
+          this.addInteraction();
+          this.renderer.render(this.scene, this.camera);
+        }
       }
     }
   }
 
   private cubeDirections: Array<PuzzleDirection> = [];
-
-  @Input('puzzleId')
-  public puzzleId: string;
 
   @Input()
   public puzzleInfo: PuzzleInfo | undefined;

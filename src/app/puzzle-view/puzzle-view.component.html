@@ -57,10 +57,15 @@
     </div>
   </div>
   <div class="row">
-    <app-map
-      id="mapArea"
-      [puzzleInfo]="puzzleInfo"
-      [fixedHeight]="true"
-    ></app-map>
+    <div class="col-xs-12 col-sm-12 col-md-8">
+      <app-map
+        id="mapArea"
+        [puzzleInfo]="puzzleInfo"
+        [fixedHeight]="true"
+      ></app-map>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4">
+      <app-map-key></app-map-key>
+    </div>
   </div>
 </div>

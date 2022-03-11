@@ -39,6 +39,7 @@ import { PuzzleConfigurationComponent } from './puzzle-configuration/puzzle-conf
 import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.component';
 import { HomeComponent } from './home/home.component';
 import { PuzzleListingComponent } from './puzzle-listing/puzzle-listing.component';
+import { MapKeyComponent } from './map-key/map-key.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { PuzzleListingComponent } from './puzzle-listing/puzzle-listing.componen
     PuzzleSolutionComponent,
     HomeComponent,
     PuzzleListingComponent,
+    MapKeyComponent,
   ],
   imports: [
     BrowserModule,

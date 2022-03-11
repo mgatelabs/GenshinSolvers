@@ -15,7 +15,7 @@ import * as THREE from 'three';
 import { PuzzleDirection } from '../shared/puzzle-direction';
 import { PuzzleInfo } from '../shared/puzzle-info';
 import { PuzzleType } from '../shared/puzzle-type';
-import { InteractionManager } from '../shared/three-interactive';
+import { InteractionManager } from 'three.interactive';
 
 @Component({
   selector: 'app-three-dview',

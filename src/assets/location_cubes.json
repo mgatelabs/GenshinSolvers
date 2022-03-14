@@ -55,7 +55,19 @@
     "x": 3374,
     "y": 7174,
     "count": "4",
+    "type": "SPIN",
+    "camera": [0, 2.75, 4],
     "face": "E",
+    "description": "This puzzle is located on the beach.",
+    "connection": [[0], [1], [2], []],
+    "direction": ["S", "N", "E", "W"],
+    "edit": [true, true, true, false],
+    "position": [
+      [-3, 0, -0.45],
+      [-0.15, 1.55, 0],
+      [2.75, -0.25, -0.75],
+      [-0.15, 0, 0.5]
+    ],
     "island": "seir"
   },
   {

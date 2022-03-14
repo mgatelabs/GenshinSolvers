@@ -117,8 +117,20 @@
     "id": "x17287",
     "x": 3217.55,
     "y": 6684.07,
+
     "count": "3",
     "face": "S",
+    "camera": [-0.25, 2.0, 3],
+    "type": "SPIN",
+    "description": "This puzzle is located north of the destroyed village.",
+    "connection": [[0], [], [2]],
+    "direction": ["N", "E", "S"],
+    "position": [
+      [-2.85, 0, -2],
+      [-0.15, -0.25, -2],
+      [3.25, -0.25, -2]
+    ],
+    "edit": [true, false, true],
     "island": "seir"
   },
 

@@ -76,6 +76,18 @@
     "y": 6950,
     "count": "5",
     "face": "S",
+    "type": "SPIN",
+    "camera": [0, 2.75, 4],
+    "description": "This puzzle is located on a small island.  Watch out for the nearby enemies.",
+    "connection": [[0], [0], [1, 3], [4], [4]],
+    "direction": ["N", "W", "N", "W", "N"],
+    "position": [
+      [-5, 0, -0.45],
+      [-3, 0, -2],
+      [-0.45, 0.25, -2.5],
+      [2.45, 0, -2],
+      [5.65, -0.45, -0.45]
+    ],
     "island": "seir"
   },
   {

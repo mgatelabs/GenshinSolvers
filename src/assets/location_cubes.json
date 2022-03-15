@@ -96,6 +96,18 @@
     "y": 6874,
     "count": "5",
     "face": "E",
+    "type": "SPIN",
+    "camera": [-0.25, 2.75, 4],
+    "description": "This puzzle is located on a small island near the cats.  Most of the pieces are independent.",
+    "connection": [[0], [1], [2], [4], [0]],
+    "direction": ["N", "N", "N", "E", "S"],
+    "position": [
+      [-1.85, 1.4, -1.25],
+      [-1.85, 0, -1.25],
+      [-1.85, -1.65, -1.25],
+      [-0.25, -1.65, -1.25],
+      [1.5, -1.65, -1.25]
+    ],
     "island": "seir"
   },
   {

@@ -16,6 +16,8 @@ import { PuzzleDirection } from '../shared/puzzle-direction';
 import { PuzzleInfo } from '../shared/puzzle-info';
 import { PuzzleType } from '../shared/puzzle-type';
 import { InteractionManager } from 'three.interactive';
+import { map } from 'leaflet';
+import { Color } from 'three';
 
 @Component({
   selector: 'app-three-dview',
@@ -85,6 +87,8 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
   private material = new THREE.MeshBasicMaterial({
     color: new THREE.Color(0xffffff),
   });
+
+  private selectedColor = new THREE.Color(0xffc5b0);
 
   private renderer!: THREE.WebGLRenderer;
 
@@ -163,16 +167,21 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
   private getTexturePromise(assetPath: string): Promise<THREE.Texture> {
     let loader = this.loader;
     let map = this.textureMap;
+    let selColor = this.selectedColor;
 
     return new Promise(function (resolve, reject) {
       function loadDone(texture: THREE.Texture) {
-        //console.log('loader successfully completed loading task: ' + assetPath);
         map.set(
           assetPath,
           new THREE.MeshBasicMaterial({
             map: texture,
           })
         );
+        let mat = new THREE.MeshBasicMaterial({
+          map: texture,
+        });
+        mat.color = selColor;
+        map.set(assetPath + '_', mat);
         resolve(texture); // it went ok!
       }
       loader.load(assetPath, loadDone);
@@ -183,8 +192,12 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
 
   private selectionNode: THREE.Mesh | undefined;
 
+  private standardMaterial: Array<THREE.MeshBasicMaterial> = [];
+  private selectedMaterial: Array<THREE.MeshBasicMaterial> = [];
+
   private reCreateScene() {
-    let cubeMaterials: Array<THREE.MeshBasicMaterial> = [];
+    this.standardMaterial = [];
+    this.selectedMaterial = [];
 
     if (this.selectionNode) {
       this.selectionNode!.visible = false;
@@ -198,39 +211,60 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
     switch (this.puzzleInfo!.type) {
       case PuzzleType.SPIN:
         {
-          cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //right side
-          cubeMaterials.push(this.getTexture('assets/cube-at.png')); //left side
-          cubeMaterials.push(this.getTexture('assets/cube-down_arrow.png')); //top side
-          cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //bottom side
-          cubeMaterials.push(this.getTexture('assets/cube-three.png')); //front side
-          cubeMaterials.push(this.getTexture('assets/cube-face.png')); //back side
+          this.standardMaterial.push(this.getTexture('assets/cube-bee.png')); //right side
+          this.standardMaterial.push(this.getTexture('assets/cube-at.png')); //left side
+          this.standardMaterial.push(
+            this.getTexture('assets/cube-down_arrow.png')
+          ); //top side
+          this.standardMaterial.push(this.getTexture('assets/cube-blank.png')); //bottom side
+          this.standardMaterial.push(this.getTexture('assets/cube-three.png')); //front side
+          this.standardMaterial.push(this.getTexture('assets/cube-face.png')); //back side
+
+          this.selectedMaterial.push(this.getTexture('assets/cube-bee.png_')); //right side
+          this.selectedMaterial.push(this.getTexture('assets/cube-at.png_')); //left side
+          this.selectedMaterial.push(
+            this.getTexture('assets/cube-down_arrow.png_')
+          ); //top side
+          this.selectedMaterial.push(this.getTexture('assets/cube-blank.png_')); //bottom side
+          this.selectedMaterial.push(this.getTexture('assets/cube-three.png_')); //front side
+          this.selectedMaterial.push(this.getTexture('assets/cube-face.png_')); //back side
         }
         break;
       case PuzzleType.LIGHT:
         {
-          cubeMaterials.push(this.getTexture('assets/cube-one.png')); //right side
-          cubeMaterials.push(this.getTexture('assets/cube-three.png')); //left side
-          cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //top side
-          cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //bottom side
-          cubeMaterials.push(this.getTexture('assets/cube-zero.png')); //front side
-          cubeMaterials.push(this.getTexture('assets/cube-two.png')); //back side
+          this.standardMaterial.push(this.getTexture('assets/cube-one.png')); //right side
+          this.standardMaterial.push(this.getTexture('assets/cube-three.png')); //left side
+          this.standardMaterial.push(this.getTexture('assets/cube-blank.png')); //top side
+          this.standardMaterial.push(this.getTexture('assets/cube-blank.png')); //bottom side
+          this.standardMaterial.push(this.getTexture('assets/cube-zero.png')); //front side
+          this.standardMaterial.push(this.getTexture('assets/cube-two.png')); //back side
+
+          this.selectedMaterial.push(this.getTexture('assets/cube-one.png_')); //right side
+          this.selectedMaterial.push(this.getTexture('assets/cube-three.png_')); //left side
+          this.selectedMaterial.push(this.getTexture('assets/cube-blank.png_')); //top side
+          this.selectedMaterial.push(this.getTexture('assets/cube-blank.png_')); //bottom side
+          this.selectedMaterial.push(this.getTexture('assets/cube-zero.png_')); //front side
+          this.selectedMaterial.push(this.getTexture('assets/cube-two.png_')); //back side
         }
         break;
       default:
         {
-          cubeMaterials.push(this.getTexture('assets/cube-bee.png')); //right side
-          cubeMaterials.push(this.getTexture('assets/cube-at.png')); //left side
-          cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //top side
-          cubeMaterials.push(this.getTexture('assets/cube-blank.png')); //bottom side
-          cubeMaterials.push(this.getTexture('assets/cube-three.png')); //front side
-          cubeMaterials.push(this.getTexture('assets/cube-face.png')); //back side
+          this.standardMaterial.push(this.getTexture('assets/cube-bee.png')); //right side
+          this.standardMaterial.push(this.getTexture('assets/cube-at.png')); //left side
+          this.standardMaterial.push(this.getTexture('assets/cube-blank.png')); //top side
+          this.standardMaterial.push(this.getTexture('assets/cube-blank.png')); //bottom side
+          this.standardMaterial.push(this.getTexture('assets/cube-three.png')); //front side
+          this.standardMaterial.push(this.getTexture('assets/cube-face.png')); //back side
         }
         break;
     }
 
     if (this.puzzleInfo?.type !== PuzzleType.BROKEN) {
       for (let i = 0; i < this.puzzleInfo!.count; i++) {
-        let cube: THREE.Mesh = new THREE.Mesh(this.geometry, cubeMaterials);
+        let cube: THREE.Mesh = new THREE.Mesh(
+          this.geometry,
+          this.standardMaterial
+        );
         cube.name = 'cube_' + (i + 1);
         this.cubeList.push(cube);
 
@@ -291,6 +325,9 @@ export class ThreeDViewComponent implements OnInit, AfterViewInit, OnChanges {
         this.selectionNode!.position.x = this.cubeList[i].position.x;
         this.selectionNode!.position.y = this.cubeList[i].position.y + 1;
         this.selectionNode!.position.z = this.cubeList[i].position.z;
+        this.cubeList[i].material = this.selectedMaterial;
+      } else {
+        this.cubeList[i].material = this.standardMaterial;
       }
       this.updateCubeDirection(i);
     }

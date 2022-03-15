@@ -16,8 +16,6 @@ import { PuzzleDirection } from '../shared/puzzle-direction';
 import { PuzzleInfo } from '../shared/puzzle-info';
 import { PuzzleType } from '../shared/puzzle-type';
 import { InteractionManager } from 'three.interactive';
-import { map } from 'leaflet';
-import { Color } from 'three';
 
 @Component({
   selector: 'app-three-dview',

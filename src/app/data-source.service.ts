@@ -104,7 +104,12 @@ export class DataSourceService {
             item.id,
             Number(item.x),
             y,
-            item.type ? LocationType.SPINNING : LocationType.BROKEN
+            item.type
+              ? LocationType.SPINNING
+              : item.link
+              ? LocationType.SPINNING
+              : LocationType.BROKEN,
+            item.link || ''
           )
         );
 
@@ -114,7 +119,10 @@ export class DataSourceService {
 
         islandRef[0] += 1;
 
-        if (item.type) {
+        if (item.link) {
+          this.workingPuzzles++;
+          islandRef[1] += 1;
+        } else if (item.type) {
           this.workingPuzzles++;
 
           let puzzleType: PuzzleType;

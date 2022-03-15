@@ -146,7 +146,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
 
       let content: string = '';
 
-      let id = info.id;
+      let id = info.link || info.id;
 
       switch (this.dataSource.locations[i].type) {
         case LocationType.WAYPOINT:

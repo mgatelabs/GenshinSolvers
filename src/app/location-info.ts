@@ -5,6 +5,7 @@ export class LocationInfo {
     public id: String,
     public x: number,
     public y: number,
-    public type: LocationType
+    public type: LocationType,
+    public link: string = ''
   ) {}
 }

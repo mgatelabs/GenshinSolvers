@@ -550,7 +550,25 @@
     "island": "kann"
   },
   { "id": "x14189", "x": 2220, "y": 5679.5, "island": "kann" },
-  { "id": "x14188", "x": 2155, "y": 5835.5, "island": "kann" },
+  {
+    "id": "x14188",
+    "x": 2155,
+    "y": 5835.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 9,
+    "description": "On a little island",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["1", "2", "3"],
+    "position": [
+      [-2.37, -0.0, -2],
+      [0.76, 0.25, -1],
+      [2.75, 0.0, -2]
+    ],
+    "island": "kann"
+  },
   {
     "id": "x14187",
     "x": 2532,

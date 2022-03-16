@@ -508,7 +508,27 @@
     "island": "naru"
   },
 
-  { "id": "x14192", "x": 2691.5, "y": 5539, "island": "kann" },
+  {
+    "id": "x14192",
+    "x": 2691.5,
+    "y": 5539,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [-0.25, 4, 4.5],
+    "face": "S",
+    "description": "This puzzle is located north of the Kujou Encampment, up on the hill.",
+    "connection": [[1, 2], [], [], [], [3, 2]],
+    "direction": ["N", "N", "W", "N", "N"],
+    "position": [
+      [-4.75, 0, 1],
+      [-4.5, 1.15, -3.5],
+      [0.25, 1.85, -3.5],
+      [5.5, 2.3, -4.5],
+      [4.5, 0, 0.75]
+    ],
+    "edit": [true, false, false, false, true],
+    "island": "kann"
+  },
   { "id": "x14191", "x": 2838.5, "y": 5522.5, "island": "kann" },
   {
     "id": "x14190",

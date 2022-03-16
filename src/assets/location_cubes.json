@@ -529,7 +529,24 @@
     "edit": [true, false, false, false, true],
     "island": "kann"
   },
-  { "id": "x14191", "x": 2838.5, "y": 5522.5, "island": "kann" },
+  {
+    "id": "x14191",
+    "x": 2838.5,
+    "y": 5522.5,
+    "count": "3",
+    "type": "SPIN",
+    "camera": [0, 5, 3.5],
+    "face": "E",
+    "description": "This puzzle is located north-east of the Kujou Encampment, down near the beach.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["S", "W", "S"],
+    "position": [
+      [-4.0, 1.5, 0.6],
+      [1.25, 1.15, -3.5],
+      [4.0, 1.5, 1]
+    ],
+    "island": "kann"
+  },
   {
     "id": "x14190",
     "x": 2959.5,

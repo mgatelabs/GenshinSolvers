@@ -605,7 +605,24 @@
     ],
     "island": "kann"
   },
-  { "id": "x14189B", "x": 2220, "y": 5720, "island": "kann" },
+  {
+    "id": "x14189B",
+    "x": 2220,
+    "y": 5720,
+    "count": "3",
+    "type": "SPIN",
+    "camera": [0, 3, 3.5],
+    "face": "W",
+    "description": "Part of a puzzle, on the water.  Remember to turn off the shield barrier first.",
+    "connection": [[0], [1], [2]],
+    "direction": ["W", "S", "E"],
+    "position": [
+      [-5.4, 0.7, -2],
+      [0.0, 0.7, -2],
+      [5.5, 0.5, -2]
+    ],
+    "island": "kann"
+  },
   {
     "id": "x14188",
     "x": 2155,

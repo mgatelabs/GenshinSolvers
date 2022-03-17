@@ -198,7 +198,26 @@
   { "id": "x16440", "x": 284, "y": 6101.5, "island": "wata" },
   { "id": "x16432", "x": 156.5, "y": 6149.5, "island": "wata" },
   { "id": "x16346", "x": 115, "y": 5908, "island": "wata" },
-  { "id": "x16380", "x": -196.5, "y": 6126.5, "island": "wata" },
+  {
+    "id": "x16380",
+    "x": -196.5,
+    "y": 6126.5,
+    "count": "4",
+    "type": "SPIN",
+    "camera": [1, 2.15, 2],
+    "face": "N",
+    "description": "This puzzle is located north statue of the seven up on a hill.  No chest, it unlocks another puzzle element.  Just make every cube face in-ward",
+    "connection": [[0], [1], [2], [3]],
+    "direction": ["S", "S", "E", "W"],
+    "forced": ["N", "E", "S", "W"],
+    "position": [
+      [-1, -1, 0.55],
+      [-4.5, 0.5, -3],
+      [-1.5, -1, -7],
+      [3.75, -1.5, -3]
+    ],
+    "island": "wata"
+  },
   { "id": "x16384", "x": -103.5, "y": 6172.5, "island": "wata" },
   { "id": "x16415", "x": 67, "y": 6381, "island": "wata" },
   { "id": "x16444", "x": 306.5, "y": 6233.5, "island": "wata" },

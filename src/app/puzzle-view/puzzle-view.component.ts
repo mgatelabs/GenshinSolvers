@@ -163,9 +163,15 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
       conns.push(sample);
     }
 
+    let solverFunc = SOLVER.unifiedSolution;
+
+    if (this.puzzleInfo!.forced && this.puzzleInfo!.forced.length > 0) {
+      solverFunc = SOLVER.customSolution(this.puzzleInfo!.forced!);
+    }
+
     let puzzleDef: SOLVER.PuzzleDefinition = {
       initialState: faces,
-      isFinalState: SOLVER.unifiedSolution,
+      isFinalState: solverFunc,
       maximumNumber: this.puzzleInfo!.type == PuzzleType.SPIN ? 4 : 3,
       stateTransitions: conns,
     };

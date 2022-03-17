@@ -148,6 +148,28 @@ export class DataSourceService {
           info.locationX = Number(item.x);
           info.locationY = y;
 
+          if (item.forced) {
+            info.forced = [];
+            for (let j = 0; j < item.forced.length; j++) {
+              let v: number = 0;
+              switch (item.forced[j]) {
+                case 'N':
+                  v = 0;
+                  break;
+                case 'E':
+                  v = 1;
+                  break;
+                case 'S':
+                  v = 2;
+                  break;
+                case 'W':
+                  v = 3;
+                  break;
+              }
+              info.forced.push(v);
+            }
+          }
+
           if (item.camera) {
             info.camera = item.camera;
           }

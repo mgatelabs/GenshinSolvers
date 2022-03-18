@@ -1,5 +1,7 @@
 # [JenshinSolver](https://mgatelabs.github.io/GenshinSolvers/)
 
+Use the link above to access the web app!
+
 Ever stood in front of a cube puzzle in Inazuma and thought to yourself: _I don't want to waste a [burst](https://www.reddit.com/r/Genshin_Impact/comments/op2p64/the_biggest_brain_in_inazuma/) [on this](https://www.youtube.com/watch?v=Qh8xvINAdqs)_
 
 Then you've come to the right place! [Head over to the website and hunt down your puzzle](https://mgatelabs.github.io/GenshinSolvers/). Enter the initial configuration and follow the solution steps.

@@ -220,9 +220,33 @@
   },
   { "id": "x16384", "x": -103.5, "y": 6172.5, "island": "wata" },
   { "id": "x16415", "x": 67, "y": 6381, "island": "wata" },
-  { "id": "x16444", "x": 306.5, "y": 6233.5, "island": "wata" },
-  { "id": "x17357", "x": 309.5, "y": 6233.5, "island": "wata" },
-  { "id": "x17358", "x": 314.5, "y": 6232.5, "island": "wata" },
+  {
+    "id": "x16444",
+    "x": 320.0,
+    "y": 6233.5,
+    "count": "8",
+    "type": "SPIN",
+    "camera": [-0.15, 3.15, 2],
+    "face": "N",
+    "description": "This part 1 of 3 of a puzzle.  After solving it, teleport away and wait till the next day for for it to reset.  If it doesn't reset, log out/in.  This is a special puzzle it only wants you hit the designated piece the right number of times.",
+    "connection": [[], [0, 2], [], [2, 4], [], [], [], [], []],
+    "direction": ["E", "W", "W", "E", "N", "S", "S", "W"],
+    "position": [
+      [-4.8, -2, 0.8],
+      [-0, -2, 0.8],
+      [4.8, -2, 1.4],
+      [0.5, -2, -5],
+      [6.0, -2, -5],
+      [-4.15, -3, -10],
+      [0.5, -1.5, -10],
+      [5.5, -1.2, -10]
+    ],
+    "edit": [false, false, false, false, false, false, false],
+    "solution": [1, 1, 1, 2, 2, 3, 3, 3, 5],
+    "island": "wata"
+  },
+  { "id": "x17357", "x": 339.5, "y": 6233.5, "island": "wata" },
+  { "id": "x17358", "x": 354.5, "y": 6232.5, "island": "wata" },
 
   {
     "id": "x14197",

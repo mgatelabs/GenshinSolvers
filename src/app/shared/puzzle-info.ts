@@ -20,6 +20,7 @@ export class PuzzleInfo {
   public edit: Array<boolean> = [];
   public islandIndex: number = 0;
   public forced?: Array<number> = undefined;
+  public solution: Array<number> = [];
 
   getCubes(): Array<PuzzleCube> {
     let result = new Array<PuzzleCube>();

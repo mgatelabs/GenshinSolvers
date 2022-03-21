@@ -118,65 +118,115 @@ export class PuzzleViewComponent implements OnInit, AfterViewInit {
   }
 
   solvePuzzle() {
-    let faces = [];
-    for (let i = 0; i < this.puzzleConfiguration.directions.length; i++) {
-      let val = 0;
-      switch (this.puzzleConfiguration.directions[i]) {
-        case PuzzleDirection.NORTH:
-        case PuzzleDirection.ONE:
-          val = 0;
-          break;
-        case PuzzleDirection.EAST:
-        case PuzzleDirection.TWO:
-          val = 1;
-          break;
-        case PuzzleDirection.SOUTH:
-        case PuzzleDirection.THREE:
-          val = 2;
-          break;
-        case PuzzleDirection.WEST:
-          val = 3;
-          break;
-      }
-      faces.push(val);
-    }
+    let result: SOLVER.PuzzleSolveStep | null;
 
-    let conns: Array<Array<number>> = [];
-
-    for (let i = 0; i < this.puzzleInfo!.connections.length; i++) {
-      let sample: Array<number> = [];
-
-      let selfDetected = false;
-
-      // The effected
-      for (let j = 0; j < this.puzzleInfo!.connections[i].length; j++) {
-        let cur = this.puzzleInfo!.connections[i][j];
-        if (cur === i) {
-          selfDetected = true;
+    if (this.puzzleInfo!.solution.length == 0) {
+      let faces = [];
+      for (let i = 0; i < this.puzzleConfiguration.directions.length; i++) {
+        let val = 0;
+        switch (this.puzzleConfiguration.directions[i]) {
+          case PuzzleDirection.NORTH:
+          case PuzzleDirection.ONE:
+            val = 0;
+            break;
+          case PuzzleDirection.EAST:
+          case PuzzleDirection.TWO:
+            val = 1;
+            break;
+          case PuzzleDirection.SOUTH:
+          case PuzzleDirection.THREE:
+            val = 2;
+            break;
+          case PuzzleDirection.WEST:
+            val = 3;
+            break;
         }
-        sample.push(this.puzzleInfo!.connections[i][j]);
+        faces.push(val);
       }
-      if (!selfDetected && sample.length > 0) {
-        // The main click
-        sample.push(i);
+
+      let conns: Array<Array<number>> = [];
+
+      for (let i = 0; i < this.puzzleInfo!.connections.length; i++) {
+        let sample: Array<number> = [];
+
+        let selfDetected = false;
+
+        // The effected
+        for (let j = 0; j < this.puzzleInfo!.connections[i].length; j++) {
+          let cur = this.puzzleInfo!.connections[i][j];
+          if (cur === i) {
+            selfDetected = true;
+          }
+          sample.push(this.puzzleInfo!.connections[i][j]);
+        }
+        if (!selfDetected && sample.length > 0) {
+          // The main click
+          sample.push(i);
+        }
+        conns.push(sample);
       }
-      conns.push(sample);
+
+      let solverFunc = SOLVER.unifiedSolution;
+
+      if (this.puzzleInfo!.forced && this.puzzleInfo!.forced.length > 0) {
+        solverFunc = SOLVER.customSolution(this.puzzleInfo!.forced!);
+      }
+
+      let puzzleDef: SOLVER.PuzzleDefinition = {
+        initialState: faces,
+        isFinalState: solverFunc,
+        maximumNumber: this.puzzleInfo!.type == PuzzleType.SPIN ? 4 : 3,
+        stateTransitions: conns,
+      };
+
+      result = SOLVER.solvePuzzle(puzzleDef);
+    } else {
+      let puzzleStateMoved: Array<number> = [];
+      const sol = this.puzzleInfo!;
+      for (let i = 0; i < this.puzzleConfiguration.directions.length; i++) {
+        let val = 0;
+        switch (this.puzzleConfiguration.directions[i]) {
+          case PuzzleDirection.NORTH:
+          case PuzzleDirection.ONE:
+            val = 0;
+            break;
+          case PuzzleDirection.EAST:
+          case PuzzleDirection.TWO:
+            val = 1;
+            break;
+          case PuzzleDirection.SOUTH:
+          case PuzzleDirection.THREE:
+            val = 2;
+            break;
+          case PuzzleDirection.WEST:
+            val = 3;
+            break;
+        }
+        puzzleStateMoved.push(val);
+      }
+      let step: SOLVER.PuzzleSolveStep = {
+        previousStep: null,
+        touchedCube: null,
+        state: Object.assign([], puzzleStateMoved),
+      };
+
+      for (let i = 0; i < sol.solution.length; i++) {
+        let cubeIndex = sol.solution[i];
+        puzzleStateMoved[cubeIndex] = SOLVER.mod(
+          puzzleStateMoved[cubeIndex] + 1,
+          this.puzzleInfo!.type == PuzzleType.LIGHT ? 3 : 4
+        );
+        let nextStep: SOLVER.PuzzleSolveStep = {
+          previousStep: step,
+          touchedCube: cubeIndex,
+          state: Object.assign([], puzzleStateMoved),
+        };
+
+        step = nextStep;
+      }
+
+      result = step;
     }
-
-    let solverFunc = SOLVER.unifiedSolution;
-
-    if (this.puzzleInfo!.forced && this.puzzleInfo!.forced.length > 0) {
-      solverFunc = SOLVER.customSolution(this.puzzleInfo!.forced!);
-    }
-
-    let puzzleDef: SOLVER.PuzzleDefinition = {
-      initialState: faces,
-      isFinalState: solverFunc,
-      maximumNumber: this.puzzleInfo!.type == PuzzleType.SPIN ? 4 : 3,
-      stateTransitions: conns,
-    };
-
-    let result = SOLVER.solvePuzzle(puzzleDef);
 
     let modified: Array<SOLVER.PuzzleSolveStep> = [];
 

@@ -199,6 +199,10 @@ export class DataSourceService {
             }
           }
 
+          if (item.solution) {
+            info.solution = item.solution;
+          }
+
           info.directions = [];
           if (item.direction) {
             for (let j = 0; j < item.direction.length; j++) {

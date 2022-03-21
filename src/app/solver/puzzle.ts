@@ -120,4 +120,5 @@ export {
   PuzzleSolveStep,
   PuzzleDefinition,
   PuzzleState,
+  mod,
 };

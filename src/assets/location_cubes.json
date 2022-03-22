@@ -219,7 +219,25 @@
     "island": "wata"
   },
   { "id": "x16384", "x": -103.5, "y": 6172.5, "island": "wata" },
-  { "id": "x16415", "x": 67, "y": 6381, "island": "wata" },
+  {
+    "id": "x16415",
+    "x": 67,
+    "y": 6381,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 8,
+    "description": "This puzzle is located just south of the Bourou Village.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["3", "2", "1"],
+    "position": [
+      [-1.7, -0.7, -1],
+      [-0.5, 1.0, -1],
+      [2.95, 0.75, -1]
+    ],
+    "island": "wata"
+  },
   {
     "id": "x16444",
     "x": 320.0,

@@ -194,7 +194,25 @@
   },
 
   { "id": "x17364", "x": 201, "y": 5992, "island": "wata" },
-  { "id": "x16370", "x": 491, "y": 6092, "island": "wata" },
+  {
+    "id": "x16370",
+    "x": 513,
+    "y": 6092,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 12,
+    "description": "This puzzle is located just west of the Teleporter.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["3", "2", "1"],
+    "position": [
+      [-4.2, -0.1, -1],
+      [0.1, 0.9, -1],
+      [4.8, 2.35, -1]
+    ],
+    "island": "wata"
+  },
   { "id": "x16440", "x": 284, "y": 6101.5, "island": "wata" },
   { "id": "x16432", "x": 156.5, "y": 6149.5, "island": "wata" },
   { "id": "x16346", "x": 115, "y": 5908, "island": "wata" },

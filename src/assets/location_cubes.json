@@ -215,7 +215,27 @@
   },
   { "id": "x16440", "x": 284, "y": 6101.5, "island": "wata" },
   { "id": "x16432", "x": 156.5, "y": 6149.5, "island": "wata" },
-  { "id": "x16346", "x": 115, "y": 5908, "island": "wata" },
+  {
+    "id": "x16346",
+    "x": 115,
+    "y": 5908,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 2.15, 6],
+    "face": "S",
+    "description": "This puzzle is located east of the teleporter and it is all over the place.  No chest, it unlocks a little island so you can grab the Electroculus.",
+    "connection": [[0], [], [], [3], [4]],
+    "direction": ["W", "S", "S", "N", "E"],
+    "position": [
+      [-3, -3, 2],
+      [-1.0, -3, 2],
+      [1.0, -3, 2],
+      [3.0, -3, 2],
+      [3.0, -1.5, 2]
+    ],
+    "edit": [true, false, false, true, true],
+    "island": "wata"
+  },
   {
     "id": "x16380",
     "x": -196.5,

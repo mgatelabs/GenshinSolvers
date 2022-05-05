@@ -40,6 +40,10 @@ import { PuzzleSolutionComponent } from './puzzle-solution/puzzle-solution.compo
 import { HomeComponent } from './home/home.component';
 import { PuzzleListingComponent } from './puzzle-listing/puzzle-listing.component';
 import { MapKeyComponent } from './map-key/map-key.component';
+import { OldChouTreasureComponent } from './old-chou-treasure/old-chou-treasure.component';
+import { OldChouTreasureButtonComponent } from './old-chou-treasure-button/old-chou-treasure-button.component';
+import { OldChouTreasureRowComponent } from './old-chou-treasure-row/old-chou-treasure-row.component';
+import { OldChouTreasureAreaComponent } from './old-chou-treasure-area/old-chou-treasure-area.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { MapKeyComponent } from './map-key/map-key.component';
     HomeComponent,
     PuzzleListingComponent,
     MapKeyComponent,
+    OldChouTreasureComponent,
+    OldChouTreasureButtonComponent,
+    OldChouTreasureRowComponent,
+    OldChouTreasureAreaComponent,
   ],
   imports: [
     BrowserModule,

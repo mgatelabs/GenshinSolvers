@@ -1,0 +1,60 @@
+button {
+    display: inline-block;
+    width: 96px;
+    height: 96px;
+    background-color: burlywood;
+    position: relative;
+}
+
+button span.icon {
+    width: 96px;
+    height: 96px;
+    display:block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+button span.text {
+    width: 96px;
+    height: 9px;
+    display:block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 12px;
+}
+
+button[mode=empty] span.icon {
+    background-image: url(/assets/chou/empty.png);
+}
+
+button[mode=cabbage] span.icon {
+    background-image: url(/assets/chou/cabbage.png);
+}
+
+button[mode=iron] span.icon {
+    background-image: url(/assets/chou/iron.png);
+    background-size: 70%;
+}
+
+button[mode=barrel] span.icon {
+    background-image: url(/assets/chou/barrel.png);
+    background-size: 80%;
+}
+
+button[mode=question] span.icon {
+    background-image: url(/assets/chou/question.png);
+    background-size: 70%;
+}
+
+button[mode=unknown] span.icon {
+    background-image: url(/assets/chou/unknown.png);
+}
+
+button[mode=safe] span.icon {
+    background-image: url(/assets/chou/safe.png);
+    background-size: 70%;
+}

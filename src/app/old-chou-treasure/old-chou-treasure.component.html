@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="tool-area">
+    <h3>Old Chou's Treasure Solver</h3>
+    <button class="ResetLink" (click)="resetGrid()">Reset Puzzle</button>
+  </div>
+
+  <div class="wrap">
+    <div class="house">Old Chou's<br />House</div>
+
+    <app-old-chou-treasure-area
+      [config]="grid"
+      (cellClicked)="cellClickEvent($event)"
+    ></app-old-chou-treasure-area>
+  </div>
+
+  <p></p>
+
+  <blockquote class="blockquote">
+    Welcome to the Old Chou’s Treasure solver. Basically, it is modified version
+    of Minesweeper. The only real difference is each spot can only have 1 or 2
+    bombs nearby and it only looks at spots in the “up”, “right”, “down” and
+    "left" position. So, in game dig out one of the corners and see what happens
+    and make this map match. So, if you get Cabbage, click that spot until it’s
+    cabbage. The goal is to find the Treasure, which is hidden between 4 bombs.
+  </blockquote>
+</div>

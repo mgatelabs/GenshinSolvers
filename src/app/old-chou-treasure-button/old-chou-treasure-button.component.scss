@@ -28,33 +28,33 @@ button span.text {
 }
 
 button[mode=empty] span.icon {
-    background-image: url(/assets/chou/empty.png);
+    background-image: url(../../assets/chou/empty.png);
 }
 
 button[mode=cabbage] span.icon {
-    background-image: url(/assets/chou/cabbage.png);
+    background-image: url(../../assets/chou/cabbage.png);
 }
 
 button[mode=iron] span.icon {
-    background-image: url(/assets/chou/iron.png);
+    background-image: url(../../assets/chou/iron.png);
     background-size: 70%;
 }
 
 button[mode=barrel] span.icon {
-    background-image: url(/assets/chou/barrel.png);
+    background-image: url(../../assets/chou/barrel.png);
     background-size: 80%;
 }
 
 button[mode=question] span.icon {
-    background-image: url(/assets/chou/question.png);
+    background-image: url(../../assets/chou/question.png);
     background-size: 70%;
 }
 
 button[mode=unknown] span.icon {
-    background-image: url(/assets/chou/unknown.png);
+    background-image: url(../../assets/chou/unknown.png);
 }
 
 button[mode=safe] span.icon {
-    background-image: url(/assets/chou/safe.png);
+    background-image: url(../../assets/chou/safe.png);
     background-size: 70%;
 }

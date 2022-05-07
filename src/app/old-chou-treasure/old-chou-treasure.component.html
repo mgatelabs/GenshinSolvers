@@ -20,7 +20,76 @@
     of Minesweeper. The only real difference is each spot can only have 1 or 2
     bombs nearby and it only looks at spots in the “up”, “right”, “down” and
     "left" position. So, in game dig out one of the corners and see what happens
-    and make this map match. So, if you get Cabbage, click that spot until it’s
-    cabbage. The goal is to find the Treasure, which is hidden between 4 bombs.
+    and make this map match. So, if you get Cabbage, click that spot until it
+    displays a cabbage icon. The goal is to find the Treasure, which is hidden
+    between 4 bombs or on the edge surrounded by bombs.
   </blockquote>
+
+  <h3>Icon Description</h3>
+
+  <div class="row">
+    <div class="card" style="width: 18rem">
+      <img src="../../assets/chou/unknown.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Unknown Tile</h5>
+        <p class="card-text">This tile is a mystery.</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem">
+      <img src="../../assets/chou/empty.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Empty Tile</h5>
+        <p class="card-text">
+          This tile has no bombs on the <abbr title="North">N</abbr>,
+          <abbr title="East">E</abbr>, <abbr title="South">S</abbr>,
+          <abbr title="West">W</abbr> edges.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem">
+      <img src="../../assets/chou/cabbage.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Cabbage Tile</h5>
+        <p class="card-text">
+          This tile has a total of one bomb on either the
+          <abbr title="North">N</abbr>, <abbr title="East">E</abbr>,
+          <abbr title="South">S</abbr>, <abbr title="West">W</abbr> edges.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem">
+      <img src="../../assets/chou/iron.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Iron Tile</h5>
+        <p class="card-text">
+          This tile has a total of two bombs on either the
+          <abbr title="North">N</abbr>, <abbr title="East">E</abbr>,
+          <abbr title="South">S</abbr>, <abbr title="West">W</abbr> edges.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem">
+      <img
+        src="../../assets/chou/question.png"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Question Tile</h5>
+        <p class="card-text">The program is unsure what is under this tile.</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem">
+      <img src="../../assets/chou/safe.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Safe Tile</h5>
+        <p class="card-text">The program is sure this tile is safe to dig.</p>
+      </div>
+    </div>
+  </div>
 </div>

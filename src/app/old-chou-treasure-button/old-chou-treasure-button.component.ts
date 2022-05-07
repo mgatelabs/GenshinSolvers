@@ -39,7 +39,7 @@ export class OldChouTreasureButtonComponent implements OnInit {
 
       let mode = '';
 
-      switch (value) {
+      switch (value.classification) {
         case ChouTreasureTypes.BOMB:
           this.label = 'BOMB';
           mode = 'barrel';
@@ -88,7 +88,6 @@ export class OldChouTreasureButtonComponent implements OnInit {
   ngOnInit(): void {}
 
   buttonPressed() {
-    console.log('C1');
     this.cellClicked.emit(this.y * 5 + this.x);
   }
 }

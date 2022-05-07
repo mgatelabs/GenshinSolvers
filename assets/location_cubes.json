@@ -1,0 +1,876 @@
+[
+  {
+    "id": "x19254",
+    "x": 2127.89,
+    "y": 8363.8,
+    "count": "4",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "S",
+    "ortho": 9,
+    "description": "This puzzle is hidden, you need the Peculiar Pinion Feather Gadget to reveal it.",
+    "connection": [[1, 3], [0, 2], [1], [0]],
+    "direction": ["2", "3", "3", "1"],
+    "position": [
+      [-2.8, -1.85, -2],
+      [-1.0, -0.6, -1],
+      [2.4, -0.6, -2],
+      [3.4, -1.85, -2]
+    ],
+    "island": "tsur"
+  },
+  { "id": "x19238", "x": 2548, "y": 8369.5, "island": "tsur" },
+  { "id": "x18760", "x": 2450.5, "y": 8433.5, "island": "tsur" },
+  { "id": "x18758", "x": 2330, "y": 8523.5, "island": "tsur" },
+  { "id": "x18757", "x": 2143, "y": 8373.5, "island": "tsur" },
+  { "id": "x18756", "x": 1925.5, "y": 8579.5, "island": "tsur" },
+  { "id": "x18755", "x": 1728.4, "y": 8635.43, "island": "tsur" },
+
+  { "id": "x18754", "x": 1800.09, "y": 8564.6, "island": "tsur" },
+  { "id": "x18705", "x": 1833, "y": 8126, "island": "tsur" },
+  { "id": "x18703", "x": 1824.19, "y": 8113.5, "island": "tsur" },
+
+  {
+    "id": "x16779",
+    "x": 2724.3940071973902,
+    "y": 6406.28,
+    "count": "4",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "E",
+    "description": "This puzzle is on two different islands, use the bush to jump betweem them.",
+    "connection": [
+      [1, 3],
+      [0, 2],
+      [1, 3],
+      [3, 0]
+    ],
+    "direction": ["1", "1", "2", "2"],
+    "position": [
+      [-2.5, -2.25, -1],
+      [-4.25, 3.25, -1],
+      [3.5, 2, -1],
+      [2.75, -2.45, -1]
+    ],
+    "island": "seir"
+  },
+  {
+    "id": "x16786",
+    "x": 3439.5,
+    "y": 7177,
+    "count": "4",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "description": "This puzzle is on the ground outside of Amakumo Peak. There are 4 specters nearby.",
+    "connection": [[1], [0, 2], [1, 3], [2]],
+    "direction": ["1", "2", "3", "1"],
+    "position": [
+      [-4.5, -1, -1],
+      [-0.8, 0, -1],
+      [2, 0, -1],
+      [5, 0, -1]
+    ],
+    "island": "seir"
+  },
+  {
+    "id": "x16787",
+    "x": 3374,
+    "y": 7174,
+    "count": "4",
+    "type": "SPIN",
+    "camera": [0, 2.75, 4],
+    "face": "E",
+    "description": "This puzzle is located on the beach.",
+    "connection": [[0], [1], [2], []],
+    "direction": ["S", "N", "E", "W"],
+    "edit": [true, true, true, false],
+    "position": [
+      [-3, 0, -0.45],
+      [-0.15, 1.55, 0],
+      [2.75, -0.25, -0.75],
+      [-0.15, 0, 0.5]
+    ],
+    "island": "seir"
+  },
+  {
+    "id": "x16790",
+    "x": 3254,
+    "y": 6950,
+    "count": "5",
+    "face": "S",
+    "type": "SPIN",
+    "camera": [0, 2.75, 4],
+    "description": "This puzzle is located on a small island.  Watch out for the nearby enemies.",
+    "connection": [[0], [0], [1, 3], [4], [4]],
+    "direction": ["N", "W", "N", "W", "N"],
+    "position": [
+      [-5, 0, -0.45],
+      [-3, 0, -2],
+      [-0.45, 0.25, -2.5],
+      [2.45, 0, -2],
+      [5.65, -0.45, -0.45]
+    ],
+    "island": "seir"
+  },
+  {
+    "id": "x16793",
+    "x": 3128.5,
+    "y": 6874,
+    "count": "5",
+    "face": "E",
+    "type": "SPIN",
+    "camera": [-0.25, 2.75, 4],
+    "description": "This puzzle is located on a small island near the cats.  Most of the pieces are independent.",
+    "connection": [[0], [1], [2], [4], [0]],
+    "direction": ["N", "N", "N", "E", "S"],
+    "position": [
+      [-1.85, 1.4, -1.25],
+      [-1.85, 0, -1.25],
+      [-1.85, -1.65, -1.25],
+      [-0.25, -1.65, -1.25],
+      [1.5, -1.65, -1.25]
+    ],
+    "island": "seir"
+  },
+  {
+    "id": "x16803",
+    "x": 3560.5,
+    "y": 6606.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "ortho": 9,
+    "face": "W",
+    "description": "This puzzle is east of the teleporter up on a hill.",
+    "connection": [[2], [2], [0, 1]],
+    "direction": ["3", "1", "2"],
+    "position": [
+      [-2, 1.65, -1],
+      [0.05, -0.35, -1],
+      [2.5, 0.85, -1]
+    ],
+    "island": "seir"
+  },
+  {
+    "id": "x16804",
+    "x": 3398.5,
+    "y": 6594,
+    "count": "4",
+    "type": "SPIN",
+    "camera": [0, 2.25, 4],
+    "face": "E",
+    "description": "This puzzle is located west of the teleport point, up on the hill.",
+    "connection": [[0], [1], [1], []],
+    "direction": ["E", "W", "W", "N"],
+    "edit": [true, true, true, false],
+    "position": [
+      [-7, 0, -2],
+      [5.5, 3, -5],
+      [2, 0, -0.25],
+      [4.5, 2, -1]
+    ],
+    "island": "seir"
+  },
+  {
+    "id": "x17287",
+    "x": 3217.55,
+    "y": 6684.07,
+
+    "count": "3",
+    "face": "S",
+    "camera": [-0.25, 2.0, 3],
+    "type": "SPIN",
+    "description": "This puzzle is located north of the destroyed village.",
+    "connection": [[0], [], [2]],
+    "direction": ["N", "E", "S"],
+    "position": [
+      [-2.85, 0, -2],
+      [-0.15, -0.25, -2],
+      [3.25, -0.25, -2]
+    ],
+    "edit": [true, false, true],
+    "island": "seir"
+  },
+
+  { "id": "x17364", "x": 201, "y": 5992, "island": "wata" },
+  {
+    "id": "x16370",
+    "x": 513,
+    "y": 6092,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 12,
+    "description": "This puzzle is located just west of the Teleporter.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["3", "2", "1"],
+    "position": [
+      [-4.2, -0.1, -1],
+      [0.1, 0.9, -1],
+      [4.8, 2.35, -1]
+    ],
+    "island": "wata"
+  },
+  { "id": "x16440", "x": 284, "y": 6101.5, "island": "wata" },
+  { "id": "x16432", "x": 156.5, "y": 6149.5, "island": "wata" },
+  {
+    "id": "x16346",
+    "x": 115,
+    "y": 5908,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 2.15, 6],
+    "face": "S",
+    "description": "This puzzle is located east of the teleporter and it is all over the place.  No chest, it unlocks a little island so you can grab the Electroculus.",
+    "connection": [[0], [], [], [3], [4]],
+    "direction": ["W", "S", "S", "N", "E"],
+    "position": [
+      [-3, -3, 2],
+      [-1.0, -3, 2],
+      [1.0, -3, 2],
+      [3.0, -3, 2],
+      [3.0, -1.5, 2]
+    ],
+    "edit": [true, false, false, true, true],
+    "island": "wata"
+  },
+  {
+    "id": "x16380",
+    "x": -196.5,
+    "y": 6126.5,
+    "count": "4",
+    "type": "SPIN",
+    "camera": [1, 2.15, 2],
+    "face": "N",
+    "description": "This puzzle is located north statue of the seven up on a hill.  No chest, it unlocks another puzzle element.  Just make every cube face in-ward",
+    "connection": [[0], [1], [2], [3]],
+    "direction": ["S", "S", "E", "W"],
+    "forced": ["N", "E", "S", "W"],
+    "position": [
+      [-1, -1, 0.55],
+      [-4.5, 0.5, -3],
+      [-1.5, -1, -7],
+      [3.75, -1.5, -3]
+    ],
+    "island": "wata"
+  },
+  {
+    "id": "x16384",
+    "x": -103.5,
+    "y": 6172.5,
+    "count": "4",
+    "type": "SPIN",
+    "camera": [-3, 4.15, 4],
+    "face": "E",
+    "description": "This puzzle is loacted at the bottom.  Use the bush to enter the bubble and cancel the shield.",
+    "connection": [[0], [1], [2], [3]],
+    "direction": ["N", "E", "E", "E"],
+    "position": [
+      [-4.5, -3, -2.55],
+      [0, 3, -6],
+      [7, 2, -2],
+      [3, -1.5, 4]
+    ],
+    "island": "wata"
+  },
+  {
+    "id": "x16415",
+    "x": 67,
+    "y": 6381,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 8,
+    "description": "This puzzle is located just south of the Bourou Village.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["3", "2", "1"],
+    "position": [
+      [-1.7, -0.7, -1],
+      [-0.5, 1.0, -1],
+      [2.95, 0.75, -1]
+    ],
+    "island": "wata"
+  },
+  {
+    "id": "x16444",
+    "x": 320.0,
+    "y": 6233.5,
+    "count": "8",
+    "type": "SPIN",
+    "camera": [-0.15, 3.15, 2],
+    "face": "N",
+    "description": "This part 1 of 3 of a puzzle.  After solving it, log out/in to start the next one.  This is a special puzzle it only wants you hit the designated piece the right number of times.",
+    "connection": [[], [0, 2], [], [2, 4], [], [], [], [], []],
+    "direction": ["E", "W", "W", "E", "N", "S", "S", "W"],
+    "position": [
+      [-4.8, -2, 0.8],
+      [-0, -2, 0.8],
+      [4.8, -2, 1.4],
+      [0.5, -2, -5],
+      [6.0, -2, -5],
+      [-4.15, -3, -10],
+      [0.5, -1.5, -10],
+      [5.5, -1.2, -10]
+    ],
+    "edit": [false, false, false, false, false, false, false],
+    "solution": [1, 1, 1, 2, 2, 3, 3, 3, 5],
+    "island": "wata"
+  },
+  {
+    "id": "x17357",
+    "x": 339.5,
+    "y": 6233.5,
+    "count": "8",
+    "type": "SPIN",
+    "camera": [-0.15, 3.15, 2.56],
+    "face": "N",
+    "description": "This part 2 of 3 of a puzzle.  After solving it, log out/in to start the next one.  This is a special puzzle it only wants you hit the designated piece the right number of times.",
+    "connection": [[], [0, 2], [], [2, 4], [], [], [], [], []],
+    "direction": ["W", "S", "E", "S", "S", "E", "N", "E"],
+    "position": [
+      [-5.2, -2, 0.4],
+      [0.1, -1.5, 0.8],
+      [4.8, -2, 1.25],
+      [-5.5, -2.5, -5],
+      [0.5, -1.75, -5],
+      [5.8, -2, -5],
+      [-4.15, -3, -10],
+      [5.5, -1.4, -10]
+    ],
+    "edit": [false, false, false, false, false, false, false],
+    "solution": [6, 6, 6, 5, 4, 4, 1, 1],
+    "island": "wata"
+  },
+  {
+    "id": "x17358",
+    "x": 354.5,
+    "y": 6232.5,
+    "count": "8",
+    "type": "SPIN",
+    "camera": [-0.15, 3.15, 2],
+    "face": "N",
+    "description": "This part 3 of 3 of a puzzle.  This is a special puzzle it only wants you hit the designated piece the right number of times.",
+    "connection": [[], [0, 2], [], [2, 4], [], [], [], [], []],
+    "direction": ["N", "S", "S", "N", "N", "W", "S", "W"],
+    "position": [
+      [-4.8, -2, 0.8],
+      [-0, -2, 0.8],
+      [4.8, -2, 1.4],
+      [0.5, -2, -5],
+      [6.0, -2, -5],
+      [-4.15, -3, -10],
+      [0.5, -1.5, -10],
+      [5.5, -1.2, -10]
+    ],
+    "edit": [false, false, false, false, false, false, false],
+    "solution": [5, 5, 7, 7, 2, 0, 0, 0],
+    "island": "wata"
+  },
+
+  {
+    "id": "x14197",
+    "x": 3666.5,
+    "y": 4710.5,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 1.15, 2],
+    "face": "N",
+    "description": "This puzzle is located north of the 'court of flowing sand'.  Only the front two cubes can be hit.",
+    "connection": [[], [0, 2], [], [2, 4], []],
+    "direction": ["S", "S", "E", "S", "S"],
+    "position": [
+      [-3.5, -1, -2],
+      [-1.5, -0.25, -1],
+      [0, -1, -2],
+      [1.5, -0.25, -1],
+      [3.5, -1, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14196",
+    "x": 3607,
+    "y": 4918,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 8,
+    "description": "This puzzle is located just right of the Mt. Yougou text.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["1", "2", "3"],
+    "position": [
+      [-2.85, 0.2, -1],
+      [0.1, 0.5, -1],
+      [3.2, 0.65, -1]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14193",
+    "x": 3751,
+    "y": 5339,
+    "count": "4",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "S",
+    "ortho": 8,
+    "description": "This puzzle is located just north of Inazuma City, jump off the cliff and it is near the ocean.",
+    "connection": [[1], [0, 2], [1, 3], [2]],
+    "direction": ["1", "2", "3", "1"],
+    "position": [
+      [-3.15, 0.35, -1],
+      [-1.1, 0.5, -1],
+      [0.85, 0.55, -1],
+      [3.2, 0.35, -1]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14206",
+    "x": 3346.5,
+    "y": 4988,
+    "count": "3",
+    "type": "SPIN",
+    "camera": [0, 0.95, 2],
+    "face": "E",
+    "ortho": 9,
+    "description": "This puzzle is located north-east of Konda Village.  The left cube is fixed.",
+    "connection": [[], [1], [2]],
+    "direction": ["W", "E", "S"],
+    "position": [
+      [-2.5, -0.1, -1],
+      [0.0, -0.2, -1],
+      [2.5, -0.7, -1]
+    ],
+    "edit": [false, true, true],
+    "island": "naru"
+  },
+  {
+    "id": "x14204",
+    "x": 3422,
+    "y": 5011.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 9,
+    "description": "This puzzle is located east of Konda Village, in the river.  Watch out for the nearby enemies.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["2", "2", "3"],
+    "position": [
+      [-2.8, 0.55, -2],
+      [0.3, -0.1, -1],
+      [2.4, 0.45, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14205",
+    "x": 3471,
+    "y": 5144,
+    "count": "3",
+    "type": "SPIN",
+    "camera": [0, 0.95, 2],
+    "face": "E",
+    "ortho": 9,
+    "description": "This puzzle is located north-east of Byakko Plain.  The left cube is fixed.",
+    "connection": [[], [1], [2]],
+    "direction": ["W", "E", "E"],
+    "position": [
+      [-2.5, -0.1, -1],
+      [0.0, -0.2, -1],
+      [2.5, -0.7, -1]
+    ],
+    "edit": [false, true, true],
+
+    "island": "naru"
+  },
+  {
+    "id": "x14203",
+    "x": 3475,
+    "y": 4902,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 7,
+    "description": "This puzzle is up on a mountain side south-west of Grand Narukami Shrine.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["1", "2", "3"],
+    "position": [
+      [-1.63, -0.68, -2],
+      [0.0, -0.1, -1],
+      [1.53, 0.35, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14202",
+    "x": 3449,
+    "y": 4863,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 9,
+    "description": "The center cube is hidden inside the breakable rock.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["1", "2", "3"],
+    "position": [
+      [-3.2, 0.35, -2],
+      [0.8, 0.1, -1],
+      [3, 0.1, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14201",
+    "x": 3414,
+    "y": 4623,
+    "count": "4",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 9,
+    "description": "These cubes are under the beach.",
+    "connection": [[1], [0, 2], [1, 3], [2]],
+    "direction": ["3", "1", "2", "3"],
+    "position": [
+      [-3.2, -0.35, -2],
+      [-1.2, 0.0, -1],
+      [0.9, 0.0, -2],
+      [3.35, -0.3, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14030",
+    "x": 3478,
+    "y": 4656,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 1.5, 3],
+    "face": "S",
+    "description": "This puzzle is located underground.  After you swim and go up a ramp, turn around.",
+    "connection": [[2], [0, 2], [0, 4], [2, 4], [2]],
+    "direction": ["N", "S", "N", "S", "N"],
+    "position": [
+      [-4.5, -1, -2],
+      [-2.25, -1, -2],
+      [0, -1, -2],
+      [2.25, -1, -2],
+      [4.5, -1, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14200",
+    "x": 3489,
+    "y": 4650,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 0.25, 2],
+    "face": "W",
+    "description": "This puzzle need to be activated first.  Unsure what the bottom cubes do.",
+    "direction": ["E", "W", "E", "W", "E"],
+    "position": [
+      [-2.5, -1, -1],
+      [-2.5, 1, -1],
+      [0, 1, -1],
+      [2.5, 1, -1],
+      [2.5, -1, -1]
+    ],
+
+    "island": "naru"
+  },
+  {
+    "id": "x14198",
+    "x": 3620,
+    "y": 4752,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 9,
+    "description": "On the mountain side, the cube on the right is hidden inside a boulder.  Unsure what the middle cube does.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["2", "3", "1"],
+    "position": [
+      [-3.1, 0, -2],
+      [0.9, 0.5, -1],
+      [3.2, 0.5, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14194",
+    "x": 3753.5,
+    "y": 4692,
+    "count": "4",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 9,
+    "description": "On the north side of the island.",
+    "connection": [
+      [1, 3],
+      [0, 2],
+      [1, 3],
+      [0, 2]
+    ],
+    "direction": ["1", "1", "2", "2"],
+    "position": [
+      [-3.1, 0.65, -2],
+      [-1.65, 1.35, -1],
+      [1.95, 0.65, -2],
+      [3.45, -0.45, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14195",
+    "x": 3646,
+    "y": 5048,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 0.25, 3],
+    "face": "E",
+    "description": "This puzzle is located north of the Chinju Forest.  Watch out for the mage ontop of the hill.",
+    "connection": [[1, 2], [], [], [], [2, 3]],
+    "direction": ["E", "E", "W", "E", "E"],
+    "position": [
+      [-5.5, 0, -2],
+      [-2.6, 0.2, -2],
+      [0, 0.75, -2],
+      [2.6, 1, -2],
+      [5.5, 1.5, -2]
+    ],
+    "island": "naru"
+  },
+  {
+    "id": "x14199",
+    "x": 3530,
+    "y": 4646,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [0, 4, 3.5],
+    "face": "N",
+    "description": "This puzzle is located under the giant tree.  After you get inside, it is on the left side.",
+    "connection": [[1, 3], [0, 2], [1, 3], [2, 0], []],
+    "direction": ["S", "E", "W", "N", "S"],
+    "position": [
+      [-3.5, 0, 1],
+      [-3.5, 1.15, -3],
+      [3.5, 1.15, -3],
+      [4.5, 0, 1],
+      [0, 0, -2]
+    ],
+    "edit": [true, true, true, true, false],
+    "island": "naru"
+  },
+
+  {
+    "id": "x14192",
+    "x": 2691.5,
+    "y": 5539,
+    "count": "5",
+    "type": "SPIN",
+    "camera": [-0.25, 4, 4.5],
+    "face": "S",
+    "description": "This puzzle is located north of the Kujou Encampment, up on the hill.",
+    "connection": [[1, 2], [], [], [], [3, 2]],
+    "direction": ["N", "N", "W", "N", "N"],
+    "position": [
+      [-4.75, 0, 1],
+      [-4.5, 1.15, -3.5],
+      [0.25, 1.85, -3.5],
+      [5.5, 2.3, -4.5],
+      [4.5, 0, 0.75]
+    ],
+    "edit": [true, false, false, false, true],
+    "island": "kann"
+  },
+  {
+    "id": "x14191",
+    "x": 2838.5,
+    "y": 5522.5,
+    "count": "3",
+    "type": "SPIN",
+    "camera": [0, 5, 3.5],
+    "face": "E",
+    "description": "This puzzle is located north-east of the Kujou Encampment, down near the beach.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["S", "W", "S"],
+    "position": [
+      [-4.0, 1.5, 0.6],
+      [1.25, 1.15, -3.5],
+      [4.0, 1.5, 1]
+    ],
+    "island": "kann"
+  },
+  {
+    "id": "x14190",
+    "x": 2959.5,
+    "y": 5695.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 9,
+    "description": "Up on the hill.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["1", "2", "3"],
+    "position": [
+      [-2.87, 1.0, -2],
+      [0.1, 0.75, -1],
+      [2.8, 0.05, -2]
+    ],
+    "island": "kann"
+  },
+  {
+    "id": "x14189",
+    "x": 2220,
+    "y": 5679.5,
+    "count": "4",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "N",
+    "ortho": 9,
+    "description": "Part of another puzzle, on the water.",
+    "connection": [[1], [0, 2], [1, 3], [2]],
+    "direction": ["3", "1", "1", "3"],
+    "position": [
+      [-3.17, 0.5, -2],
+      [-1.8, 0.25, -1],
+      [1.55, 0.2, -2],
+      [2.8, 0.8, -2]
+    ],
+    "island": "kann"
+  },
+  {
+    "id": "x14189B",
+    "x": 2220,
+    "y": 5720,
+    "count": "3",
+    "type": "SPIN",
+    "camera": [0, 3, 3.5],
+    "face": "W",
+    "description": "Part of a puzzle, on the water.  Remember to turn off the shield barrier first.",
+    "connection": [[0], [1], [2]],
+    "direction": ["W", "S", "E"],
+    "position": [
+      [-5.4, 0.7, -2],
+      [0.0, 0.7, -2],
+      [5.5, 0.5, -2]
+    ],
+    "island": "kann"
+  },
+  {
+    "id": "x14188",
+    "x": 2155,
+    "y": 5835.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 9,
+    "description": "On a little island",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["1", "2", "3"],
+    "position": [
+      [-2.37, -0.0, -2],
+      [0.76, 0.25, -1],
+      [2.75, 0.0, -2]
+    ],
+    "island": "kann"
+  },
+  {
+    "id": "x14188",
+    "x": 2155,
+    "y": 5835.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 9,
+    "description": "On a little island",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["1", "2", "3"],
+    "position": [
+      [-2.37, -0.0, -2],
+      [0.76, 0.25, -1],
+      [2.75, 0.0, -2]
+    ],
+    "island": "kann"
+  },
+  {
+    "id": "x14187",
+    "x": 2532,
+    "y": 6073.5,
+    "count": "5",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 9,
+    "description": "Near the beach.",
+    "connection": [[1], [0, 2], [1, 3], [2, 4], [3]],
+    "direction": ["2", "1", "2", "1", "2"],
+    "position": [
+      [-3.17, -0.3, -2],
+      [-1.8, 0.55, -1],
+      [-0.25, 0.85, -2],
+      [1.75, 1.25, -2],
+      [3.5, 0.25, -2]
+    ],
+    "island": "kann"
+  },
+  {
+    "id": "x14186",
+    "link": "x16779",
+    "x": 2565.5,
+    "y": 6271,
+    "island": "kann"
+  },
+  {
+    "id": "x14467",
+    "x": 1626,
+    "y": 6133.5,
+    "count": "3",
+    "type": "LIGHT",
+    "camera": [0, 1.0, 4],
+    "face": "W",
+    "ortho": 9,
+    "description": "Underground, watch out for the ruin dudes.",
+    "connection": [[1], [0, 2], [1]],
+    "direction": ["2", "2", "3"],
+    "position": [
+      [-2.3, 0.35, -2],
+      [0.2, 0.35, -1],
+      [2.7, 0.35, -2]
+    ],
+    "island": "yash"
+  },
+  {
+    "id": "x14029",
+    "x": 1224,
+    "y": 5796,
+    "count": "4",
+    "type": "SPIN",
+    "camera": [-4, 3, 3.5],
+    "face": "S",
+    "description": "This puzzle is located on a tiny island to the north.  Each puzzle piece is independent.",
+    "connection": [[0], [1], [2], [3]],
+    "direction": ["E", "S", "N", "W"],
+    "position": [
+      [-2.7, 1.4, -3],
+      [1.0, 2, -6],
+      [3.5, 1.15, 1],
+      [1.5, 0.5, 3.5]
+    ],
+    "island": "yash"
+  }
+]
